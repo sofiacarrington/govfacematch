@@ -328,9 +328,8 @@ function Introducing() {
           </Reveal>
           <Reveal delay={0.2}>
             <p className="mt-4 text-grey-on-white">
-              Built in partnership with state DMVs, GovFaceMatch verifies identity directly against
-              official government records. A real-time biometric match confirms the person, not just
-              the identity, stopping sophisticated AI-assisted fraud
+              Built with state DMVs — a real-time biometric match against official government
+              records confirms the person, stopping sophisticated AI-assisted fraud.
             </p>
           </Reveal>
         </div>
