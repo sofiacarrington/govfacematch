@@ -165,7 +165,7 @@ function Testimonial() {
                 fill
                 quality={75}
                 priority={false}
-                className="object-contain object-right scale-125"
+                className="object-contain object-right scale-150"
                 sizes="(min-width: 1280px) 1216px, 100vw"
               />
             </div>
