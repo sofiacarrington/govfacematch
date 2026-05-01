@@ -456,7 +456,7 @@ function ClosingCta() {
       <div className="absolute inset-x-0 -top-32 h-80 glow-blue blur-2xl opacity-70 pointer-events-none" />
       <div className="relative mx-auto max-w-[1280px] px-6 lg:px-12 py-24 text-center">
         <Reveal>
-          <h2 className="font-display text-3xl md:text-5xl text-balance max-w-3xl mx-auto">
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl md:whitespace-nowrap mx-auto">
             A new standard in identity verification
           </h2>
         </Reveal>
