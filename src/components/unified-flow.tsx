@@ -47,7 +47,7 @@ export function UnifiedFlow() {
   const isFeatured = active.id === "govmatch";
 
   return (
-    <div className="relative">
+    <div className="relative overflow-hidden rounded-2xl border border-border-dark bg-off-black p-6 lg:p-8">
       <div className="flex flex-wrap items-center gap-x-2 gap-y-2 sm:gap-x-3">
         <TabButton workflow={WORKFLOWS[1]} activeId={activeId} setActiveId={setActiveId} />
         <Operator>+</Operator>
@@ -81,12 +81,7 @@ export function UnifiedFlow() {
         </p>
       </motion.div>
 
-      <div
-        className={cn(
-          "relative mt-6 overflow-hidden rounded-2xl border p-6 lg:mt-8 lg:p-8 transition-colors",
-          isFeatured ? "border-blue/30 bg-off-black" : "border-border-dark bg-off-black",
-        )}
-      >
+      <div className="relative mt-6 overflow-hidden rounded-2xl border border-border-dark bg-rich-black p-6 lg:mt-8 lg:p-8">
         <Image
           src={active.diagram}
           alt={`${active.title} flow diagram`}
