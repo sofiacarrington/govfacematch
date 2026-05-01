@@ -49,7 +49,7 @@ export function UnifiedFlow() {
   return (
     <div
       className={cn(
-        "relative overflow-hidden rounded-2xl border px-6 pt-6 pb-0 lg:px-8 lg:pt-8 lg:pb-0 transition-colors",
+        "relative overflow-hidden rounded-2xl border p-6 lg:p-8 transition-colors",
         isFeatured
           ? "border-blue/40 bg-gradient-to-br from-blue/12 via-off-black to-off-black"
           : "border-border-dark bg-off-black",
@@ -93,7 +93,7 @@ export function UnifiedFlow() {
           </p>
         </motion.div>
 
-        <div className="relative -mx-4 -mb-4 mt-1 w-[calc(100%+2rem)] lg:-mx-6 lg:-mb-6 lg:w-[calc(100%+3rem)]">
+        <div className="relative mt-6 w-full lg:mt-8">
           <Image
             src={active.diagram}
             alt={`${active.title} flow diagram`}
