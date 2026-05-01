@@ -47,63 +47,54 @@ export function UnifiedFlow() {
   const isFeatured = active.id === "govmatch";
 
   return (
-    <div
-      className={cn(
-        "relative overflow-hidden rounded-2xl border p-6 lg:p-8 transition-colors",
-        isFeatured
-          ? "border-blue/40 bg-gradient-to-br from-blue/12 via-off-black to-off-black"
-          : "border-border-dark bg-off-black",
-      )}
-    >
-      {isFeatured && (
-        <div className="pointer-events-none absolute -top-32 -right-32 h-72 w-72 rounded-full bg-blue/25 blur-3xl" />
-      )}
+    <div className="relative">
+      <div className="flex flex-wrap items-center gap-x-2 gap-y-2 sm:gap-x-3">
+        <TabButton workflow={WORKFLOWS[1]} activeId={activeId} setActiveId={setActiveId} />
+        <Operator>+</Operator>
+        <TabButton workflow={WORKFLOWS[2]} activeId={activeId} setActiveId={setActiveId} />
+        <Operator className="hidden sm:inline">=</Operator>
+        <span className="basis-full sm:hidden" />
+        <TabButton
+          workflow={WORKFLOWS[0]}
+          activeId={activeId}
+          setActiveId={setActiveId}
+          emphasized
+        />
+      </div>
 
-      <div className="relative">
-        <div className="flex flex-wrap items-center gap-x-2 gap-y-2 sm:gap-x-3">
-          <TabButton workflow={WORKFLOWS[1]} activeId={activeId} setActiveId={setActiveId} />
-          <Operator>+</Operator>
-          <TabButton workflow={WORKFLOWS[2]} activeId={activeId} setActiveId={setActiveId} />
-          <Operator className="hidden sm:inline">=</Operator>
-          <span className="basis-full sm:hidden" />
-          <TabButton
-            workflow={WORKFLOWS[0]}
-            activeId={activeId}
-            setActiveId={setActiveId}
-            emphasized
-          />
-        </div>
-
-        <motion.div
-          key={`text-${active.id}`}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.2 }}
-          className="mt-8"
+      <motion.div
+        key={`text-${active.id}`}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.2 }}
+        className="mt-8"
+      >
+        <h3 className="font-display text-2xl md:text-3xl text-white">{active.title}</h3>
+        <p className="mt-2 max-w-3xl text-sm text-grey-on-black">{active.body}</p>
+        <p
+          className={cn(
+            "mt-2 text-xs",
+            isFeatured ? "text-blue-eyebrow" : "text-grey-on-black",
+          )}
         >
-          <h3 className="font-display text-2xl md:text-3xl text-white">{active.title}</h3>
-          <p className="mt-2 max-w-3xl text-sm text-grey-on-black">{active.body}</p>
-          <p
-            className={cn(
-              "mt-2 text-xs",
-              isFeatured ? "text-blue-eyebrow" : "text-grey-on-black",
-            )}
-          >
-            {active.coverage}
-          </p>
-        </motion.div>
+          {active.coverage}
+        </p>
+      </motion.div>
 
-        <div className="relative mt-6 w-full lg:mt-8">
-          <Image
-            src={active.diagram}
-            alt={`${active.title} flow diagram`}
-            width={2516}
-            height={436}
-            priority={active.id === "govmatch"}
-            className="h-auto w-full"
-          />
-        </div>
-
+      <div
+        className={cn(
+          "relative mt-6 overflow-hidden rounded-2xl border p-6 lg:mt-8 lg:p-8 transition-colors",
+          isFeatured ? "border-blue/30 bg-off-black" : "border-border-dark bg-off-black",
+        )}
+      >
+        <Image
+          src={active.diagram}
+          alt={`${active.title} flow diagram`}
+          width={2516}
+          height={436}
+          priority={active.id === "govmatch"}
+          className="h-auto w-full"
+        />
       </div>
     </div>
   );
