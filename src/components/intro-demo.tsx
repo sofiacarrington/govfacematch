@@ -144,7 +144,7 @@ export function IntroDemo() {
                 <div className="flex-1 min-w-0">
                   <h3
                     className={cn(
-                      "font-display text-lg md:text-xl transition-colors",
+                      "font-display text-base md:text-lg transition-colors",
                       isActive ? "text-foreground" : "text-foreground/70",
                     )}
                   >
@@ -152,7 +152,7 @@ export function IntroDemo() {
                   </h3>
                   <p
                     className={cn(
-                      "mt-2 max-w-md text-sm transition-colors",
+                      "mt-1.5 max-w-md text-sm transition-colors",
                       isActive ? "text-grey-on-white" : "text-grey-on-white/70",
                     )}
                   >
