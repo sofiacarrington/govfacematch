@@ -393,7 +393,7 @@ function UnifiedOffering() {
   return (
     <Section tone="rich">
       <Reveal>
-        <Eyebrow>GovMatch</Eyebrow>
+        <Eyebrow>Unified offering</Eyebrow>
       </Reveal>
       <Reveal delay={0.1}>
         <h2 className="mt-4 font-display text-3xl md:text-4xl max-w-3xl text-balance">
@@ -402,9 +402,8 @@ function UnifiedOffering() {
       </Reveal>
       <Reveal delay={0.2}>
         <p className="mt-6 max-w-2xl text-grey-on-black">
-          GovFaceMatch is part of the broader GovMatch offering, combining biometric verification
-          and data validation against government records to deliver the highest assurance possible
-          in every state.
+          Part of the broader GovMatch offering — combining biometric and data validation against
+          government records for the highest assurance in every state.
         </p>
       </Reveal>
       <Reveal delay={0.3}>
