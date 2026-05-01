@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: #ffffff;
+  --color-foreground: #111111;
+
+  --color-blue: #006aff;
+  --color-blue-eyebrow: #579dff;
+  --color-green: #1ec677;
+
+  --color-black: #111111;
+  --color-rich-black: #010101;
+  --color-off-black: #0d0d0d;
+  --color-off-white: #eeeeee;
+
+  --color-grey-on-black: #a9a9a9;
+  --color-grey-on-white: #6e6e6e;
+
+  --color-border-light: #e6e6e6;
+  --color-border-dark: #232323;
+
+  --color-tint-white-05: #ffffff0d;
+  --color-tint-white-10: #ffffff1a;
+  --color-illustration-grey: #7f7f7f1a;
+
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  --font-display: var(--font-rethink), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+
+  --container-large: 1280px;
+
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-pulse-glow: pulse-glow 3s ease-in-out infinite;
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 0.9; transform: scale(1.08); }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 4rem;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--color-blue);
+  color: white;
+}
+
+.font-display {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.text-balance { text-wrap: balance; }
+
+.glow-blue {
+  background: radial-gradient(closest-side, rgba(0, 106, 255, 0.45), rgba(0, 106, 255, 0));
+}
+
+.bg-hero-glow {
+  background-image:
+    radial-gradient(1200px 600px at 50% -10%, rgba(0, 106, 255, 0.22), transparent 60%),
+    radial-gradient(800px 400px at 50% 110%, rgba(0, 106, 255, 0.18), transparent 60%);
+}
+
+.bg-problem-glow {
+  background-image:
+    radial-gradient(900px 500px at 0% 50%, rgba(220, 38, 38, 0.18), transparent 65%),
+    radial-gradient(900px 500px at 100% 50%, rgba(220, 38, 38, 0.18), transparent 65%);
+}
