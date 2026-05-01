@@ -7,6 +7,7 @@ import { ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Logo } from "./logo";
 import { AnnouncementBar } from "./announcement-bar";
+import { ButtonLink } from "@/components/ui/button";
 
 type NavItem = { href: string; label: string; hasMenu?: boolean };
 
@@ -62,13 +63,10 @@ export function SiteHeader() {
               ))}
             </nav>
 
-            <Link
-              href="/contact"
-              className="hidden lg:inline-flex items-center gap-2 rounded-md bg-blue px-4 py-2.5 text-[15px] font-medium text-white hover:bg-[#0058d9] transition-colors"
-            >
+            <ButtonLink href="/contact" className="hidden lg:inline-flex">
               Request a demo
               <ArrowUpRight size={16} strokeWidth={2.25} />
-            </Link>
+            </ButtonLink>
 
             <button
               aria-label="Toggle menu"
@@ -98,14 +96,14 @@ export function SiteHeader() {
                     {item.hasMenu && <ChevronDown size={14} className="text-foreground/60" />}
                   </a>
                 ))}
-                <Link
+                <ButtonLink
                   href="/contact"
                   onClick={() => setMobileOpen(false)}
-                  className="mt-2 inline-flex items-center justify-center gap-2 rounded-md bg-blue px-4 py-2.5 text-[15px] font-medium text-white"
+                  className="mt-2"
                 >
                   Request a demo
                   <ArrowUpRight size={16} strokeWidth={2.25} />
-                </Link>
+                </ButtonLink>
               </div>
             </motion.nav>
           )}

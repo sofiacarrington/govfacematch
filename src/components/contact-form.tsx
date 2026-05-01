@@ -3,6 +3,7 @@
 import { useState, type FormEvent } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowUpRight, Check } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const USE_CASES = ["Fintech", "Public benefits", "Healthcare", "Travel", "Education", "Other"];
 
@@ -83,14 +84,14 @@ export function ContactForm() {
               />
             </div>
 
-            <button
+            <Button
               type="submit"
               disabled={pending}
-              className="mt-2 inline-flex items-center justify-center gap-2 rounded-md bg-blue hover:bg-[#0058d9] px-5 py-2.5 text-[15px] font-medium text-white transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+              className="mt-2 disabled:opacity-60 disabled:cursor-not-allowed"
             >
               {pending ? "Sending…" : "Request a demo"}
               {!pending && <ArrowUpRight size={16} strokeWidth={2.25} />}
-            </button>
+            </Button>
             <p className="text-[11px] text-grey-on-black">
               We&apos;ll only use this to coordinate your demo.
             </p>

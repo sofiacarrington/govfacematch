@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Camera, Check, IdCard, Loader2, ScanFace, ShieldCheck } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 type Step = {
@@ -218,12 +219,9 @@ function PhoneFrame({ screen, stepId }: { screen: PhoneScreen; stepId: string })
             )}
 
             {screen.cta && (
-              <button
-                type="button"
-                className="w-full inline-flex items-center justify-center rounded-md bg-blue hover:bg-[#0058d9] px-3 py-2 text-xs font-medium text-white transition-colors"
-              >
+              <Button type="button" size="sm" className="w-full">
                 {screen.cta}
-              </button>
+              </Button>
             )}
 
             <div className="mt-2 flex items-center justify-center gap-1 text-[9px] text-grey-on-white">

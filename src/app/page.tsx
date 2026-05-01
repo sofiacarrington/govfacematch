@@ -1,4 +1,3 @@
-import Link from "next/link";
 import {
   ArrowLeft,
   ArrowRight,
@@ -15,6 +14,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { Section, Eyebrow } from "@/components/ui/section";
+import { ButtonLink } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/reveal";
 import { Counter } from "@/components/ui/counter";
 import { HeroVideo } from "@/components/hero-video";
@@ -119,13 +119,10 @@ function Hero() {
             </Reveal>
             <Reveal delay={0.3}>
               <div className="mt-8 flex flex-wrap gap-3">
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-2 rounded-md bg-blue hover:bg-[#0058d9] px-5 py-2.5 text-[15px] font-medium text-white transition-colors"
-                >
+                <ButtonLink href="/contact">
                   Request a demo
                   <ArrowUpRight size={16} strokeWidth={2.25} />
-                </Link>
+                </ButtonLink>
               </div>
             </Reveal>
           </div>
@@ -472,13 +469,10 @@ function ClosingCta() {
         </Reveal>
         <Reveal delay={0.2}>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 rounded-md bg-blue hover:bg-[#0058d9] px-5 py-2.5 text-[15px] font-medium text-white transition-colors"
-            >
+            <ButtonLink href="/contact">
               Request a demo
               <ArrowUpRight size={16} strokeWidth={2.25} />
-            </Link>
+            </ButtonLink>
           </div>
         </Reveal>
       </div>
