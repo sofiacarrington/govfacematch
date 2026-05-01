@@ -94,7 +94,7 @@ export function ConversionAccuracyTabs() {
           >
             {tab.stats.map((s) => (
               <div key={s.title} className="border-t border-border-light pt-8">
-                <div className="font-display text-5xl md:text-6xl leading-none text-blue">
+                <div className="font-display text-5xl md:text-6xl leading-none bg-[linear-gradient(120deg,#006aff_0%,#000_55%)] bg-clip-text text-transparent">
                   <Counter to={s.value} prefix={s.prefix} suffix={s.suffix} />
                 </div>
                 <div className="mt-4 font-display text-base md:text-lg text-foreground">{s.title}</div>
