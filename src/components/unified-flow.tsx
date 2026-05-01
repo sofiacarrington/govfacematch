@@ -9,7 +9,7 @@ type Workflow = {
   id: "govmatch" | "govfacematch" | "govdatamatch";
   tab: string;
   title: string;
-  body: string;
+  body: string[];
   coverage: string;
   diagram: string;
 };
@@ -19,7 +19,9 @@ const WORKFLOWS: Workflow[] = [
     id: "govmatch",
     tab: "Unified offering: GovMatch",
     title: "GovMatch",
-    body: "Combines GovFaceMatch and GovDataMatch and seamlessly routes verifications based on the issuing state, automatically expanding coverage as new states go live.",
+    body: [
+      "Combines GovFaceMatch and GovDataMatch and seamlessly routes verifications based on the issuing state, automatically expanding coverage as new states go live.",
+    ],
     coverage: "95%+ combined population coverage",
     diagram: "/GovMatch.png",
   },
@@ -27,7 +29,10 @@ const WORKFLOWS: Workflow[] = [
     id: "govfacematch",
     tab: "GovFaceMatch",
     title: "GovFaceMatch",
-    body: "Matches a live biometric directly against the government portrait at the issuing DMV. Confirms the person, not just the identity.",
+    body: [
+      "Matches a live biometric directly against the government portrait at the issuing DMV.",
+      "Confirms the person, not just the identity.",
+    ],
     coverage: "~20% U.S. population coverage",
     diagram: "/GovFaceMatch.png",
   },
@@ -35,7 +40,10 @@ const WORKFLOWS: Workflow[] = [
     id: "govdatamatch",
     tab: "GovDataMatch",
     title: "GovDataMatch",
-    body: "Matches identity data attributes against DMV issuing records across 46 states. Confirms the identity exists in the government record.",
+    body: [
+      "Matches identity data attributes against DMV issuing records across 46 states.",
+      "Confirms the identity exists in the government record.",
+    ],
     coverage: "~85% U.S. population coverage",
     diagram: "/GovDataMatch.png",
   },
@@ -70,7 +78,11 @@ export function UnifiedFlow() {
         className="mt-8"
       >
         <h3 className="font-display text-2xl md:text-3xl text-white">{active.title}</h3>
-        <p className="mt-2 max-w-3xl text-sm text-grey-on-black">{active.body}</p>
+        <div className="mt-2 max-w-3xl text-sm text-grey-on-black space-y-1">
+          {active.body.map((line, i) => (
+            <p key={i}>{line}</p>
+          ))}
+        </div>
         <p
           className={cn(
             "mt-2 text-xs",
