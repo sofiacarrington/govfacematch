@@ -113,7 +113,7 @@ function Hero() {
               <Eyebrow>GovFaceMatch</Eyebrow>
             </Reveal>
             <Reveal delay={0.1}>
-              <h1 className="mt-6 font-display text-4xl md:text-5xl lg:text-6xl leading-[1.05] text-balance">
+              <h1 className="mt-6 font-display text-[33px] md:text-[42px] lg:text-[54px] leading-[1.05] text-balance">
                 A new standard in
                 <br />
                 identity verification

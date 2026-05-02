@@ -148,7 +148,7 @@ export function SiteHeader() {
 
   const scheduleClose = () => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
-    closeTimer.current = setTimeout(() => setOpenMenu(null), 120);
+    closeTimer.current = setTimeout(() => setOpenMenu(null), 180);
   };
 
   return (
@@ -160,9 +160,9 @@ export function SiteHeader() {
     >
       <div
         className={cn(
-          "border-b transition-[background-color,border-color,backdrop-filter,box-shadow] duration-300 ease-out",
+          "border-b transition-[background-color,border-color,box-shadow] duration-300 ease-out",
           scrolled
-            ? "border-border-light/60 bg-background/80 backdrop-blur-xl shadow-[0_8px_24px_-12px_rgba(0,0,0,0.08)]"
+            ? "border-border-light/60 bg-background shadow-[0_8px_24px_-12px_rgba(0,0,0,0.08)]"
             : "border-transparent",
         )}
       >
@@ -170,22 +170,16 @@ export function SiteHeader() {
           <Link href="/" aria-label="Home" className="shrink-0">
             <Logo
               className={cn(
-                "transition-[filter] duration-200",
-                scrolled ? "[filter:brightness(0)]" : "[filter:brightness(0)_invert(1)]",
+                "transition-[filter] duration-300 ease-out",
+                scrolled ? "[filter:none]" : "[filter:brightness(0)_invert(1)]",
               )}
             />
           </Link>
 
-          <nav
-            className={cn(
-              "hidden lg:flex items-center rounded-2xl px-2 py-2 transition-[background-color,backdrop-filter,box-shadow] duration-300 ease-out",
-              scrolled
-                ? "bg-foreground/90 backdrop-blur-xl shadow-[0_8px_24px_-12px_rgba(0,0,0,0.18)]"
-                : "bg-transparent",
-            )}
-          >
+          <nav className="hidden lg:flex items-center rounded-2xl px-2 py-2">
             {NAV.map((item) => {
               const hasMega = item.label in MEGA_MENUS;
+              const isOpen = openMenu === item.label;
               return (
                 <a
                   key={item.label}
@@ -193,8 +187,11 @@ export function SiteHeader() {
                   onMouseEnter={() => hasMega && openMenuFor(item.label)}
                   onMouseLeave={() => hasMega && scheduleClose()}
                   className={cn(
-                    "inline-flex items-center gap-1 rounded-lg px-3.5 py-1.5 text-[13px] text-white transition-colors hover:bg-white/10",
-                    openMenu === item.label && "bg-white/10",
+                    "inline-flex items-center gap-1 rounded-lg px-3.5 py-1.5 text-[13px] transition-colors",
+                    scrolled
+                      ? "text-foreground hover:bg-foreground/5"
+                      : "text-white hover:bg-white/10",
+                    isOpen && (scrolled ? "bg-foreground/5" : "bg-white/10"),
                   )}
                 >
                   {item.label}
@@ -203,8 +200,9 @@ export function SiteHeader() {
                       size={12}
                       strokeWidth={2.25}
                       className={cn(
-                        "text-white/60 transition-transform duration-200",
-                        openMenu === item.label && "rotate-180",
+                        "transition-transform duration-200",
+                        scrolled ? "text-foreground/40" : "text-white/60",
+                        isOpen && "rotate-180",
                       )}
                     />
                   )}
@@ -216,23 +214,12 @@ export function SiteHeader() {
           <Link
             href="/contact"
             className={cn(
-              "hidden lg:inline-flex items-center gap-2.5 rounded-2xl py-1.5 pl-4 pr-1.5 text-[13px] font-medium text-white transition-[background-color,backdrop-filter,box-shadow] duration-300 ease-out",
-              scrolled
-                ? "bg-foreground/90 backdrop-blur-xl shadow-[0_8px_24px_-12px_rgba(0,0,0,0.18)] hover:bg-foreground"
-                : "bg-transparent hover:bg-white/10",
+              "hidden lg:inline-flex items-center gap-2 rounded-lg px-4 py-2 text-[13px] font-medium text-white transition-colors duration-300 ease-out",
+              scrolled ? "bg-blue hover:bg-[#0058d9]" : "hover:bg-white/10",
             )}
           >
             Request a demo
-            <span
-              className={cn(
-                "inline-flex h-8 w-8 items-center justify-center rounded-lg text-white transition-[background] duration-300 ease-out",
-                scrolled
-                  ? "bg-[linear-gradient(120deg,#006aff_0%,#000_100%)]"
-                  : "bg-transparent",
-              )}
-            >
-              <ArrowUpRight size={14} strokeWidth={2.25} />
-            </span>
+            <ArrowUpRight size={14} strokeWidth={2.25} />
           </Link>
 
           <button
@@ -248,10 +235,13 @@ export function SiteHeader() {
           {openMenu && MEGA_MENUS[openMenu] && (
             <motion.div
               key="mega-container"
-              initial={{ opacity: 0, y: -8 }}
+              initial={{ opacity: 0, y: -6 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.2, ease: "easeOut" }}
+              exit={{ opacity: 0, y: -4 }}
+              transition={{
+                opacity: { duration: 0.32, ease: [0.16, 1, 0.3, 1] },
+                y: { duration: 0.32, ease: [0.16, 1, 0.3, 1] },
+              }}
               onMouseEnter={() => openMenuFor(openMenu)}
               onMouseLeave={scheduleClose}
               className="hidden lg:block border-t border-border-light/60 bg-background/95 backdrop-blur-xl shadow-[0_24px_48px_-24px_rgba(0,0,0,0.18)]"
@@ -318,7 +308,8 @@ function MegaPanel({ menu }: { menu: MenuColumn[] }) {
           <div className="text-xs font-medium text-grey-on-white">{col.heading}</div>
           <div
             className={cn(
-              "mt-4 grid gap-x-6 gap-y-3",
+              "mt-4 grid gap-x-6",
+              col.links.some((l) => l.sub) ? "gap-y-5" : "gap-y-3",
               col.columns === 2 ? "grid-cols-1 sm:grid-cols-2" : "grid-cols-1",
             )}
           >
