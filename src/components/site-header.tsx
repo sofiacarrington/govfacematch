@@ -53,7 +53,7 @@ export function SiteHeader() {
                 <a
                   key={item.label}
                   href={item.href}
-                  className="inline-flex items-center gap-1 px-3 py-2 text-[15px] text-foreground hover:text-blue transition-colors"
+                  className="inline-flex items-center gap-1 px-3 py-2 text-sm text-foreground hover:text-blue transition-colors"
                 >
                   {item.label}
                   {item.hasMenu && (
@@ -90,7 +90,7 @@ export function SiteHeader() {
                     key={item.label}
                     href={item.href}
                     onClick={() => setMobileOpen(false)}
-                    className="flex items-center justify-between px-3 py-2.5 rounded-md text-[15px] text-foreground hover:bg-off-white"
+                    className="flex items-center justify-between px-3 py-2.5 rounded-md text-sm text-foreground hover:bg-off-white"
                   >
                     {item.label}
                     {item.hasMenu && <ChevronDown size={14} className="text-foreground/60" />}
