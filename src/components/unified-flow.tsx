@@ -22,7 +22,8 @@ const WORKFLOWS: Workflow[] = [
     tab: "Unified offering: GovMatch",
     title: "GovMatch",
     body: [
-      "Combines GovFaceMatch and GovDataMatch and seamlessly routes verifications based on the issuing state, automatically expanding coverage as new states go live.",
+      "Combines GovFaceMatch and GovDataMatch, seamlessly routing verifications based on the issuing state.",
+      "Automatically expands coverage as new states go live.",
     ],
     coverage: "95%+ combined population coverage",
     diagram: "/GovMatch.png",
@@ -51,7 +52,13 @@ const WORKFLOWS: Workflow[] = [
   },
 ];
 
-export function UnifiedFlow({ controlledId }: { controlledId?: Workflow["id"] }) {
+export function UnifiedFlow({
+  controlledId,
+  onSelectId,
+}: {
+  controlledId?: Workflow["id"];
+  onSelectId?: (id: Workflow["id"]) => void;
+}) {
   const [internalId, setInternalId] = useState<Workflow["id"]>("govmatch");
   const [userPicked, setUserPicked] = useState(false);
   const [paused, setPaused] = useState(false);
@@ -61,7 +68,10 @@ export function UnifiedFlow({ controlledId }: { controlledId?: Workflow["id"] })
   const isFeatured = active.id === "govmatch";
 
   const setActiveId = (id: Workflow["id"]) => {
-    if (isControlled) return;
+    if (isControlled) {
+      onSelectId?.(id);
+      return;
+    }
     setInternalId(id);
     setUserPicked(true);
   };
@@ -102,7 +112,7 @@ export function UnifiedFlow({ controlledId }: { controlledId?: Workflow["id"] })
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.2 }}
-        className="mt-8"
+        className="mt-8 pl-[15px]"
       >
         <h3 className="font-display text-2xl md:text-3xl text-white">{active.title}</h3>
         <div className="mt-2 max-w-3xl text-sm text-grey-on-black space-y-1">
@@ -121,14 +131,16 @@ export function UnifiedFlow({ controlledId }: { controlledId?: Workflow["id"] })
       </motion.div>
 
       <div className="relative mt-6 overflow-hidden rounded-2xl border border-border-dark bg-rich-black p-6 lg:mt-8 lg:p-8">
-        <Image
-          src={active.diagram}
-          alt={`${active.title} flow diagram`}
-          width={2516}
-          height={436}
-          priority={active.id === "govmatch"}
-          className="h-auto w-full"
-        />
+        <div className="mx-auto max-w-4xl">
+          <Image
+            src={active.diagram}
+            alt={`${active.title} flow diagram`}
+            width={2516}
+            height={436}
+            priority={active.id === "govmatch"}
+            className="h-auto w-full"
+          />
+        </div>
       </div>
     </div>
   );

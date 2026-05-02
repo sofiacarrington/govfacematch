@@ -342,7 +342,7 @@ function WhatChanges() {
             </h2>
           </Reveal>
           <Reveal delay={0.2}>
-            <p className="mt-5 max-w-xl text-grey-on-white">
+            <p className="mt-5 text-sm text-grey-on-white lg:whitespace-nowrap">
               Direct verification at the source transforms conversion and fraud performance.
             </p>
           </Reveal>

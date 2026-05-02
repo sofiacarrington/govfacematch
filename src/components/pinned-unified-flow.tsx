@@ -34,10 +34,13 @@ export function PinnedUnifiedFlow() {
   }, []);
 
   return (
-    <div ref={wrapperRef} className="relative mt-12 h-[280vh]">
-      <div className="sticky top-20 flex h-[calc(100vh-80px)] items-center">
+    <div ref={wrapperRef} className="relative mt-6 h-[280vh]">
+      <div className="sticky top-32 flex h-[calc(100vh-128px)] items-start">
         <div className="w-full">
-          <UnifiedFlow controlledId={stage} />
+          <UnifiedFlow
+            controlledId={stage}
+            onSelectId={(id) => setStage(id as Stage)}
+          />
         </div>
       </div>
     </div>
