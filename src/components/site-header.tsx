@@ -131,12 +131,25 @@ const MEGA_MENUS: Record<string, MenuColumn[]> = {
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const prevScroll = useRef(0);
   const { scrollY } = useScroll();
 
-  useMotionValueEvent(scrollY, "change", (y) => setScrolled(y > 8));
+  useMotionValueEvent(scrollY, "change", (y) => {
+    setScrolled(y > 8);
+    const direction = y > prevScroll.current ? "down" : "up";
+    if (y < 80) {
+      setHidden(false);
+    } else if (direction === "down" && y > 80) {
+      setHidden(true);
+    } else if (direction === "up") {
+      setHidden(false);
+    }
+    prevScroll.current = y;
+  });
 
   const openMenuFor = (label: string) => {
     if (closeTimer.current) {
@@ -156,8 +169,8 @@ export function SiteHeader() {
   return (
     <motion.div
       initial={{ y: -20, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
+      animate={{ y: hidden && !openMenu ? -100 : 0, opacity: 1 }}
+      transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] }}
       className="fixed top-0 left-0 right-0 z-50"
     >
       <div
