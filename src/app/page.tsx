@@ -1,6 +1,4 @@
 import {
-  ArrowLeft,
-  ArrowRight,
   ArrowUpRight,
   BadgeCheck,
   Lock,
@@ -21,7 +19,7 @@ import { HeroVideo } from "@/components/hero-video";
 import { IntroDemo } from "@/components/intro-demo";
 import { LogoMarquee } from "@/components/logo-marquee";
 import { ConversionAccuracyTabs } from "@/components/conversion-accuracy-tabs";
-import { UnifiedFlow } from "@/components/unified-flow";
+import { PinnedUnifiedFlow } from "@/components/pinned-unified-flow";
 
 const REALITY_STATS: Array<{
   value: number;
@@ -105,7 +103,6 @@ function Hero() {
         className="object-cover animate-hero-drift pointer-events-none"
       />
       <div className="absolute inset-0 bg-hero-glow pointer-events-none opacity-60" />
-      <div className="absolute inset-0 [background-image:linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] [background-size:64px_64px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_75%)]" />
       <div className="relative w-full mx-auto max-w-[1280px] px-6 lg:px-12 py-20 md:py-24">
         <div className="grid gap-16 lg:grid-cols-[1fr_1.15fr] lg:gap-20 items-center">
           <div>
@@ -168,15 +165,15 @@ function Testimonial() {
                 src="/GFM-Illus.png"
                 alt=""
                 fill
-                quality={75}
+                quality={85}
                 priority={false}
-                className="object-contain object-right scale-150"
+                className="object-cover"
                 sizes="(min-width: 1280px) 1216px, 100vw"
               />
             </div>
 
             <div className="relative w-full p-6 md:p-10 lg:p-14 flex items-center">
-              <div className="w-full max-w-xl rounded-2xl bg-background border border-border-light p-7 md:p-9">
+              <div className="w-full max-w-xl rounded-2xl bg-white/10 border border-white/15 backdrop-blur-xl p-7 md:p-9 shadow-[0_24px_48px_-24px_rgba(0,0,0,0.45)]">
                 <Image
                   src="/clients/dmv.png"
                   alt="State of California Department of Motor Vehicles"
@@ -184,34 +181,16 @@ function Testimonial() {
                   height={64}
                   className="h-14 w-14 object-contain"
                 />
-                <blockquote className="mt-6 font-display text-xl md:text-2xl text-foreground leading-snug text-balance">
+                <blockquote className="mt-6 font-display text-xl md:text-2xl text-white leading-snug text-balance">
                   &ldquo;Our work with Incode brings their Deepsight deepfake detection directly into
                   Experian&rsquo;s identity and fraud solutions, giving our clients market-leading
                   protection and keeping them one step ahead of AI-powered attacks.&rdquo;
                 </blockquote>
 
-                <div className="mt-8 pt-6 border-t border-border-light flex items-end justify-between gap-4">
-                  <div>
-                    <div className="text-sm font-medium text-foreground">Keir Breitenfeld</div>
-                    <div className="mt-0.5 text-xs text-grey-on-white">
-                      SVP Identity &amp; Fraud · Experian
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <button
-                      type="button"
-                      aria-label="Previous testimonial"
-                      className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border-light text-foreground hover:border-blue/40 hover:text-blue transition-colors"
-                    >
-                      <ArrowLeft size={16} />
-                    </button>
-                    <button
-                      type="button"
-                      aria-label="Next testimonial"
-                      className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border-light text-foreground hover:border-blue/40 hover:text-blue transition-colors"
-                    >
-                      <ArrowRight size={16} />
-                    </button>
+                <div className="mt-8 pt-6 border-t border-white/15">
+                  <div className="text-sm font-medium text-white">Keir Breitenfeld</div>
+                  <div className="mt-0.5 text-xs text-grey-on-black">
+                    SVP Identity &amp; Fraud · Experian
                   </div>
                 </div>
               </div>
@@ -410,11 +389,7 @@ function UnifiedOffering() {
           government records for the highest assurance in every state.
         </p>
       </Reveal>
-      <Reveal delay={0.3}>
-        <div className="mt-12">
-          <UnifiedFlow />
-        </div>
-      </Reveal>
+      <PinnedUnifiedFlow />
     </Section>
   );
 }

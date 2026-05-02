@@ -1,9 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+
+const CYCLE_MS = 5000;
 
 type Workflow = {
   id: "govmatch" | "govfacematch" | "govdatamatch";
@@ -49,13 +51,38 @@ const WORKFLOWS: Workflow[] = [
   },
 ];
 
-export function UnifiedFlow() {
-  const [activeId, setActiveId] = useState<Workflow["id"]>("govmatch");
+export function UnifiedFlow({ controlledId }: { controlledId?: Workflow["id"] }) {
+  const [internalId, setInternalId] = useState<Workflow["id"]>("govmatch");
+  const [userPicked, setUserPicked] = useState(false);
+  const [paused, setPaused] = useState(false);
+  const isControlled = controlledId !== undefined;
+  const activeId = isControlled ? controlledId : internalId;
   const active = WORKFLOWS.find((w) => w.id === activeId) ?? WORKFLOWS[0];
   const isFeatured = active.id === "govmatch";
 
+  const setActiveId = (id: Workflow["id"]) => {
+    if (isControlled) return;
+    setInternalId(id);
+    setUserPicked(true);
+  };
+
+  useEffect(() => {
+    if (isControlled || userPicked || paused) return;
+    const t = setInterval(() => {
+      setInternalId((prev) => {
+        const i = WORKFLOWS.findIndex((w) => w.id === prev);
+        return WORKFLOWS[(i + 1) % WORKFLOWS.length].id;
+      });
+    }, CYCLE_MS);
+    return () => clearInterval(t);
+  }, [isControlled, userPicked, paused]);
+
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-border-dark bg-off-black p-6 lg:p-8">
+    <div
+      className="relative overflow-hidden rounded-2xl border border-border-dark bg-off-black p-6 lg:p-8"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
       <div className="flex flex-wrap items-center gap-x-2 gap-y-2 sm:gap-x-3">
         <TabButton workflow={WORKFLOWS[1]} activeId={activeId} setActiveId={setActiveId} />
         <Operator>+</Operator>
