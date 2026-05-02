@@ -151,6 +151,8 @@ export function SiteHeader() {
     closeTimer.current = setTimeout(() => setOpenMenu(null), 180);
   };
 
+  const bright = scrolled || openMenu !== null;
+
   return (
     <motion.div
       initial={{ y: -20, opacity: 0 }}
@@ -161,7 +163,7 @@ export function SiteHeader() {
       <div
         className={cn(
           "border-b transition-[background-color,border-color,box-shadow] duration-300 ease-out",
-          scrolled
+          bright
             ? "border-border-light/60 bg-background shadow-[0_8px_24px_-12px_rgba(0,0,0,0.08)]"
             : "border-transparent",
         )}
@@ -171,7 +173,7 @@ export function SiteHeader() {
             <Logo
               className={cn(
                 "transition-[filter] duration-300 ease-out",
-                scrolled ? "[filter:none]" : "[filter:brightness(0)_invert(1)]",
+                bright ? "[filter:none]" : "[filter:brightness(0)_invert(1)]",
               )}
             />
           </Link>
@@ -188,10 +190,10 @@ export function SiteHeader() {
                   onMouseLeave={() => hasMega && scheduleClose()}
                   className={cn(
                     "inline-flex items-center gap-1 rounded-lg px-3.5 py-1.5 text-[13px] transition-colors",
-                    scrolled
+                    bright
                       ? "text-foreground hover:bg-foreground/5"
                       : "text-white hover:bg-white/10",
-                    isOpen && (scrolled ? "bg-foreground/5" : "bg-white/10"),
+                    isOpen && "bg-foreground/5",
                   )}
                 >
                   {item.label}
@@ -201,7 +203,7 @@ export function SiteHeader() {
                       strokeWidth={2.25}
                       className={cn(
                         "transition-transform duration-200",
-                        scrolled ? "text-foreground/40" : "text-white/60",
+                        bright ? "text-foreground/40" : "text-white/60",
                         isOpen && "rotate-180",
                       )}
                     />
@@ -215,7 +217,7 @@ export function SiteHeader() {
             href="/contact"
             className={cn(
               "hidden lg:inline-flex items-center gap-2 rounded-lg px-4 py-2 text-[13px] font-medium text-white transition-colors duration-300 ease-out",
-              scrolled ? "bg-blue hover:bg-[#0058d9]" : "hover:bg-white/10",
+              bright ? "bg-blue hover:bg-[#0058d9]" : "hover:bg-white/10",
             )}
           >
             Request a demo
