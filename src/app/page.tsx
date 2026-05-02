@@ -106,7 +106,11 @@ function Hero() {
             </Reveal>
             <Reveal delay={0.1}>
               <h1 className="mt-6 font-display text-4xl md:text-5xl lg:text-6xl leading-[1.05] text-balance">
-                A new standard in
+                A{" "}
+                <span className="bg-[linear-gradient(120deg,#006aff_0%,#ffffff_60%)] bg-clip-text text-transparent">
+                  new standard
+                </span>{" "}
+                in
                 <br />
                 identity verification
               </h1>
