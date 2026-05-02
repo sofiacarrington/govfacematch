@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { UnifiedFlow } from "./unified-flow";
 
-const STAGES = ["govfacematch", "govdatamatch", "govmatch"] as const;
+const STAGES = ["govmatch", "govfacematch", "govdatamatch"] as const;
 type Stage = (typeof STAGES)[number];
 
 export function PinnedUnifiedFlow() {

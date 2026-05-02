@@ -94,17 +94,17 @@ export function UnifiedFlow({
       onMouseLeave={() => setPaused(false)}
     >
       <div className="flex flex-wrap items-center gap-x-2 gap-y-2 sm:gap-x-3">
-        <TabButton workflow={WORKFLOWS[1]} activeId={activeId} setActiveId={setActiveId} />
-        <Operator>+</Operator>
-        <TabButton workflow={WORKFLOWS[2]} activeId={activeId} setActiveId={setActiveId} />
-        <Operator className="hidden sm:inline">=</Operator>
-        <span className="basis-full sm:hidden" />
         <TabButton
           workflow={WORKFLOWS[0]}
           activeId={activeId}
           setActiveId={setActiveId}
           emphasized
         />
+        <Operator className="hidden sm:inline">=</Operator>
+        <span className="basis-full sm:hidden" />
+        <TabButton workflow={WORKFLOWS[1]} activeId={activeId} setActiveId={setActiveId} />
+        <Operator>+</Operator>
+        <TabButton workflow={WORKFLOWS[2]} activeId={activeId} setActiveId={setActiveId} />
       </div>
 
       <motion.div
