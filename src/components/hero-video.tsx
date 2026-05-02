@@ -32,19 +32,18 @@ export function HeroVideo({
           alt="GovFaceMatch explainer"
           fill
           priority
-          className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+          className="object-cover blur-[2px] scale-105 transition-transform duration-500 group-hover:scale-[1.07]"
           sizes="(min-width: 1024px) 640px, 100vw"
         />
         <div className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-inset ring-white/10" />
-        <div className="pointer-events-none absolute inset-0 bg-rich-black/0 transition-colors group-hover:bg-rich-black/15" />
+        <div className="pointer-events-none absolute inset-0 bg-rich-black/30 transition-colors group-hover:bg-rich-black/40" />
 
         <span className="pointer-events-none absolute inset-0 flex items-center justify-center">
-          <span className="relative inline-flex h-20 w-20 items-center justify-center">
-            <span className="absolute inset-0 rounded-full bg-blue/30 blur-xl" />
-            <span className="absolute inset-0 rounded-full bg-blue/40 animate-[pulse-glow_3s_ease-in-out_infinite]" />
-            <span className="relative inline-flex h-16 w-16 items-center justify-center rounded-full bg-blue text-white transition-transform duration-300 group-hover:scale-110">
-              <Play size={22} className="ml-1" fill="white" strokeWidth={0} />
+          <span className="relative inline-flex items-center gap-2.5 rounded-full border border-white/25 bg-white/15 px-5 py-2.5 text-sm font-medium text-white shadow-[0_8px_32px_-8px_rgba(0,0,0,0.4)] backdrop-blur-md transition-transform duration-300 group-hover:scale-[1.04]">
+            <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-white text-rich-black">
+              <Play size={11} className="ml-0.5" fill="currentColor" strokeWidth={0} />
             </span>
+            Play video
           </span>
         </span>
       </button>

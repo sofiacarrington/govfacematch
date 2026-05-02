@@ -34,6 +34,7 @@
 
   --animate-marquee: marquee 40s linear infinite;
   --animate-pulse-glow: pulse-glow 3s ease-in-out infinite;
+  --animate-hero-drift: hero-drift 24s ease-in-out infinite;
 
   @keyframes marquee {
     0% { transform: translateX(0); }
@@ -42,6 +43,11 @@
   @keyframes pulse-glow {
     0%, 100% { opacity: 0.4; transform: scale(1); }
     50% { opacity: 0.9; transform: scale(1.08); }
+  }
+  @keyframes hero-drift {
+    0%, 100% { transform: scale(1.06) translate(0%, 0%); }
+    33% { transform: scale(1.09) translate(-1.2%, 0.6%); }
+    66% { transform: scale(1.07) translate(1%, -0.6%); }
   }
 }
 

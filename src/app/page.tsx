@@ -95,8 +95,16 @@ export default function HomePage() {
 
 function Hero() {
   return (
-    <section className="relative flex items-center overflow-hidden bg-rich-black text-white md:min-h-[calc(100svh-110px)]">
-      <div className="absolute inset-0 bg-hero-glow pointer-events-none" />
+    <section className="relative flex items-center overflow-hidden bg-rich-black text-white min-h-[100svh]">
+      <Image
+        src="/background.png"
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover animate-hero-drift pointer-events-none"
+      />
+      <div className="absolute inset-0 bg-hero-glow pointer-events-none opacity-60" />
       <div className="absolute inset-0 [background-image:linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] [background-size:64px_64px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_75%)]" />
       <div className="relative w-full mx-auto max-w-[1280px] px-6 lg:px-12 py-20 md:py-24">
         <div className="grid gap-16 lg:grid-cols-[1fr_1.15fr] lg:gap-20 items-center">
@@ -106,11 +114,7 @@ function Hero() {
             </Reveal>
             <Reveal delay={0.1}>
               <h1 className="mt-6 font-display text-4xl md:text-5xl lg:text-6xl leading-[1.05] text-balance">
-                A{" "}
-                <span className="bg-[linear-gradient(120deg,#006aff_0%,#ffffff_60%)] bg-clip-text text-transparent">
-                  new standard
-                </span>{" "}
-                in
+                A new standard in
                 <br />
                 identity verification
               </h1>
