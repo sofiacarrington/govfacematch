@@ -342,7 +342,9 @@ function WhatChanges() {
       <div className="grid gap-14 lg:grid-cols-[1.1fr_1fr] lg:gap-20 lg:items-stretch">
         <div id="benefits">
           <Reveal>
-            <Eyebrow tone="light">Benefits</Eyebrow>
+            <div className="flex">
+              <Eyebrow tone="light">Benefits</Eyebrow>
+            </div>
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="mt-5 font-display text-3xl md:text-4xl text-balance">
@@ -350,7 +352,7 @@ function WhatChanges() {
             </h2>
           </Reveal>
           <Reveal delay={0.2}>
-            <p className="mt-5 text-sm text-grey-on-white lg:whitespace-nowrap">
+            <p className="mt-4 text-grey-on-white">
               Direct verification at the source transforms conversion and fraud performance.
             </p>
           </Reveal>
