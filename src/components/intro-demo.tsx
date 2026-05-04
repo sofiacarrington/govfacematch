@@ -13,6 +13,8 @@ type Step = {
   video: string;
 };
 
+const PLAYBACK_RATE = 1.75;
+
 const STEPS: Step[] = [
   {
     id: "scan",
@@ -46,6 +48,7 @@ export function IntroDemo() {
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
+    v.playbackRate = PLAYBACK_RATE;
     if (paused) v.pause();
     else v.play().catch(() => {});
   }, [paused, active]);
@@ -73,7 +76,10 @@ export function IntroDemo() {
             const t = e.currentTarget;
             if (t.duration > 0) setProgress(t.currentTime / t.duration);
           }}
-          onLoadedData={() => setProgress(0)}
+          onLoadedMetadata={(e) => {
+            e.currentTarget.playbackRate = PLAYBACK_RATE;
+            setProgress(0);
+          }}
           onEnded={() => {
             setActive((i) => (i + 1) % STEPS.length);
             setProgress(0);
