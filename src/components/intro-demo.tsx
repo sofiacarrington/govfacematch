@@ -41,8 +41,8 @@ export function IntroDemo() {
       >
         <video
           ref={videoRef}
-          src="/GFM_Flow_Combined.mp4"
-          poster="/GFM_Flow_Combined_poster.jpg"
+          src="/GFM_Flow.mp4"
+          poster="/GFM_Flow_poster.jpg"
           autoPlay
           muted
           playsInline
