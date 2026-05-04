@@ -32,7 +32,7 @@ const STATS: Stat[] = [
     value: 150,
     suffix: "x",
     title: "more accurate",
-    sub: "than document-based verification",
+    sub: "vs document-based verification",
   },
 ];
 
