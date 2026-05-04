@@ -11,6 +11,7 @@ type Step = {
   title: string;
   body: string;
   video: string;
+  poster: string;
 };
 
 const PLAYBACK_RATE = 1.75;
@@ -23,6 +24,7 @@ const STEPS: Step[] = [
     title: "ID barcode scan + selfie",
     body: "Users scan the back of their government ID and take a live selfie in a single guided step.",
     video: "/GFM_Flow_Step1.mp4",
+    poster: "/GFM_Flow_Step1_poster.jpg",
   },
   {
     id: "verify",
@@ -30,6 +32,7 @@ const STEPS: Step[] = [
     title: "Verify against DMV records",
     body: "The selfie is matched to the issuing DMV's official record in real time within a secure environment.",
     video: "/GFM_Flow_Step2.mp4",
+    poster: "/GFM_Flow_Step2_poster.jpg",
   },
   {
     id: "result",
@@ -37,6 +40,7 @@ const STEPS: Step[] = [
     title: "Real time result",
     body: "A signed verification result is returned in milliseconds, delivering a defensible and auditable outcome.",
     video: "/GFM_Flow_Step3.mp4",
+    poster: "/GFM_Flow_Step3_poster.jpg",
   },
 ];
 
@@ -97,6 +101,7 @@ export function IntroDemo() {
               videoRefs.current[i] = el;
             }}
             src={step.video}
+            poster={step.poster}
             muted
             playsInline
             preload="auto"
@@ -107,7 +112,7 @@ export function IntroDemo() {
               if (i === active) setActive((idx) => (idx + 1) % STEPS.length);
             }}
             className={cn(
-              "absolute inset-0 h-full w-full object-cover transition-opacity duration-300",
+              "absolute inset-0 h-full w-full object-cover transition-opacity duration-150",
               i === active ? "opacity-100" : "opacity-0",
             )}
           />
