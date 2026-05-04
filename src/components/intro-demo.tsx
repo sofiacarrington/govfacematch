@@ -14,6 +14,7 @@ type Step = {
 };
 
 const PLAYBACK_RATE = 1.75;
+const VIDEO_ASPECT = "1473 / 1346";
 
 const STEPS: Step[] = [
   {
@@ -42,22 +43,30 @@ const STEPS: Step[] = [
 export function IntroDemo() {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const videoRefs = useRef<Array<HTMLVideoElement | null>>([]);
   const progress = useMotionValue(0);
 
   useEffect(() => {
-    const v = videoRef.current;
-    if (!v) return;
-    v.playbackRate = PLAYBACK_RATE;
-    if (paused) v.pause();
-    else v.play().catch(() => {});
-  }, [paused, active]);
+    videoRefs.current.forEach((v, i) => {
+      if (!v) return;
+      v.playbackRate = PLAYBACK_RATE;
+      if (i === active) {
+        if (paused) v.pause();
+        else v.play().catch(() => {});
+      } else {
+        v.pause();
+        try {
+          v.currentTime = 0;
+        } catch {}
+      }
+    });
+  }, [active, paused]);
 
   useEffect(() => {
     progress.set(0);
     let raf = 0;
     const tick = () => {
-      const v = videoRef.current;
+      const v = videoRefs.current[active];
       if (v && v.duration > 0) {
         progress.set(Math.min(1, v.currentTime / v.duration));
       }
@@ -77,22 +86,32 @@ export function IntroDemo() {
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      <div className="relative overflow-hidden rounded-2xl">
-        <video
-          ref={videoRef}
-          src={STEPS[active].video}
-          autoPlay
-          muted
-          playsInline
-          preload="auto"
-          onLoadedMetadata={(e) => {
-            e.currentTarget.playbackRate = PLAYBACK_RATE;
-          }}
-          onEnded={() => {
-            setActive((i) => (i + 1) % STEPS.length);
-          }}
-          className="w-full h-auto block"
-        />
+      <div
+        className="relative overflow-hidden rounded-2xl bg-off-white"
+        style={{ aspectRatio: VIDEO_ASPECT }}
+      >
+        {STEPS.map((step, i) => (
+          <video
+            key={step.id}
+            ref={(el) => {
+              videoRefs.current[i] = el;
+            }}
+            src={step.video}
+            muted
+            playsInline
+            preload="auto"
+            onLoadedMetadata={(e) => {
+              e.currentTarget.playbackRate = PLAYBACK_RATE;
+            }}
+            onEnded={() => {
+              if (i === active) setActive((idx) => (idx + 1) % STEPS.length);
+            }}
+            className={cn(
+              "absolute inset-0 h-full w-full object-cover transition-opacity duration-300",
+              i === active ? "opacity-100" : "opacity-0",
+            )}
+          />
+        ))}
       </div>
 
       <div className="flex flex-col">
