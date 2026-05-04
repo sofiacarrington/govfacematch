@@ -31,20 +31,20 @@ const REALITY_STATS: Array<{
   {
     value: 40,
     suffix: "%",
-    label: "of legitimate users drop off due to verification friction",
+    label: "of legitimate users drop off due\nto verification friction",
     source: "Source: Incode customer data",
   },
   {
     value: 95,
     suffix: "%",
-    label: "of synthetic identities go undetected during onboarding",
+    label: "of synthetic identities go undetected\nduring onboarding",
     source: "Source: Thomson Reuters",
   },
   {
     value: 20,
     prefix: "$",
     suffix: "B+",
-    label: "projected losses from synthetic identity fraud by 2030",
+    label: "projected losses from synthetic identity\nfraud by 2030",
     source: "Source: Deloitte",
   },
 ];
@@ -268,16 +268,18 @@ function Reality() {
   return (
     <Section tone="light">
       <Reveal>
-        <Eyebrow tone="light">The reality</Eyebrow>
+        <Eyebrow tone="light">The problem</Eyebrow>
       </Reveal>
       <Reveal delay={0.1}>
         <h2 className="mt-4 font-display text-3xl md:text-4xl md:whitespace-nowrap text-balance">
-          Conversion and security no longer require a tradeoff
+          The tradeoff has become too costly to ignore
         </h2>
       </Reveal>
       <Reveal delay={0.2}>
         <p className="mt-6 max-w-2xl text-lg text-grey-on-white">
-          Identity is verified directly against official DMV records
+          Added friction continues to drive legitimate users away, while record-high data breaches
+          have made high-quality synthetic and stolen identities easy to create at scale. Data and
+          document checks were never meant to stop real stolen PII.
         </p>
       </Reveal>
       <div className="mt-14 grid gap-10 sm:grid-cols-3">
@@ -287,7 +289,7 @@ function Reality() {
               <div className="font-display text-4xl md:text-5xl bg-[linear-gradient(120deg,#006aff_0%,#000_55%)] bg-clip-text text-transparent">
                 <Counter to={s.value} prefix={s.prefix} suffix={s.suffix} />
               </div>
-              <p className="mt-3 text-sm text-grey-on-white max-w-xs">{s.label}</p>
+              <p className="mt-3 text-sm text-grey-on-white max-w-xs whitespace-pre-line">{s.label}</p>
               <p className="mt-2 text-xs text-grey-on-white/70">{s.source}</p>
             </div>
           </Reveal>
