@@ -181,7 +181,7 @@ function Testimonial() {
                   height={64}
                   className="h-12 w-auto object-contain"
                 />
-                <blockquote className="mt-6 font-display text-xl md:text-2xl text-white leading-snug text-balance">
+                <blockquote className="mt-6 font-display-regular text-xl md:text-2xl text-white leading-snug text-balance">
                   &ldquo;The partnership with Incode allows us to stay focused on our core mission of
                   serving the public, while responsibly extending trusted identity verification
                   capabilities to the private sector with customers&rsquo; consent. By enabling secure,
@@ -208,7 +208,7 @@ function Problem() {
   const cards = [
     {
       icon: UserX,
-      tag: "Hurts conversion",
+      tag: "Impacts conversion",
       title: "Document-based verification",
       body: "Catches more fraud, but adds friction that drives users away. Up to 40% never complete the process.",
     },

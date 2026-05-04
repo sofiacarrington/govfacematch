@@ -14,7 +14,7 @@ const dmSans = DM_Sans({
 const rethinkSans = Rethink_Sans({
   variable: "--font-rethink",
   subsets: ["latin"],
-  weight: ["500"],
+  weight: ["400", "500"],
   display: "swap",
 });
 

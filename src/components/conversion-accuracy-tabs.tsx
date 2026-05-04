@@ -13,20 +13,20 @@ const STATS: Stat[] = [
     value: 6,
     suffix: "x",
     title: "faster verification",
-    sub: "vs. document-based verification",
+    sub: "vs document-based verification",
   },
   {
     value: 20,
     prefix: "+",
     suffix: "%",
     title: "higher conversion",
-    sub: "vs. document-based verification",
+    sub: "vs document-based verification",
   },
   {
     value: 1000,
     suffix: "x",
     title: "stronger fraud prevention",
-    sub: "vs. non-document checks",
+    sub: "vs non-document checks",
   },
   {
     value: 150,

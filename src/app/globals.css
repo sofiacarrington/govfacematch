@@ -75,6 +75,12 @@ body {
   letter-spacing: -0.02em;
 }
 
+.font-display-regular {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
 .text-balance { text-wrap: balance; }
 
 .glow-blue {
