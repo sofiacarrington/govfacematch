@@ -11,6 +11,8 @@ type Workflow = {
   body: string[];
   coverage: string;
   diagram: string;
+  diagramWidth: number;
+  diagramHeight: number;
   emphasized?: boolean;
 };
 
@@ -25,6 +27,8 @@ const WORKFLOWS: Workflow[] = [
     ],
     coverage: "95%+ combined population coverage",
     diagram: "/GovMatch.png",
+    diagramWidth: 2380,
+    diagramHeight: 878,
     emphasized: true,
   },
   {
@@ -37,6 +41,8 @@ const WORKFLOWS: Workflow[] = [
     ],
     coverage: "~20% U.S. population coverage",
     diagram: "/GovFaceMatch.png",
+    diagramWidth: 1932,
+    diagramHeight: 397,
   },
   {
     id: "govdatamatch",
@@ -48,6 +54,8 @@ const WORKFLOWS: Workflow[] = [
     ],
     coverage: "~85% U.S. population coverage",
     diagram: "/GovDataMatch.png",
+    diagramWidth: 2226,
+    diagramHeight: 394,
   },
 ];
 
@@ -127,8 +135,8 @@ export function UnifiedFlow() {
                 <Image
                   src={w.diagram}
                   alt={`${w.title} flow diagram`}
-                  width={2516}
-                  height={436}
+                  width={w.diagramWidth}
+                  height={w.diagramHeight}
                   priority={w.id === "govmatch"}
                   className="h-auto w-full"
                 />
