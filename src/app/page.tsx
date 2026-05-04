@@ -79,11 +79,11 @@ export default function HomePage() {
     <>
       <Hero />
       <TrustedBy />
-      <Testimonial />
       <Problem />
       <Reality />
-      <WhatChanges />
       <Introducing />
+      <WhatChanges />
+      <Testimonial />
       <UnifiedOffering />
       <WhyIncode />
       <ClosingCta />
