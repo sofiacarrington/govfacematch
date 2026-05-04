@@ -28,7 +28,7 @@ const WORKFLOWS: Workflow[] = [
     coverage: "95%+ combined population coverage",
     diagram: "/GovMatch.png",
     diagramWidth: 2380,
-    diagramHeight: 878,
+    diagramHeight: 864,
     emphasized: true,
   },
   {
