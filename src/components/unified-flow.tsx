@@ -100,10 +100,7 @@ export function UnifiedFlow({
           setActiveId={setActiveId}
           emphasized
         />
-        <Operator className="hidden sm:inline">=</Operator>
-        <span className="basis-full sm:hidden" />
         <TabButton workflow={WORKFLOWS[1]} activeId={activeId} setActiveId={setActiveId} />
-        <Operator>+</Operator>
         <TabButton workflow={WORKFLOWS[2]} activeId={activeId} setActiveId={setActiveId} />
       </div>
 
@@ -164,7 +161,7 @@ function TabButton({
       className={cn(
         "relative rounded-lg border px-4 py-2 text-sm font-medium transition-colors",
         isActive
-          ? "border-transparent text-white"
+          ? "border-white/25 text-white"
           : emphasized
             ? "border-blue/40 bg-blue/5 text-white hover:bg-blue/10"
             : "border-border-dark bg-rich-black text-grey-on-black hover:text-white",
@@ -183,19 +180,3 @@ function TabButton({
   );
 }
 
-function Operator({
-  children,
-  className,
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <span
-      className={cn("select-none font-display text-xl text-grey-on-black", className)}
-      aria-hidden
-    >
-      {children}
-    </span>
-  );
-}

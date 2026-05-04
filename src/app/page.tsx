@@ -175,22 +175,24 @@ function Testimonial() {
             <div className="relative w-full p-6 md:p-10 lg:p-14 flex items-center">
               <div className="w-full max-w-xl rounded-2xl bg-white/10 border border-white/15 backdrop-blur-xl p-7 md:p-9 shadow-[0_24px_48px_-24px_rgba(0,0,0,0.45)]">
                 <Image
-                  src="/clients/dmv.png"
-                  alt="State of California Department of Motor Vehicles"
-                  width={64}
+                  src="/virginiadmv.png"
+                  alt="Virginia Department of Motor Vehicles"
+                  width={220}
                   height={64}
-                  className="h-14 w-14 object-contain"
+                  className="h-12 w-auto object-contain"
                 />
                 <blockquote className="mt-6 font-display text-xl md:text-2xl text-white leading-snug text-balance">
-                  &ldquo;Our work with Incode brings their Deepsight deepfake detection directly into
-                  Experian&rsquo;s identity and fraud solutions, giving our clients market-leading
-                  protection and keeping them one step ahead of AI-powered attacks.&rdquo;
+                  &ldquo;The partnership with Incode allows us to stay focused on our core mission of
+                  serving the public, while responsibly extending trusted identity verification
+                  capabilities to the private sector with customers&rsquo; consent. By enabling secure,
+                  reliable identity checks across industries such as banking and automotive, we&rsquo;re
+                  helping strengthen the broader digital identity ecosystem.&rdquo;
                 </blockquote>
 
                 <div className="mt-8 pt-6 border-t border-white/15">
-                  <div className="text-sm font-medium text-white">Keir Breitenfeld</div>
+                  <div className="text-sm font-medium text-white">Dr. Gerald F. Lackey</div>
                   <div className="mt-0.5 text-xs text-grey-on-black">
-                    SVP Identity &amp; Fraud · Experian
+                    Former Commissioner of the Virginia Department of Motor Vehicles
                   </div>
                 </div>
               </div>
@@ -269,7 +271,7 @@ function Reality() {
         <Eyebrow tone="light">The reality</Eyebrow>
       </Reveal>
       <Reveal delay={0.1}>
-        <h2 className="mt-4 font-display text-3xl md:text-4xl max-w-3xl text-balance">
+        <h2 className="mt-4 font-display text-3xl md:text-4xl md:whitespace-nowrap text-balance">
           Conversion and security no longer require a tradeoff
         </h2>
       </Reveal>
@@ -312,8 +314,8 @@ function Introducing() {
           </Reveal>
           <Reveal delay={0.2}>
             <p className="mt-4 text-grey-on-white">
-              Built with state DMVs — a real-time biometric match against official government
-              records confirms the person, stopping sophisticated AI-assisted fraud.
+              Built with state DMVs, enabling real-time biometric matching against official
+              government records to confirm identity and stop AI-assisted fraud.
             </p>
           </Reveal>
         </div>
@@ -385,8 +387,8 @@ function UnifiedOffering() {
       </Reveal>
       <Reveal delay={0.2}>
         <p className="mt-6 max-w-2xl text-grey-on-black">
-          Part of the broader GovMatch offering — combining biometric and data validation against
-          government records for the highest assurance in every state.
+          Part of the broader GovMatch offering, combining biometric and data validation against
+          government records to deliver high assurance across every state.
         </p>
       </Reveal>
       <PinnedUnifiedFlow />
