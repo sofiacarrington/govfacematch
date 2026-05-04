@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { Maximize2, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Workflow = {
@@ -61,6 +62,7 @@ const WORKFLOWS: Workflow[] = [
 
 export function UnifiedFlow() {
   const [activeId, setActiveId] = useState<Workflow["id"]>(WORKFLOWS[0].id);
+  const [zoomed, setZoomed] = useState<Workflow | null>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -79,6 +81,20 @@ export function UnifiedFlow() {
     });
     return () => observer.disconnect();
   }, []);
+
+  useEffect(() => {
+    if (!zoomed) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setZoomed(null);
+    };
+    window.addEventListener("keydown", onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [zoomed]);
 
   return (
     <div className="grid gap-8 lg:grid-cols-[260px_1fr] lg:gap-12">
@@ -130,7 +146,15 @@ export function UnifiedFlow() {
             >
               {w.coverage}
             </p>
-            <div className="mt-6 overflow-hidden rounded-2xl border border-border-dark bg-rich-black p-6 lg:p-8">
+            <button
+              type="button"
+              onClick={() => setZoomed(w)}
+              className="group relative mt-6 block w-full cursor-zoom-in overflow-hidden rounded-2xl border border-border-dark bg-rich-black p-6 lg:p-8"
+              aria-label={`Open ${w.title} flow diagram in full screen`}
+            >
+              <span className="pointer-events-none absolute right-4 top-4 z-10 inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/15 bg-white/5 text-grey-on-black opacity-0 transition-opacity group-hover:opacity-100">
+                <Maximize2 size={14} />
+              </span>
               <div className="mx-auto max-w-4xl">
                 <Image
                   src={w.diagram}
@@ -141,10 +165,42 @@ export function UnifiedFlow() {
                   className="h-auto w-full"
                 />
               </div>
-            </div>
+            </button>
           </article>
         ))}
       </div>
+
+      {zoomed && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${zoomed.title} flow diagram`}
+          onClick={() => setZoomed(null)}
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-rich-black/95 p-4 backdrop-blur-sm md:p-10"
+        >
+          <button
+            type="button"
+            onClick={() => setZoomed(null)}
+            aria-label="Close"
+            className="absolute right-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition-colors hover:bg-white/20 md:right-6 md:top-6"
+          >
+            <X size={18} />
+          </button>
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="relative flex max-h-[92vh] max-w-[96vw] items-center justify-center"
+          >
+            <Image
+              src={zoomed.diagram}
+              alt={`${zoomed.title} flow diagram`}
+              width={zoomed.diagramWidth}
+              height={zoomed.diagramHeight}
+              priority
+              className="h-auto max-h-[92vh] w-auto max-w-[96vw] object-contain"
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
