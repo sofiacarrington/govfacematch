@@ -19,7 +19,7 @@ import { HeroVideo } from "@/components/hero-video";
 import { IntroDemo } from "@/components/intro-demo";
 import { LogoMarquee } from "@/components/logo-marquee";
 import { ConversionAccuracyTabs } from "@/components/conversion-accuracy-tabs";
-import { PinnedUnifiedFlow } from "@/components/pinned-unified-flow";
+import { UnifiedFlow } from "@/components/unified-flow";
 
 const REALITY_STATS: Array<{
   value: number;
@@ -82,8 +82,8 @@ export default function HomePage() {
       <Testimonial />
       <Problem />
       <Reality />
-      <Introducing />
       <WhatChanges />
+      <Introducing />
       <UnifiedOffering />
       <WhyIncode />
       <ClosingCta />
@@ -377,7 +377,23 @@ function WhatChanges() {
 function UnifiedOffering() {
   return (
     <Section tone="rich">
-      <PinnedUnifiedFlow />
+      <Reveal>
+        <Eyebrow>Unified offering</Eyebrow>
+      </Reveal>
+      <Reveal delay={0.1}>
+        <h2 className="mt-4 font-display text-3xl md:text-4xl max-w-3xl text-balance">
+          Verify more users with the same level of trust
+        </h2>
+      </Reveal>
+      <Reveal delay={0.2}>
+        <p className="mt-6 max-w-2xl text-grey-on-black">
+          Part of the broader GovMatch offering, combining biometric and data validation against
+          government records to deliver high assurance across every state.
+        </p>
+      </Reveal>
+      <div className="mt-10">
+        <UnifiedFlow />
+      </div>
     </Section>
   );
 }

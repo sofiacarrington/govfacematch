@@ -1,11 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion } from "motion/react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-
-const CYCLE_MS = 5000;
 
 type Workflow = {
   id: "govmatch" | "govfacematch" | "govdatamatch";
@@ -14,6 +11,7 @@ type Workflow = {
   body: string[];
   coverage: string;
   diagram: string;
+  emphasized?: boolean;
 };
 
 const WORKFLOWS: Workflow[] = [
@@ -27,6 +25,7 @@ const WORKFLOWS: Workflow[] = [
     ],
     coverage: "95%+ combined population coverage",
     diagram: "/GovMatch.png",
+    emphasized: true,
   },
   {
     id: "govfacematch",
@@ -52,131 +51,92 @@ const WORKFLOWS: Workflow[] = [
   },
 ];
 
-export function UnifiedFlow({
-  controlledId,
-  onSelectId,
-}: {
-  controlledId?: Workflow["id"];
-  onSelectId?: (id: Workflow["id"]) => void;
-}) {
-  const [internalId, setInternalId] = useState<Workflow["id"]>("govmatch");
-  const [userPicked, setUserPicked] = useState(false);
-  const [paused, setPaused] = useState(false);
-  const isControlled = controlledId !== undefined;
-  const activeId = isControlled ? controlledId : internalId;
-  const active = WORKFLOWS.find((w) => w.id === activeId) ?? WORKFLOWS[0];
-  const isFeatured = active.id === "govmatch";
-
-  const setActiveId = (id: Workflow["id"]) => {
-    if (isControlled) {
-      onSelectId?.(id);
-      return;
-    }
-    setInternalId(id);
-    setUserPicked(true);
-  };
+export function UnifiedFlow() {
+  const [activeId, setActiveId] = useState<Workflow["id"]>(WORKFLOWS[0].id);
 
   useEffect(() => {
-    if (isControlled || userPicked || paused) return;
-    const t = setInterval(() => {
-      setInternalId((prev) => {
-        const i = WORKFLOWS.findIndex((w) => w.id === prev);
-        return WORKFLOWS[(i + 1) % WORKFLOWS.length].id;
-      });
-    }, CYCLE_MS);
-    return () => clearInterval(t);
-  }, [isControlled, userPicked, paused]);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.filter((e) => e.isIntersecting);
+        if (visible.length > 0) {
+          visible.sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+          setActiveId(visible[0].target.id as Workflow["id"]);
+        }
+      },
+      { rootMargin: "-30% 0px -50% 0px", threshold: 0 },
+    );
+    WORKFLOWS.forEach((w) => {
+      const el = document.getElementById(w.id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <div
-      className="relative overflow-hidden rounded-2xl border border-border-dark bg-off-black p-6 lg:p-8"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-    >
-      <div className="flex flex-wrap items-center gap-x-2 gap-y-2 sm:gap-x-3">
-        <TabButton
-          workflow={WORKFLOWS[0]}
-          activeId={activeId}
-          setActiveId={setActiveId}
-          emphasized
-        />
-        <TabButton workflow={WORKFLOWS[1]} activeId={activeId} setActiveId={setActiveId} />
-        <TabButton workflow={WORKFLOWS[2]} activeId={activeId} setActiveId={setActiveId} />
-      </div>
+    <div className="grid gap-8 lg:grid-cols-[260px_1fr] lg:gap-12">
+      <aside className="lg:sticky lg:top-24 lg:self-start">
+        <nav>
+          <ul className="flex flex-col gap-2">
+            {WORKFLOWS.map((w) => {
+              const isActive = activeId === w.id;
+              return (
+                <li key={w.id}>
+                  <a
+                    href={`#${w.id}`}
+                    className={cn(
+                      "block rounded-lg border px-4 py-2.5 text-sm font-medium transition-colors",
+                      isActive
+                        ? "border-white/25 bg-[linear-gradient(120deg,#006aff_0%,#000_100%)] text-white"
+                        : w.emphasized
+                          ? "border-blue/40 bg-blue/5 text-white hover:bg-blue/10"
+                          : "border-border-dark bg-rich-black text-grey-on-black hover:text-white",
+                    )}
+                  >
+                    {w.tab}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+      </aside>
 
-      <motion.div
-        key={`text-${active.id}`}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.2 }}
-        className="mt-8 pl-[15px]"
-      >
-        <h3 className="font-display text-2xl md:text-3xl text-white">{active.title}</h3>
-        <div className="mt-2 max-w-3xl text-sm text-grey-on-black space-y-1">
-          {active.body.map((line, i) => (
-            <p key={i}>{line}</p>
-          ))}
-        </div>
-        <p
-          className={cn(
-            "mt-2 text-xs",
-            isFeatured ? "text-blue-eyebrow" : "text-grey-on-black",
-          )}
-        >
-          {active.coverage}
-        </p>
-      </motion.div>
-
-      <div className="relative mt-6 overflow-hidden rounded-2xl border border-border-dark bg-rich-black p-6 lg:mt-8 lg:p-8">
-        <div className="mx-auto max-w-4xl">
-          <Image
-            src={active.diagram}
-            alt={`${active.title} flow diagram`}
-            width={2516}
-            height={436}
-            priority={active.id === "govmatch"}
-            className="h-auto w-full"
-          />
-        </div>
+      <div className="flex flex-col gap-6">
+        {WORKFLOWS.map((w) => (
+          <article
+            key={w.id}
+            id={w.id}
+            className="scroll-mt-24 rounded-2xl border border-border-dark bg-off-black p-6 lg:p-8"
+          >
+            <h3 className="font-display text-2xl md:text-3xl text-white">{w.title}</h3>
+            <div className="mt-2 max-w-3xl text-sm text-grey-on-black space-y-1">
+              {w.body.map((line, i) => (
+                <p key={i}>{line}</p>
+              ))}
+            </div>
+            <p
+              className={cn(
+                "mt-2 text-xs",
+                w.emphasized ? "text-blue-eyebrow" : "text-grey-on-black",
+              )}
+            >
+              {w.coverage}
+            </p>
+            <div className="mt-6 overflow-hidden rounded-2xl border border-border-dark bg-rich-black p-6 lg:p-8">
+              <div className="mx-auto max-w-4xl">
+                <Image
+                  src={w.diagram}
+                  alt={`${w.title} flow diagram`}
+                  width={2516}
+                  height={436}
+                  priority={w.id === "govmatch"}
+                  className="h-auto w-full"
+                />
+              </div>
+            </div>
+          </article>
+        ))}
       </div>
     </div>
   );
 }
-
-function TabButton({
-  workflow,
-  activeId,
-  setActiveId,
-  emphasized,
-}: {
-  workflow: Workflow;
-  activeId: Workflow["id"];
-  setActiveId: (id: Workflow["id"]) => void;
-  emphasized?: boolean;
-}) {
-  const isActive = workflow.id === activeId;
-  return (
-    <button
-      onClick={() => setActiveId(workflow.id)}
-      className={cn(
-        "relative rounded-lg border px-4 py-2 text-sm font-medium transition-colors",
-        isActive
-          ? "border-white/25 text-white"
-          : emphasized
-            ? "border-blue/40 bg-blue/5 text-white hover:bg-blue/10"
-            : "border-border-dark bg-rich-black text-grey-on-black hover:text-white",
-      )}
-    >
-      {isActive && (
-        <motion.span
-          className="absolute inset-0 rounded-lg bg-[linear-gradient(120deg,#006aff_0%,#000_100%)]"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.2 }}
-        />
-      )}
-      <span className="relative">{workflow.tab}</span>
-    </button>
-  );
-}
-
