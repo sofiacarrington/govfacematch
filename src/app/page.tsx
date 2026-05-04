@@ -144,8 +144,8 @@ function Hero() {
 function TrustedBy() {
   return (
     <section className="bg-background border-y border-border-light">
-      <div className="mx-auto max-w-[1280px] px-6 lg:px-12 py-12">
-        <p className="text-center text-sm text-grey-on-white mb-8">
+      <div className="mx-auto max-w-[1280px] px-6 lg:px-12 py-20">
+        <p className="text-center text-sm text-grey-on-white mb-10">
           Global enterprises and partners trust Incode
         </p>
         <LogoMarquee />
