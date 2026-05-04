@@ -267,21 +267,25 @@ function Problem() {
 function Reality() {
   return (
     <Section tone="light">
-      <Reveal>
-        <Eyebrow tone="light">The problem</Eyebrow>
-      </Reveal>
-      <Reveal delay={0.1}>
-        <h2 className="mt-4 font-display text-3xl md:text-4xl md:whitespace-nowrap text-balance">
-          The tradeoff has become too costly to ignore
-        </h2>
-      </Reveal>
-      <Reveal delay={0.2}>
-        <p className="mt-6 max-w-2xl text-lg text-grey-on-white">
-          Added friction continues to drive legitimate users away, while record-high data breaches
-          have made high-quality synthetic and stolen identities easy to create at scale. Data and
-          document checks were never meant to stop real stolen PII.
-        </p>
-      </Reveal>
+      <div className="max-w-3xl">
+        <Reveal>
+          <div className="flex">
+            <Eyebrow tone="light">The problem</Eyebrow>
+          </div>
+        </Reveal>
+        <Reveal delay={0.1}>
+          <h2 className="mt-5 font-display text-3xl md:text-4xl text-balance">
+            The tradeoff has become too costly to ignore
+          </h2>
+        </Reveal>
+        <Reveal delay={0.2}>
+          <p className="mt-4 text-grey-on-white">
+            Added friction continues to drive legitimate users away, while record-high data
+            breaches have made high-quality synthetic and stolen identities easy to create at
+            scale. Data and document checks were never meant to stop real stolen PII.
+          </p>
+        </Reveal>
+      </div>
       <div className="mt-14 grid gap-10 sm:grid-cols-3">
         {REALITY_STATS.map((s, i) => (
           <Reveal key={s.label} delay={0.1 + i * 0.1}>
