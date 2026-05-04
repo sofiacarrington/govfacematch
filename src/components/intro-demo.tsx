@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion } from "motion/react";
+import { motion, useMotionValue } from "motion/react";
 import { IdCard, ScanFace, ShieldCheck } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -42,8 +42,8 @@ const STEPS: Step[] = [
 export function IntroDemo() {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
-  const [progress, setProgress] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const progress = useMotionValue(0);
 
   useEffect(() => {
     const v = videoRef.current;
@@ -53,9 +53,22 @@ export function IntroDemo() {
     else v.play().catch(() => {});
   }, [paused, active]);
 
+  useEffect(() => {
+    progress.set(0);
+    let raf = 0;
+    const tick = () => {
+      const v = videoRef.current;
+      if (v && v.duration > 0) {
+        progress.set(Math.min(1, v.currentTime / v.duration));
+      }
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [active, progress]);
+
   const handleStepClick = (i: number) => {
     setActive(i);
-    setProgress(0);
   };
 
   return (
@@ -72,17 +85,11 @@ export function IntroDemo() {
           muted
           playsInline
           preload="auto"
-          onTimeUpdate={(e) => {
-            const t = e.currentTarget;
-            if (t.duration > 0) setProgress(t.currentTime / t.duration);
-          }}
           onLoadedMetadata={(e) => {
             e.currentTarget.playbackRate = PLAYBACK_RATE;
-            setProgress(0);
           }}
           onEnded={() => {
             setActive((i) => (i + 1) % STEPS.length);
-            setProgress(0);
           }}
           className="w-full h-auto block"
         />
@@ -103,11 +110,8 @@ export function IntroDemo() {
               <div className="absolute inset-x-0 top-0 h-px bg-border-light overflow-hidden">
                 {isActive && (
                   <motion.div
-                    className="h-full bg-blue origin-left"
-                    initial={false}
-                    animate={{ scaleX: progress }}
-                    transition={{ duration: 0, ease: "linear" }}
-                    style={{ width: "100%" }}
+                    className="h-full w-full bg-blue origin-left"
+                    style={{ scaleX: progress }}
                   />
                 )}
               </div>
