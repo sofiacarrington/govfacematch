@@ -1,11 +1,15 @@
 import Image from "next/image";
 
 const LOGOS = [
-  { src: "/clients/pnc.png", alt: "PNC Bank", width: 96 },
-  { src: "/clients/scotiabank.png", alt: "Scotiabank", width: 110 },
-  { src: "/clients/chime.png", alt: "Chime", width: 96 },
-  { src: "/clients/nu.png", alt: "Nu", width: 58 },
-  { src: "/clients/tiktok.png", alt: "TikTok", width: 96 },
+  { src: "/clients/citi.svg", alt: "Citi", width: 36 },
+  { src: "/clients/chime.svg", alt: "Chime", width: 75 },
+  { src: "/clients/amazon.svg", alt: "Amazon", width: 78 },
+  { src: "/clients/tiktok.svg", alt: "TikTok", width: 103 },
+  { src: "/clients/fanduel.svg", alt: "FanDuel", width: 128 },
+  { src: "/clients/betmgm.svg", alt: "BetMGM", width: 86 },
+  { src: "/clients/att.svg", alt: "AT&T", width: 59 },
+  { src: "/clients/experian.svg", alt: "Experian", width: 70 },
+  { src: "/clients/equifax.svg", alt: "Equifax", width: 119 },
 ];
 
 export function LogoMarquee() {
