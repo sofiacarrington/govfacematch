@@ -11,17 +11,17 @@ const STEPS = [
   {
     icon: IdCard,
     title: "ID barcode scan + selfie",
-    body: "Users scan the back of their government ID and take a live selfie in a single guided step.",
+    body: "Users scan the back of their government ID and take a live selfie in two simple guided steps.",
   },
   {
     icon: ScanFace,
     title: "Verify against DMV records",
-    body: "The selfie is matched to the issuing DMV's official record in real time within a secure environment.",
+    body: "The selfie is matched to the issuing DMV's official record within a secure environment.",
   },
   {
     icon: ShieldCheck,
-    title: "Real time result",
-    body: "A signed verification result is returned in milliseconds, delivering a defensible and auditable outcome.",
+    title: "Real-time result",
+    body: "A verification result is returned instantly, delivering a fast, defensible, and auditable outcome.",
   },
 ];
 

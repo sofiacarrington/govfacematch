@@ -53,7 +53,7 @@ const BENEFITS = [
   {
     icon: Sparkles,
     title: "Lower user friction",
-    body: "Complete verification in a single step with a barcode scan and selfie. No document capture required.",
+    body: "Complete verification with a barcode scan and selfie. No document capture required.",
   },
   {
     icon: ShieldHalf,
@@ -395,8 +395,8 @@ function UnifiedOffering() {
       </Reveal>
       <Reveal delay={0.2}>
         <p className="mt-6 max-w-2xl text-grey-on-black">
-          Part of the broader GovMatch offering, combining biometric and data validation against
-          government records to deliver high assurance across every state.
+          GovFaceMatch is part of the broader GovMatch offering, combining biometric and data
+          validation against government records to deliver high assurance across every state.
         </p>
       </Reveal>
       <div className="mt-10">

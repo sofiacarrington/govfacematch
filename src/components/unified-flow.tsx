@@ -23,8 +23,8 @@ const WORKFLOWS: Workflow[] = [
     tab: "Unified offering: GovMatch",
     title: "GovMatch",
     body: [
-      "Combines GovFaceMatch and GovDataMatch, seamlessly routing verifications based on the issuing state.",
-      "Automatically expands coverage as new states go live.",
+      "Combines GovFaceMatch and GovDataMatch to route verifications based on the issuing state.",
+      "Coverage expands automatically as new states go live, with no additional integration required.",
     ],
     coverage: "95%+ combined population coverage",
     diagram: "/GovMatch.png",
