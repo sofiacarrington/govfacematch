@@ -28,8 +28,8 @@ const WORKFLOWS: Workflow[] = [
     ],
     coverage: "95%+ combined population coverage",
     diagram: "/GovMatch.png",
-    diagramWidth: 2380,
-    diagramHeight: 864,
+    diagramWidth: 2568,
+    diagramHeight: 992,
     emphasized: true,
   },
   {
@@ -42,8 +42,8 @@ const WORKFLOWS: Workflow[] = [
     ],
     coverage: "~20% U.S. population coverage",
     diagram: "/GovFaceMatch.png",
-    diagramWidth: 1932,
-    diagramHeight: 397,
+    diagramWidth: 1832,
+    diagramHeight: 808,
   },
   {
     id: "govdatamatch",
@@ -55,8 +55,8 @@ const WORKFLOWS: Workflow[] = [
     ],
     coverage: "~85% U.S. population coverage",
     diagram: "/GovDataMatch.png",
-    diagramWidth: 2226,
-    diagramHeight: 394,
+    diagramWidth: 1944,
+    diagramHeight: 616,
   },
 ];
 
