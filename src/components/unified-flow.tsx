@@ -176,11 +176,11 @@ export function UnifiedFlow() {
           aria-modal="true"
           aria-label={`${zoomed.title} flow diagram`}
           onClick={() => setZoomed(null)}
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-6 backdrop-blur-md md:p-10"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-4 backdrop-blur-md md:p-6"
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-6xl rounded-2xl border border-border-dark bg-off-black p-6 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)] md:p-10"
+            className="relative w-full max-w-[1500px] rounded-2xl border border-border-dark bg-off-black p-6 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)] md:p-10"
           >
             <div className="flex items-center justify-between gap-4">
               <h3 className="font-display text-lg text-white md:text-xl">{zoomed.title}</h3>
@@ -200,7 +200,7 @@ export function UnifiedFlow() {
                 width={zoomed.diagramWidth}
                 height={zoomed.diagramHeight}
                 priority
-                className="h-auto max-h-[68vh] w-full object-contain"
+                className="h-auto max-h-[78vh] w-full object-contain"
               />
             </div>
           </div>
