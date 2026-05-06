@@ -48,3 +48,4 @@ public/GFMExplainer_Hero.mp4
 
 # claude code local state
 .claude/
+dist/

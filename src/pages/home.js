@@ -5,6 +5,7 @@
 
 import { renderLogoMarquee } from '../components/marquee.js';
 import { renderUnifiedFlow } from '../components/unified-flow.js';
+import { ICONS } from '../lib/icons.js';
 
 const REALITY_STATS = [
   {
@@ -30,17 +31,17 @@ const REALITY_STATS = [
 
 const INTRO_STEPS = [
   {
-    icon: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M20 8v6M23 11h-6"/></svg>`,
+    icon: ICONS.idCard,
     title: "ID barcode scan + selfie",
     body: "Users scan the back of their government ID and take a live selfie in two simple guided steps.",
   },
   {
-    icon: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"/><path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 7 8 11.7z"/></svg>`,
+    icon: ICONS.scanFace,
     title: "Verify against DMV records",
     body: "The selfie is matched to the issuing DMV's official record within a secure environment.",
   },
   {
-    icon: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>`,
+    icon: ICONS.shieldCheck,
     title: "Real-time result",
     body: "A verification result is returned instantly, delivering a fast, defensible, and auditable outcome.",
   },
@@ -48,17 +49,17 @@ const INTRO_STEPS = [
 
 const BENEFITS = [
   {
-    icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg>`,
+    icon: ICONS.sparkles,
     title: "Lower user friction",
     body: "Complete verification with a barcode scan and selfie. No document capture required.",
   },
   {
-    icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="M12 12h0"/></svg>`,
+    icon: ICONS.shieldHalf,
     title: "Stronger protection",
     body: "Verify the person, not just the data. Stops synthetic identities and AI-assisted fraud that bypass traditional checks.",
   },
   {
-    icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>`,
+    icon: ICONS.lock,
     title: "Built-in privacy",
     body: "Matching occurs within the DMV's secure environment. No biometric data is stored and no government PII is shared.",
   },
@@ -93,10 +94,10 @@ const CONVERSION_STATS = [
 ];
 
 const WHY_TILES = [
-  { icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="16" y="16" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3M12 12V8"/></svg>`, label: "Direct integrations with state DMVs" },
-  { icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`, label: "Real-time verification at the source" },
-  { icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>`, label: "Matching occurs within secure DMV systems" },
-  { icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>`, label: "Deterministic confirmation from the issuing authority" },
+  { icon: ICONS.network, label: "Direct integrations with state DMVs" },
+  { icon: ICONS.zap, label: "Real-time verification at the source" },
+  { icon: ICONS.shieldCheck, label: "Matching occurs within secure DMV systems" },
+  { icon: ICONS.badgeCheck, label: "Deterministic confirmation from the issuing authority" },
 ];
 
 export function renderPageContent() {
@@ -123,16 +124,12 @@ export function renderPageContent() {
 function renderHero() {
   return `
     <section class="relative flex items-center overflow-hidden bg-rich-black text-white min-h-[100svh]">
-      <picture>
-        <source srcset="/background.webp" type="image/webp">
-        <source srcset="/background.avif" type="image/avif">
-        <img
-          src="/background.png"
-          alt=""
-          class="absolute inset-0 w-full h-full object-cover animate-hero-drift pointer-events-none"
-          loading="eager"
-        />
-      </picture>
+      <img
+        src="/background.png"
+        alt=""
+        class="absolute inset-0 w-full h-full object-cover animate-hero-drift pointer-events-none"
+        loading="eager"
+      />
       <div class="absolute inset-0 bg-hero-glow pointer-events-none opacity-60"></div>
       <div class="relative w-full mx-auto max-w-[1280px] px-6 lg:px-12 py-20 md:py-24">
         <div class="grid gap-16 lg:grid-cols-[1fr_1.15fr] lg:gap-20 items-center">
@@ -171,15 +168,12 @@ function renderHero() {
                 aria-label="Play explainer video"
                 class="group relative aspect-[16/10] w-full overflow-hidden rounded-3xl bg-rich-black focus:outline-none focus-visible:ring-2 focus-visible:ring-blue/60"
               >
-                <picture>
-                  <source srcset="/GFMExplainer_Thumbnail.webp" type="image/webp">
-                  <img
-                    src="/GFMExplainer_Thumbnail.png"
-                    alt="GovFaceMatch explainer"
-                    class="absolute inset-0 w-full h-full object-cover blur-[2px] scale-105 transition-transform duration-500 group-hover:scale-[1.07]"
-                    loading="eager"
-                  />
-                </picture>
+                <img
+                  src="/GFMExplainer_Thumbnail.png"
+                  alt="GovFaceMatch explainer"
+                  class="absolute inset-0 w-full h-full object-cover blur-[2px] scale-105 transition-transform duration-500 group-hover:scale-[1.07]"
+                  loading="eager"
+                />
                 <div class="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-inset ring-white/10"></div>
                 <div class="pointer-events-none absolute inset-0 bg-rich-black/30 transition-colors group-hover:bg-rich-black/40"></div>
 
@@ -220,13 +214,13 @@ function renderTrustedBy() {
 function renderProblem() {
   const cards = [
     {
-      icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m22 21-2-2"/></svg>`,
+      icon: ICONS.userX,
       tag: "Impacts conversion",
       title: "Document-based verification",
       body: "Catches more fraud, but adds friction that drives users away. Up to 40% never complete the process.",
     },
     {
-      icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="M8 11h8M9 14h6"/></svg>`,
+      icon: ICONS.shieldOff,
       tag: "Weakens fraud prevention",
       title: "Non-document verification",
       body: "Keeps users moving, but allows synthetic and stolen identities to pass undetected.",
@@ -431,15 +425,12 @@ function renderTestimonial() {
         <div class="reveal">
           <div class="relative rounded-3xl overflow-hidden bg-rich-black min-h-[460px] md:min-h-[480px] flex">
             <div aria-hidden class="absolute inset-0 bg-black md:bg-transparent">
-              <picture>
-                <source srcset="/GFM-Illus.webp" type="image/webp">
-                <img
-                  src="/GFM-Illus.png"
-                  alt=""
-                  class="hidden object-cover md:block w-full h-full"
-                  loading="lazy"
-                />
-              </picture>
+              <img
+                src="/GFM-Illus.png"
+                alt=""
+                class="hidden md:block absolute inset-0 w-full h-full object-cover"
+                loading="lazy"
+              />
             </div>
 
             <div class="relative w-full p-6 md:p-10 lg:p-14 flex items-center">

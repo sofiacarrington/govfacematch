@@ -7,20 +7,46 @@
 }
 
 /* Font Face Declarations */
+/* DM Sans - Static weights */
 @font-face {
   font-family: 'DM Sans';
   font-style: normal;
-  font-weight: 100 900;
+  font-weight: 400;
   font-display: swap;
-  src: url('/fonts/dm-sans-variable.woff2') format('woff2-variations');
+  src: url('/fonts/DMSans-Regular.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'DM Sans';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/DMSans-Italic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/DMSans-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/DMSans-BoldItalic.ttf') format('truetype');
+}
+
+/* Rethink Sans - Variable Font (weights 400-500 as per original) */
 @font-face {
   font-family: 'Rethink Sans';
   font-style: normal;
   font-weight: 400 500;
   font-display: swap;
-  src: url('/fonts/rethink-sans-variable.woff2') format('woff2-variations');
+  src: url('/fonts/RethinkSans-VariableFont_wght.ttf') format('truetype-variations');
 }
 
 /* Tailwind Theme Configuration */
