@@ -14,6 +14,7 @@ import { initVideoModal } from './components/video-modal.js';
 import { initMarquee } from './components/marquee.js';
 import { initTabs } from './components/tabs.js';
 import { initAccordion } from './components/accordion.js';
+import { initUnifiedFlow } from './components/unified-flow.js';
 
 // Import page content
 import { renderPageContent } from './pages/home.js';
@@ -32,6 +33,7 @@ function init() {
   initMarquee();
   initTabs();
   initAccordion();
+  initUnifiedFlow();
   
   console.log('🚀 GovFaceMatch loaded');
 }

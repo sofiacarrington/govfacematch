@@ -1,9 +1,10 @@
 /**
  * Home page content
- * All page sections converted from React to vanilla HTML
+ * All page sections converted from React to vanilla HTML - EXACT MATCH
  */
 
 import { renderLogoMarquee } from '../components/marquee.js';
+import { renderUnifiedFlow } from '../components/unified-flow.js';
 
 const REALITY_STATS = [
   {
@@ -137,9 +138,9 @@ function renderHero() {
         <div class="grid gap-16 lg:grid-cols-[1fr_1.15fr] lg:gap-20 items-center">
           <div>
             <div class="reveal" data-delay="0">
-              <span class="inline-flex items-center gap-2 rounded-full border border-blue-eyebrow/30 bg-blue-eyebrow/15 px-3.5 py-1.5 text-xs font-medium uppercase tracking-wider text-blue-eyebrow">
+              <div class="inline-flex items-center rounded-md border px-3 py-1 text-sm font-medium border-blue/25 bg-blue/10 text-blue-eyebrow">
                 GovFaceMatch
-              </span>
+              </div>
             </div>
             <h1 class="reveal mt-6 font-display text-[33px] md:text-[42px] lg:text-[54px] leading-[1.05] text-balance" data-delay="0.1">
               A new standard in<br />identity verification
@@ -277,9 +278,11 @@ function renderReality() {
       <div class="mx-auto max-w-[1280px] px-6 lg:px-12 py-20 md:py-28">
         <div class="max-w-3xl">
           <div class="reveal">
-            <span class="inline-flex items-center gap-2 rounded-full border border-blue/30 bg-blue/10 px-3.5 py-1.5 text-xs font-medium uppercase tracking-wider text-blue">
-              The problem
-            </span>
+            <div class="flex">
+              <div class="inline-flex items-centers rounded-md border px-3 py-1 text-sm font-medium border-blue/20 bg-blue/10 text-blue">
+                The problem
+              </div>
+            </div>
           </div>
           <h2 class="reveal mt-5 font-display text-3xl md:text-4xl text-balance" data-delay="0.1">
             The tradeoff has become too costly to ignore
@@ -310,9 +313,11 @@ function renderIntroducing() {
       <div class="mx-auto max-w-[1280px] px-6 lg:px-12 py-14 md:py-20">
         <div class="max-w-3xl">
           <div class="reveal">
-            <span class="inline-flex items-center gap-2 rounded-full border border-blue/30 bg-blue/10 px-3.5 py-1.5 text-xs font-medium uppercase tracking-wider text-blue">
-              Introducing GovFaceMatch
-            </span>
+            <div class="flex">
+              <div class="inline-flex items-center rounded-md border px-3 py-1 text-sm font-medium border-blue/20 bg-blue/10 text-blue">
+                Introducing GovFaceMatch
+              </div>
+            </div>
           </div>
           <h2 class="reveal mt-5 font-display text-3xl md:text-4xl text-balance" data-delay="0.1">
             The only solution that delivers higher conversion without compromising identity assurance
@@ -372,9 +377,11 @@ function renderWhatChanges() {
         <div class="grid gap-14 lg:grid-cols-[1.1fr_1fr] lg:gap-20 lg:items-stretch">
           <div id="benefits">
             <div class="reveal">
-              <span class="inline-flex items-center gap-2 rounded-full border border-blue/30 bg-blue/10 px-3.5 py-1.5 text-xs font-medium uppercase tracking-wider text-blue">
-                Benefits
-              </span>
+              <div class="flex">
+                <div class="inline-flex items-center rounded-md border px-3 py-1 text-sm font-medium border-blue/20 bg-blue/10 text-blue">
+                  Benefits
+                </div>
+              </div>
             </div>
             <h2 class="reveal mt-5 font-display text-3xl md:text-4xl text-balance" data-delay="0.1">
               What changes when identity is verified against DMV records
@@ -466,12 +473,12 @@ function renderTestimonial() {
 
 function renderUnifiedOffering() {
   return `
-    <section class="relative bg-rich-black text-white overflow-hidden">
+    <section class="relative w-full bg-rich-black text-white">
       <div class="mx-auto max-w-[1280px] px-6 lg:px-12 py-20 md:py-28">
         <div class="reveal">
-          <span class="inline-flex items-center gap-2 rounded-full border border-blue-eyebrow/30 bg-blue-eyebrow/15 px-3.5 py-1.5 text-xs font-medium uppercase tracking-wider text-blue-eyebrow">
+          <div class="inline-flex items-center rounded-md border px-3 py-1 text-sm font-medium border-blue/25 bg-blue/10 text-blue-eyebrow">
             Unified offering
-          </span>
+          </div>
         </div>
         <h2 class="reveal mt-4 font-display text-3xl md:text-4xl max-w-3xl text-balance" data-delay="0.1">
           Verify more users with the same level of trust
@@ -479,32 +486,8 @@ function renderUnifiedOffering() {
         <p class="reveal mt-6 max-w-2xl text-grey-on-black" data-delay="0.2">
           GovFaceMatch is part of the broader GovMatch offering, combining biometric and data validation against government records to deliver high assurance across every state.
         </p>
-        
-        <div class="reveal mt-10" data-delay="0.3">
-          <div class="rounded-2xl border border-border-dark bg-off-black p-6 lg:p-8">
-            <h3 class="font-display text-2xl md:text-3xl text-white">GovMatch</h3>
-            <div class="mt-2 max-w-3xl text-sm text-grey-on-black space-y-1">
-              <p>Combines GovFaceMatch and GovDataMatch to route verifications based on the issuing state.</p>
-              <p>Coverage expands automatically as new states go live, with no additional integration required.</p>
-            </div>
-            <p class="mt-2 text-xs text-blue-eyebrow">95%+ combined population coverage</p>
-            
-            <div class="mt-6 rounded-2xl border border-border-dark bg-rich-black p-6 lg:p-8">
-              <div class="mx-auto max-w-4xl">
-                <picture>
-                  <source srcset="/GovMatch.webp" type="image/webp">
-                  <img
-                    src="/GovMatch.png"
-                    alt="GovMatch flow diagram"
-                    width="2568"
-                    height="992"
-                    class="h-auto w-full"
-                    loading="lazy"
-                  />
-                </picture>
-              </div>
-            </div>
-          </div>
+        <div class="mt-10">
+          ${renderUnifiedFlow()}
         </div>
       </div>
     </section>
@@ -516,9 +499,9 @@ function renderWhyIncode() {
     <section id="why-incode" class="bg-background">
       <div class="mx-auto max-w-[1280px] px-6 lg:px-12 py-20 md:py-28">
         <div class="reveal">
-          <span class="inline-flex items-center gap-2 rounded-full border border-blue/30 bg-blue/10 px-3.5 py-1.5 text-xs font-medium uppercase tracking-wider text-blue">
+          <div class="inline-flex items-center rounded-md border px-3 py-1 text-sm font-medium border-blue/20 bg-blue/10 text-blue">
             Why Incode
-          </span>
+          </div>
         </div>
         <h2 class="reveal mt-4 font-display text-3xl md:text-4xl max-w-4xl text-balance" data-delay="0.1">
           The first and only identity platform to partner directly with state DMVs for real-time biometric verification

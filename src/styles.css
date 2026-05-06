@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+/* Font Variables - Match Next.js structure */
+:root {
+  --font-dm-sans: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-rethink: 'Rethink Sans', ui-sans-serif, system-ui, sans-serif;
+}
+
 /* Font Face Declarations */
 @font-face {
   font-family: 'DM Sans';
@@ -45,8 +51,8 @@
   --radius-md: 8px;
   --radius-lg: 12px;
 
-  --font-display: 'Rethink Sans', ui-sans-serif, system-ui, sans-serif;
-  --font-sans: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-rethink), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
 
   --container-large: 1280px;
 
