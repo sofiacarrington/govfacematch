@@ -3,6 +3,8 @@
  * Complex interactive component with scroll-spy, sticky nav, and zoom modal
  */
 
+import { ASSET_BASE } from '../lib/config.js';
+
 const WORKFLOWS = [
   {
     id: "govmatch",
@@ -13,7 +15,7 @@ const WORKFLOWS = [
       "Coverage expands automatically as new states go live, with no additional integration required.",
     ],
     coverage: "95%+ combined population coverage",
-    diagram: "/GovMatch.png",
+    diagram: `${ASSET_BASE}/GovMatch.png`,
     diagramWidth: 2568,
     diagramHeight: 992,
     emphasized: true,
@@ -27,7 +29,7 @@ const WORKFLOWS = [
       "Confirms the person, not just the identity.",
     ],
     coverage: "~20% U.S. population coverage",
-    diagram: "/GovFaceMatch.png",
+    diagram: `${ASSET_BASE}/GovFaceMatch.png`,
     diagramWidth: 1832,
     diagramHeight: 808,
   },
@@ -40,7 +42,7 @@ const WORKFLOWS = [
       "Confirms the identity exists in the government record.",
     ],
     coverage: "~85% U.S. population coverage",
-    diagram: "/GovDataMatch.png",
+    diagram: `${ASSET_BASE}/GovDataMatch.png`,
     diagramWidth: 1944,
     diagramHeight: 616,
   },

@@ -4,6 +4,7 @@ import { resolve } from 'path';
 export default defineConfig({
   root: './',
   publicDir: 'public',
+  base: 'https://incode-videos.s3.us-east-2.amazonaws.com/govfacematch-v5/',
   
   build: {
     outDir: 'dist',

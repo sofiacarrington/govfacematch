@@ -6,6 +6,7 @@
 import { renderLogoMarquee } from '../components/marquee.js';
 import { renderUnifiedFlow } from '../components/unified-flow.js';
 import { ICONS } from '../lib/icons.js';
+import { ASSET_BASE } from '../lib/config.js';
 
 const REALITY_STATS = [
   {
@@ -125,7 +126,7 @@ function renderHero() {
   return `
     <section class="relative flex items-center overflow-hidden bg-rich-black text-white min-h-[100svh]">
       <img
-        src="/background.png"
+        src="${ASSET_BASE}/background.png"
         alt=""
         class="absolute inset-0 w-full h-full object-cover animate-hero-drift pointer-events-none"
         loading="eager"
@@ -169,7 +170,7 @@ function renderHero() {
                 class="group relative aspect-[16/10] w-full overflow-hidden rounded-3xl bg-rich-black focus:outline-none focus-visible:ring-2 focus-visible:ring-blue/60"
               >
                 <img
-                  src="/GFMExplainer_Thumbnail.png"
+                  src="${ASSET_BASE}/GFMExplainer_Thumbnail.png"
                   alt="GovFaceMatch explainer"
                   class="absolute inset-0 w-full h-full object-cover blur-[2px] scale-105 transition-transform duration-500 group-hover:scale-[1.07]"
                   loading="eager"
@@ -327,8 +328,8 @@ function renderIntroducing() {
             <div class="relative overflow-hidden rounded-2xl bg-off-white" style="aspect-ratio: 1000 / 914">
               <video
                 id="intro-demo-video"
-                src="/GFM_Flow.mp4"
-                poster="/GFM_Flow_poster.jpg"
+                src="${ASSET_BASE}/GFM_Flow.mp4"
+                poster="${ASSET_BASE}/GFM_Flow_poster.jpg"
                 autoplay
                 muted
                 playsinline
@@ -426,7 +427,7 @@ function renderTestimonial() {
           <div class="relative rounded-3xl overflow-hidden bg-rich-black min-h-[460px] md:min-h-[480px] flex">
             <div aria-hidden class="absolute inset-0 bg-black md:bg-transparent">
               <img
-                src="/GFM-Illus.png"
+                src="${ASSET_BASE}/GFM-Illus.png"
                 alt=""
                 class="hidden md:block absolute inset-0 w-full h-full object-cover"
                 loading="lazy"
@@ -436,7 +437,7 @@ function renderTestimonial() {
             <div class="relative w-full p-6 md:p-10 lg:p-14 flex items-center">
               <div class="w-full max-w-xl rounded-2xl bg-white/10 border border-white/15 backdrop-blur-xl p-7 md:p-9 shadow-[0_24px_48px_-24px_rgba(0,0,0,0.45)]">
                 <img
-                  src="/virginiadmv.png"
+                  src="${ASSET_BASE}/virginiadmv.png"
                   alt="Virginia Department of Motor Vehicles"
                   width="220"
                   height="64"

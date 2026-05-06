@@ -3,16 +3,18 @@
  * Pure CSS animation with vanilla JS rendering
  */
 
+import { ASSET_BASE } from '../lib/config.js';
+
 const LOGOS = [
-  { src: "/clients/citi.svg", alt: "Citi", width: 36 },
-  { src: "/clients/chime.svg", alt: "Chime", width: 75 },
-  { src: "/clients/amazon.svg", alt: "Amazon", width: 78 },
-  { src: "/clients/tiktok.svg", alt: "TikTok", width: 103 },
-  { src: "/clients/fanduel.svg", alt: "FanDuel", width: 128 },
-  { src: "/clients/betmgm.svg", alt: "BetMGM", width: 86 },
-  { src: "/clients/att.svg", alt: "AT&T", width: 59 },
-  { src: "/clients/experian.svg", alt: "Experian", width: 70 },
-  { src: "/clients/equifax.svg", alt: "Equifax", width: 119 },
+  { src: `${ASSET_BASE}/clients/citi.svg`, alt: "Citi", width: 36 },
+  { src: `${ASSET_BASE}/clients/chime.svg`, alt: "Chime", width: 75 },
+  { src: `${ASSET_BASE}/clients/amazon.svg`, alt: "Amazon", width: 78 },
+  { src: `${ASSET_BASE}/clients/tiktok.svg`, alt: "TikTok", width: 103 },
+  { src: `${ASSET_BASE}/clients/fanduel.svg`, alt: "FanDuel", width: 128 },
+  { src: `${ASSET_BASE}/clients/betmgm.svg`, alt: "BetMGM", width: 86 },
+  { src: `${ASSET_BASE}/clients/att.svg`, alt: "AT&T", width: 59 },
+  { src: `${ASSET_BASE}/clients/experian.svg`, alt: "Experian", width: 70 },
+  { src: `${ASSET_BASE}/clients/equifax.svg`, alt: "Equifax", width: 119 },
 ];
 
 export function renderLogoMarquee() {
