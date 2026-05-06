@@ -1,4 +1,6 @@
-@import "tailwindcss";
+@import "tailwindcss" important;
+
+@source "../src/**/*.js";
 
 /* Font Variables - Match Next.js structure */
 :root {
@@ -117,6 +119,29 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Reset Webflow element defaults inside our content */
+#main-content ul,
+#main-content ol {
+  list-style: none !important;
+  padding-left: 0 !important;
+  margin: 0 !important;
+}
+
+#main-content blockquote {
+  border-left: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+#main-content p {
+  margin-bottom: 0 !important;
+}
+
+#main-content img {
+  display: block !important;
+  max-width: 100% !important;
+}
+
 ::selection {
   background: var(--color-blue);
   color: white;
@@ -201,4 +226,229 @@ body {
 .modal-backdrop.active .modal-content {
   opacity: 1;
   transform: scale(1) translateY(0);
+}
+
+/* ==========================================================================
+   SEMANTIC TEXT CLASSES
+   Direct CSS with !important — overrides Webflow regardless of layers/specificity
+   ========================================================================== */
+
+/* Hero title: "A new standard in identity verification" */
+.t-hero-title {
+  font-family: 'Rethink Sans', ui-sans-serif, system-ui, sans-serif !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.02em !important;
+  font-size: 33px !important;
+  line-height: 1.05 !important;
+  text-wrap: balance !important;
+  color: white !important;
+}
+@media (min-width: 768px) {
+  .t-hero-title { font-size: 42px !important; }
+}
+@media (min-width: 1024px) {
+  .t-hero-title { font-size: 54px !important; }
+}
+
+/* Hero subtitle */
+.t-hero-subtitle {
+  font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif !important;
+  font-size: 18px !important;
+  line-height: 1.75 !important;
+  color: var(--color-grey-on-black) !important;
+  text-wrap: balance !important;
+}
+
+/* Section headings: h2 with font-display text-3xl md:text-4xl */
+.t-section-heading {
+  font-family: 'Rethink Sans', ui-sans-serif, system-ui, sans-serif !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.02em !important;
+  font-size: 30px !important;
+  line-height: 1.2 !important;
+  text-wrap: balance !important;
+}
+@media (min-width: 768px) {
+  .t-section-heading { font-size: 36px !important; }
+}
+
+/* CTA heading: text-3xl sm:text-4xl md:text-5xl */
+.t-cta-heading {
+  font-family: 'Rethink Sans', ui-sans-serif, system-ui, sans-serif !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.02em !important;
+  font-size: 30px !important;
+  line-height: 1.2 !important;
+  color: white !important;
+}
+@media (min-width: 640px) {
+  .t-cta-heading { font-size: 36px !important; }
+}
+@media (min-width: 768px) {
+  .t-cta-heading { font-size: 48px !important; }
+}
+
+/* Card titles: font-display text-lg md:text-xl */
+.t-card-title {
+  font-family: 'Rethink Sans', ui-sans-serif, system-ui, sans-serif !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.02em !important;
+  font-size: 18px !important;
+  line-height: 1.75 !important;
+  color: white !important;
+}
+@media (min-width: 768px) {
+  .t-card-title { font-size: 20px !important; }
+}
+
+/* Card titles small: font-display text-base md:text-lg */
+.t-card-title-sm {
+  font-family: 'Rethink Sans', ui-sans-serif, system-ui, sans-serif !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.02em !important;
+  font-size: 16px !important;
+  line-height: 1.5 !important;
+  color: #111111 !important;
+}
+@media (min-width: 768px) {
+  .t-card-title-sm { font-size: 18px !important; }
+}
+
+/* Benefit titles: font-display text-lg */
+.t-benefit-title {
+  font-family: 'Rethink Sans', ui-sans-serif, system-ui, sans-serif !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.02em !important;
+  font-size: 18px !important;
+  line-height: 1.4 !important;
+  color: #111111 !important;
+}
+
+/* Large stat numbers: font-display text-4xl md:text-5xl */
+.t-stat-number {
+  font-family: 'Rethink Sans', ui-sans-serif, system-ui, sans-serif !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.02em !important;
+  font-size: 36px !important;
+  line-height: 1 !important;
+}
+@media (min-width: 768px) {
+  .t-stat-number { font-size: 48px !important; }
+}
+
+/* Stat labels: text-sm text-grey-on-white */
+.t-stat-label {
+  font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif !important;
+  font-size: 14px !important;
+  line-height: 1.43 !important;
+  color: var(--color-grey-on-white) !important;
+}
+
+/* Stat source: text-xs text-grey-on-white/70 */
+.t-stat-source {
+  font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif !important;
+  font-size: 12px !important;
+  line-height: 1.5 !important;
+  color: color-mix(in srgb, var(--color-grey-on-white) 70%, transparent) !important;
+}
+
+/* Body text: text-sm text-grey-on-white */
+.t-body-sm {
+  font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif !important;
+  font-size: 16px !important;
+  line-height: 1.65 !important;
+  color: var(--color-grey-on-white) !important;
+}
+
+/* Body text large: text-lg text-grey-on-black */
+.t-body-lg {
+  font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif !important;
+  font-size: 18px !important;
+  line-height: 1.75 !important;
+  color: var(--color-grey-on-black) !important;
+}
+
+/* Body text on dark backgrounds: text-sm text-grey-on-black */
+.t-body-dark {
+  font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif !important;
+  font-size: 16px !important;
+  line-height: 1.65 !important;
+  color: var(--color-grey-on-black) !important;
+}
+
+/* Eyebrow badges: text-sm font-medium */
+.t-eyebrow {
+  font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  line-height: 1.43 !important;
+}
+
+/* Button text: font-medium text-[15px] */
+.t-button {
+  font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  line-height: 1.5 !important;
+  color: white !important;
+}
+
+/* Blockquote: font-display-regular text-xl md:text-2xl */
+.t-quote {
+  font-family: 'Rethink Sans', ui-sans-serif, system-ui, sans-serif !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.02em !important;
+  font-size: 20px !important;
+  line-height: 1.4 !important;
+  color: white !important;
+  border-left: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+@media (min-width: 768px) {
+  .t-quote { font-size: 24px !important; }
+}
+
+/* Quote attribution name: text-sm font-medium text-white */
+.t-quote-name {
+  font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: white !important;
+}
+
+/* Quote attribution role: text-xs text-grey-on-black */
+.t-quote-role {
+  font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif !important;
+  font-size: 12px !important;
+  color: var(--color-grey-on-black) !important;
+}
+
+/* Section label text: text-center text-sm text-grey-on-white */
+.t-section-label {
+  font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif !important;
+  font-size: 14px !important;
+  line-height: 1.43 !important;
+  color: var(--color-grey-on-white) !important;
+  text-align: center !important;
+}
+
+/* Why Incode tab numbers: font-display text-sm tabular-nums */
+.t-tab-number {
+  font-family: 'Rethink Sans', ui-sans-serif, system-ui, sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  font-variant-numeric: tabular-nums !important;
+  color: var(--color-grey-on-white) !important;
+}
+
+/* Why Incode tile label: font-display text-base */
+.t-tile-label {
+  font-family: 'Rethink Sans', ui-sans-serif, system-ui, sans-serif !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.02em !important;
+  font-size: 16px !important;
+  line-height: 1.5 !important;
+  text-wrap: balance !important;
+  color: #111111 !important;
 }
