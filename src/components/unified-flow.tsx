@@ -98,7 +98,7 @@ export function UnifiedFlow() {
 
   return (
     <div className="grid gap-8 lg:grid-cols-[260px_1fr] lg:gap-12">
-      <aside className="lg:sticky lg:top-24 lg:self-start">
+      <aside className="hidden lg:block lg:sticky lg:top-24 lg:self-start">
         <nav>
           <ul className="flex flex-col gap-2">
             {WORKFLOWS.map((w) => {
@@ -132,7 +132,15 @@ export function UnifiedFlow() {
             id={w.id}
             className="scroll-mt-24 rounded-2xl border border-border-dark bg-off-black p-6 lg:p-8"
           >
-            <h3 className="font-display text-2xl md:text-3xl text-white">{w.title}</h3>
+            <p
+              className={cn(
+                "lg:hidden text-xs font-medium uppercase tracking-wider",
+                w.emphasized ? "text-blue-eyebrow" : "text-grey-on-black",
+              )}
+            >
+              {w.tab}
+            </p>
+            <h3 className="mt-1 lg:mt-0 font-display text-2xl md:text-3xl text-white">{w.title}</h3>
             <div className="mt-2 max-w-3xl text-sm text-grey-on-black space-y-1">
               {w.body.map((line, i) => (
                 <p key={i}>{line}</p>

@@ -162,12 +162,21 @@ function Testimonial() {
           <div className="relative rounded-3xl overflow-hidden bg-rich-black min-h-[460px] md:min-h-[480px] flex">
             <div aria-hidden className="absolute inset-0">
               <Image
+                src="/GFMillusmobile.png"
+                alt=""
+                fill
+                quality={85}
+                priority={false}
+                className="object-cover md:hidden"
+                sizes="100vw"
+              />
+              <Image
                 src="/GFM-Illus.png"
                 alt=""
                 fill
                 quality={85}
                 priority={false}
-                className="object-cover"
+                className="hidden object-cover md:block"
                 sizes="(min-width: 1280px) 1216px, 100vw"
               />
             </div>
