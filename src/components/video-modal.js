@@ -3,6 +3,8 @@
  * Vanilla JS replacement for AnimatePresence modal
  */
 
+import { ASSET_BASE } from '../lib/config.js';
+
 let modalElement = null;
 
 export function initVideoModal() {
@@ -13,7 +15,7 @@ export function initVideoModal() {
 }
 
 function openModal() {
-  const videoSrc = '/hero.mp4';
+  const videoSrc = `${ASSET_BASE}/hero.mp4`;
   
   // Create modal
   modalElement = document.createElement('div');
