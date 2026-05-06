@@ -22,8 +22,8 @@ aws s3api put-bucket-cors \
 
 ## 4. Verify upload works
 Open in browser:
-- https://incode-videos.s3.us-east-2.amazonaws.com/govfacematch-v5/assets/index-BzGOiQV-.css
-- https://incode-videos.s3.us-east-2.amazonaws.com/govfacematch-v5/assets/index-BTwpS2Ii.js
+- https://incode-videos.s3.us-east-2.amazonaws.com/govfacematch-v5/assets/index-W3rmPLJY.css
+- https://incode-videos.s3.us-east-2.amazonaws.com/govfacematch-v5/assets/index-B_9EghZe.js
 - https://incode-videos.s3.us-east-2.amazonaws.com/govfacematch-v5/background.png
 
 ## 5. Webflow — Head Code
@@ -41,7 +41,7 @@ Paste contents of `webflow-embed/head-code.html`:
 <link rel="modulepreload" crossorigin href="https://incode-videos.s3.us-east-2.amazonaws.com/govfacematch-v5/assets/interactions-6V8Bh7t5.js">
 
 <!-- Stylesheet -->
-<link rel="stylesheet" crossorigin href="https://incode-videos.s3.us-east-2.amazonaws.com/govfacematch-v5/assets/index-BzGOiQV-.css">
+<link rel="stylesheet" crossorigin href="https://incode-videos.s3.us-east-2.amazonaws.com/govfacematch-v5/assets/index-W3rmPLJY.css">
 ```
 
 ## 6. Webflow — Body Code
@@ -53,7 +53,7 @@ Paste contents of `webflow-embed/body-code.html`:
 <main id="main-content"></main>
 
 <!-- Entry point script -->
-<script type="module" crossorigin src="https://incode-videos.s3.us-east-2.amazonaws.com/govfacematch-v5/assets/index-BTwpS2Ii.js"></script>
+<script type="module" crossorigin src="https://incode-videos.s3.us-east-2.amazonaws.com/govfacematch-v5/assets/index-B_9EghZe.js"></script>
 ```
 
 ## 7. Publish & Test
