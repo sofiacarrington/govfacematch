@@ -1,14 +1,13 @@
 /**
  * Main entry point for GovFaceMatch landing page
  * Pure vanilla JavaScript - no frameworks
+ * Body content only - no header/footer
  */
 
 // Import styles
 import './styles.css';
 
-// Import components (will be created in Phase 2)
-import { initHeader } from './components/header.js';
-import { initFooter } from './components/footer.js';
+// Import components
 import { initRevealAnimations } from './components/reveal.js';
 import { initCounters } from './components/counter.js';
 import { initVideoModal } from './components/video-modal.js';
@@ -23,9 +22,7 @@ import { renderPageContent } from './pages/home.js';
  * Initialize the application
  */
 function init() {
-  // Render static components
-  initHeader();
-  initFooter();
+  // Render page content
   renderPageContent();
   
   // Initialize interactive components
