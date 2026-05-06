@@ -9,11 +9,11 @@
     "preview": "vite preview",
     "lint": "eslint src"
   },
-  "dependencies": {},
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "eslint": "^9",
     "tailwindcss": "^4",
+    "terser": "^5.46.2",
     "vite": "^6.0.0",
     "vite-plugin-compression": "^0.5.1"
   }
