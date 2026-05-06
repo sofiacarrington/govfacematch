@@ -136,18 +136,18 @@ function renderHero() {
         <div class="grid gap-16 lg:grid-cols-[1fr_1.15fr] lg:gap-20 items-center">
           <div>
             <div class="reveal" data-delay="0">
-              <div class="inline-flex items-center rounded-md border px-3 py-1 text-sm font-medium border-blue/25 bg-blue/10 text-blue-eyebrow">
+              <div class="t-eyebrow inline-flex items-center rounded-md border px-3 py-1 text-sm font-medium border-blue/25 bg-blue/10 text-blue-eyebrow">
                 GovFaceMatch
               </div>
             </div>
-            <h1 class="reveal mt-6 font-display text-[33px] md:text-[42px] lg:text-[54px] leading-[1.05] text-balance" data-delay="0.1">
+            <h1 class="t-hero-title reveal mt-6 font-display text-[33px] md:text-[42px] lg:text-[54px] leading-[1.05] text-balance" data-delay="0.1">
               A new standard in<br />identity verification
             </h1>
-            <p class="reveal mt-6 max-w-xl text-lg text-grey-on-black text-balance" data-delay="0.2">
+            <p class="t-hero-subtitle reveal mt-6 max-w-xl text-lg text-grey-on-black text-balance" data-delay="0.2">
               The first identity solution to match biometrics against DMV records. Higher conversion and stronger fraud prevention, with no tradeoff.
             </p>
             <div class="reveal mt-8 flex flex-wrap gap-3" data-delay="0.3">
-              <a href="/contact" class="inline-flex items-center justify-center gap-2 rounded-md font-medium transition-colors bg-blue text-white hover:bg-[#0058d9] px-5 py-2.5 text-[15px]">
+              <a href="/contact" class="t-button inline-flex items-center justify-center gap-2 rounded-md font-medium transition-colors bg-blue text-white hover:bg-[#0058d9] px-5 py-2.5 text-[15px]">
                 Request a demo
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25">
                   <path d="M7 7h10v10M7 17 17 7"/>
@@ -203,7 +203,7 @@ function renderTrustedBy() {
   return `
     <section class="bg-background border-y border-border-light">
       <div class="mx-auto max-w-[1280px] px-6 lg:px-12 py-20">
-        <p class="text-center text-sm text-grey-on-white mb-10">
+        <p class="t-section-label text-center text-sm text-grey-on-white mb-10">
           Global enterprises and partners trust Incode
         </p>
         ${renderLogoMarquee()}
@@ -234,12 +234,12 @@ function renderProblem() {
       <div class="relative mx-auto max-w-[1280px] px-6 lg:px-12 py-20 md:py-28">
         <div class="grid gap-10 lg:grid-cols-2 lg:gap-16 items-start">
           <div class="reveal">
-            <h2 class="font-display text-3xl md:text-4xl text-balance">
+            <h2 class="t-section-heading font-display text-3xl md:text-4xl text-balance text-white">
               Identity verification has always meant choosing between friction and fraud
             </h2>
           </div>
           <div class="reveal" data-delay="0.1">
-            <p class="text-grey-on-black text-lg">
+            <p class="t-body-lg text-grey-on-black text-lg">
               Most solutions rely on either data or documents. Neither can deliver both high conversion and strong fraud prevention.
             </p>
           </div>
@@ -255,8 +255,8 @@ function renderProblem() {
                   <span class="inline-flex items-center rounded-md border border-red-500/25 bg-red-500/10 px-2.5 py-0.5 text-[11px] font-medium text-red-300">
                     ${c.tag}
                   </span>
-                  <h3 class="mt-3 font-display text-lg md:text-xl text-white">${c.title}</h3>
-                  <p class="mt-2 text-grey-on-black">${c.body}</p>
+                  <h3 class="t-card-title mt-3 font-display text-lg md:text-xl text-white">${c.title}</h3>
+                  <p class="t-body-dark mt-2 text-grey-on-black">${c.body}</p>
                 </div>
               </div>
             </div>
@@ -274,26 +274,26 @@ function renderReality() {
         <div class="max-w-3xl">
           <div class="reveal">
             <div class="flex">
-              <div class="inline-flex items-centers rounded-md border px-3 py-1 text-sm font-medium border-blue/20 bg-blue/10 text-blue">
+              <div class="t-eyebrow inline-flex items-centers rounded-md border px-3 py-1 text-sm font-medium border-blue/20 bg-blue/10 text-blue">
                 The problem
               </div>
             </div>
           </div>
-          <h2 class="reveal mt-5 font-display text-3xl md:text-4xl text-balance" data-delay="0.1">
+          <h2 class="t-section-heading reveal mt-5 font-display text-3xl md:text-4xl text-balance text-foreground" data-delay="0.1">
             The tradeoff has become too costly to ignore
           </h2>
-          <p class="reveal mt-4 text-grey-on-white" data-delay="0.2">
+          <p class="t-body-sm reveal mt-4 text-grey-on-white" data-delay="0.2">
             Added friction continues to drive legitimate users away, while record-high data breaches have made high-quality synthetic and stolen identities easy to create at scale. Data and document checks were never meant to stop real stolen PII.
           </p>
         </div>
         <div class="mt-14 grid gap-10 sm:grid-cols-3">
           ${REALITY_STATS.map((s, i) => `
             <div class="reveal border-t border-border-light pt-6" data-delay="${0.1 + i * 0.1}">
-              <div class="font-display text-4xl md:text-5xl bg-[linear-gradient(120deg,#006aff_0%,#000_55%)] bg-clip-text text-transparent">
+              <div class="t-stat-number font-display text-4xl md:text-5xl bg-[linear-gradient(120deg,#006aff_0%,#000_55%)] bg-clip-text text-transparent">
                 <span class="tabular-nums" data-counter="${s.value}" data-prefix="${s.prefix || ''}" data-suffix="${s.suffix}" data-decimals="0">0${s.suffix}</span>
               </div>
-              <p class="mt-3 text-sm text-grey-on-white max-w-xs whitespace-pre-line">${s.label}</p>
-              <p class="mt-2 text-xs text-grey-on-white/70">${s.source}</p>
+              <p class="t-stat-label mt-3 text-sm text-grey-on-white max-w-xs whitespace-pre-line">${s.label}</p>
+              <p class="t-stat-source mt-2 text-xs text-grey-on-white/70">${s.source}</p>
             </div>
           `).join('')}
         </div>
@@ -309,15 +309,15 @@ function renderIntroducing() {
         <div class="max-w-3xl">
           <div class="reveal">
             <div class="flex">
-              <div class="inline-flex items-center rounded-md border px-3 py-1 text-sm font-medium border-blue/20 bg-blue/10 text-blue">
+              <div class="t-eyebrow inline-flex items-center rounded-md border px-3 py-1 text-sm font-medium border-blue/20 bg-blue/10 text-blue">
                 Introducing GovFaceMatch
               </div>
             </div>
           </div>
-          <h2 class="reveal mt-5 font-display text-3xl md:text-4xl text-balance" data-delay="0.1">
+          <h2 class="t-section-heading reveal mt-5 font-display text-3xl md:text-4xl text-balance text-foreground" data-delay="0.1">
             The only solution that delivers higher conversion without compromising identity assurance
           </h2>
-          <p class="reveal mt-4 text-grey-on-white" data-delay="0.2">
+          <p class="t-body-sm reveal mt-4 text-grey-on-white" data-delay="0.2">
             Built with state DMVs, enabling real-time biometric matching against official government records to confirm identity and stop AI-assisted fraud.
           </p>
         </div>
@@ -347,10 +347,10 @@ function renderIntroducing() {
                       ${step.icon}
                     </span>
                     <div class="flex-1 min-w-0">
-                      <h3 class="font-display text-base md:text-lg text-foreground">
+                      <h3 class="t-card-title-sm font-display text-base md:text-lg text-foreground">
                         ${step.title}
                       </h3>
-                      <p class="mt-1.5 max-w-md text-sm text-grey-on-white">
+                      <p class="t-body-sm mt-1.5 max-w-md text-sm text-grey-on-white">
                         ${step.body}
                       </p>
                     </div>
@@ -373,15 +373,15 @@ function renderWhatChanges() {
           <div id="benefits">
             <div class="reveal">
               <div class="flex">
-                <div class="inline-flex items-center rounded-md border px-3 py-1 text-sm font-medium border-blue/20 bg-blue/10 text-blue">
+                <div class="t-eyebrow inline-flex items-center rounded-md border px-3 py-1 text-sm font-medium border-blue/20 bg-blue/10 text-blue">
                   Benefits
                 </div>
               </div>
             </div>
-            <h2 class="reveal mt-5 font-display text-3xl md:text-4xl text-balance" data-delay="0.1">
+            <h2 class="t-section-heading reveal mt-5 font-display text-3xl md:text-4xl text-balance text-foreground" data-delay="0.1">
               What changes when identity is verified against DMV records
             </h2>
-            <p class="reveal mt-4 text-grey-on-white" data-delay="0.2">
+            <p class="t-body-sm reveal mt-4 text-grey-on-white" data-delay="0.2">
               Direct verification at the source transforms conversion and fraud performance.
             </p>
 
@@ -392,8 +392,8 @@ function renderWhatChanges() {
                     ${b.icon}
                   </span>
                   <div>
-                    <h3 class="font-display text-lg leading-snug">${b.title}</h3>
-                    <p class="mt-1.5 text-sm leading-relaxed text-grey-on-white">${b.body}</p>
+                    <h3 class="t-benefit-title font-display text-lg leading-snug">${b.title}</h3>
+                    <p class="t-body-sm mt-1.5 text-sm leading-relaxed text-grey-on-white">${b.body}</p>
                   </div>
                 </li>
               `).join('')}
@@ -404,11 +404,11 @@ function renderWhatChanges() {
             <div class="grid h-full grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 content-end">
               ${CONVERSION_STATS.map((s) => `
                 <div class="border-t border-border-light pt-6">
-                  <div class="font-display text-4xl md:text-5xl leading-none bg-[linear-gradient(120deg,#006aff_0%,#000_55%)] bg-clip-text text-transparent">
+                  <div class="t-stat-number font-display text-4xl md:text-5xl leading-none bg-[linear-gradient(120deg,#006aff_0%,#000_55%)] bg-clip-text text-transparent">
                     <span class="tabular-nums" data-counter="${s.value}" data-prefix="${s.prefix || ''}" data-suffix="${s.suffix}" data-decimals="0">0${s.suffix}</span>
                   </div>
-                  <div class="mt-3 font-display text-base text-foreground">${s.title}</div>
-                  <div class="mt-1 text-sm text-grey-on-white">${s.sub}</div>
+                  <div class="t-tile-label mt-3 font-display text-base text-foreground">${s.title}</div>
+                  <div class="t-body-sm mt-1 text-sm text-grey-on-white">${s.sub}</div>
                 </div>
               `).join('')}
             </div>
@@ -444,13 +444,13 @@ function renderTestimonial() {
                   class="h-12 w-auto object-contain"
                   loading="lazy"
                 />
-                <blockquote class="mt-6 font-display-regular text-xl md:text-2xl text-white leading-snug text-balance">
+                <blockquote class="t-quote mt-6 font-display-regular text-xl md:text-2xl text-white leading-snug text-balance">
                   "The partnership with Incode allows us to stay focused on our core mission of serving the public, while responsibly extending trusted identity verification capabilities to the private sector with customers' consent. By enabling secure, reliable identity checks across industries such as banking and automotive, we're helping strengthen the broader digital identity ecosystem."
                 </blockquote>
 
                 <div class="mt-8 pt-6 border-t border-white/15">
-                  <div class="text-sm font-medium text-white">Dr. Gerald F. Lackey</div>
-                  <div class="mt-0.5 text-xs text-grey-on-black">
+                  <div class="t-quote-name text-sm font-medium text-white">Dr. Gerald F. Lackey</div>
+                  <div class="t-quote-role mt-0.5 text-xs text-grey-on-black">
                     Former Commissioner of the Virginia Department of Motor Vehicles
                   </div>
                 </div>
@@ -468,14 +468,14 @@ function renderUnifiedOffering() {
     <section class="relative w-full bg-rich-black text-white">
       <div class="mx-auto max-w-[1280px] px-6 lg:px-12 py-20 md:py-28">
         <div class="reveal">
-          <div class="inline-flex items-center rounded-md border px-3 py-1 text-sm font-medium border-blue/25 bg-blue/10 text-blue-eyebrow">
+          <div class="t-eyebrow inline-flex items-center rounded-md border px-3 py-1 text-sm font-medium border-blue/25 bg-blue/10 text-blue-eyebrow">
             Unified offering
           </div>
         </div>
-        <h2 class="reveal mt-4 font-display text-3xl md:text-4xl max-w-3xl text-balance" data-delay="0.1">
+        <h2 class="t-section-heading reveal mt-4 font-display text-3xl md:text-4xl max-w-3xl text-balance text-white" data-delay="0.1">
           Verify more users with the same level of trust
         </h2>
-        <p class="reveal mt-6 max-w-2xl text-grey-on-black" data-delay="0.2">
+        <p class="t-body-dark reveal mt-6 max-w-2xl text-grey-on-black" data-delay="0.2">
           GovFaceMatch is part of the broader GovMatch offering, combining biometric and data validation against government records to deliver high assurance across every state.
         </p>
         <div class="mt-10">
@@ -491,14 +491,14 @@ function renderWhyIncode() {
     <section id="why-incode" class="bg-background">
       <div class="mx-auto max-w-[1280px] px-6 lg:px-12 py-20 md:py-28">
         <div class="reveal">
-          <div class="inline-flex items-center rounded-md border px-3 py-1 text-sm font-medium border-blue/20 bg-blue/10 text-blue">
+          <div class="t-eyebrow inline-flex items-center rounded-md border px-3 py-1 text-sm font-medium border-blue/20 bg-blue/10 text-blue">
             Why Incode
           </div>
         </div>
-        <h2 class="reveal mt-4 font-display text-3xl md:text-4xl max-w-4xl text-balance" data-delay="0.1">
+        <h2 class="t-section-heading reveal mt-4 font-display text-3xl md:text-4xl max-w-4xl text-balance text-foreground" data-delay="0.1">
           The first and only identity platform to partner directly with state DMVs for real-time biometric verification
         </h2>
-        <p class="reveal mt-6 max-w-2xl text-grey-on-white" data-delay="0.2">
+        <p class="t-body-sm reveal mt-6 max-w-2xl text-grey-on-white" data-delay="0.2">
           No other vendor can improve both conversion and fraud outcomes at the same time.
         </p>
         <div class="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -508,11 +508,11 @@ function renderWhyIncode() {
                 <span class="text-blue">
                   ${t.icon}
                 </span>
-                <span class="font-display text-sm text-grey-on-white tabular-nums">
+                <span class="t-tab-number font-display text-sm text-grey-on-white tabular-nums">
                   0${i + 1}
                 </span>
               </div>
-              <div class="mt-6 font-display text-base text-balance">${t.label}</div>
+              <div class="t-tile-label mt-6 font-display text-base text-balance">${t.label}</div>
             </div>
           `).join('')}
         </div>
@@ -526,10 +526,10 @@ function renderClosingCta() {
     <section class="relative bg-rich-black text-white overflow-hidden">
       <div class="absolute inset-x-0 -top-32 h-80 glow-blue blur-2xl opacity-70 pointer-events-none"></div>
       <div class="relative mx-auto max-w-[1280px] px-6 lg:px-12 py-24 text-center">
-        <h2 class="reveal font-display text-3xl sm:text-4xl md:text-5xl md:whitespace-nowrap mx-auto">
+        <h2 class="t-cta-heading reveal font-display text-3xl sm:text-4xl md:text-5xl md:whitespace-nowrap mx-auto">
           A new standard in identity verification
         </h2>
-        <p class="reveal mt-6 text-grey-on-black max-w-xl mx-auto" data-delay="0.1">
+        <p class="t-body-dark reveal mt-6 text-grey-on-black max-w-xl mx-auto" data-delay="0.1">
           Stop losing customers to verification.<br />
           Increase conversion without increasing fraud.
         </p>

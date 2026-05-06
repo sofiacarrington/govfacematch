@@ -89,13 +89,13 @@ export function renderUnifiedFlow() {
                 Unified offering
               </p>
             ` : ''}
-            <h3 class="font-display text-2xl md:text-3xl text-white ${w.emphasized ? 'mt-1 lg:mt-0' : ''}">
+            <h3 class="t-card-title font-display text-2xl md:text-3xl text-white ${w.emphasized ? 'mt-1 lg:mt-0' : ''}">
               ${w.title}
             </h3>
-            <div class="mt-2 max-w-3xl text-sm text-grey-on-black space-y-1">
-              ${w.body.map(line => `<p>${line}</p>`).join('')}
+            <div class="t-body-dark mt-2 max-w-3xl text-sm text-grey-on-black space-y-1">
+              ${w.body.map(line => `<p class="t-body-dark">${line}</p>`).join('')}
             </div>
-            <p class="mt-2 text-xs ${w.emphasized ? 'text-blue-eyebrow' : 'text-grey-on-black'}">
+            <p class="t-stat-label mt-2 text-xs ${w.emphasized ? 'text-blue-eyebrow' : 'text-grey-on-black'}">
               ${w.coverage}
             </p>
             <button
