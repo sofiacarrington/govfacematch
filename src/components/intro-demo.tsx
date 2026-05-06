@@ -30,7 +30,22 @@ export function IntroDemo() {
 
   useEffect(() => {
     const v = videoRef.current;
-    if (v) v.playbackRate = PLAYBACK_RATE;
+    if (!v) return;
+    v.playbackRate = PLAYBACK_RATE;
+    const tryPlay = () => {
+      v.play().catch(() => {});
+    };
+    tryPlay();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) tryPlay();
+        }
+      },
+      { threshold: 0.1 },
+    );
+    observer.observe(v);
+    return () => observer.disconnect();
   }, []);
 
   return (

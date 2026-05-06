@@ -132,15 +132,19 @@ export function UnifiedFlow() {
             id={w.id}
             className="scroll-mt-24 rounded-2xl border border-border-dark bg-off-black p-6 lg:p-8"
           >
-            <p
+            {w.emphasized && (
+              <p className="lg:hidden text-xs font-medium text-blue-eyebrow">
+                Unified offering
+              </p>
+            )}
+            <h3
               className={cn(
-                "lg:hidden text-xs font-medium uppercase tracking-wider",
-                w.emphasized ? "text-blue-eyebrow" : "text-grey-on-black",
+                "font-display text-2xl md:text-3xl text-white",
+                w.emphasized && "mt-1 lg:mt-0",
               )}
             >
-              {w.tab}
-            </p>
-            <h3 className="mt-1 lg:mt-0 font-display text-2xl md:text-3xl text-white">{w.title}</h3>
+              {w.title}
+            </h3>
             <div className="mt-2 max-w-3xl text-sm text-grey-on-black space-y-1">
               {w.body.map((line, i) => (
                 <p key={i}>{line}</p>

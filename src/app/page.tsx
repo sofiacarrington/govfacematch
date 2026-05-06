@@ -160,16 +160,7 @@ function Testimonial() {
       <div className="mx-auto max-w-[1280px] px-6 lg:px-12 py-20 md:py-28">
         <Reveal>
           <div className="relative rounded-3xl overflow-hidden bg-rich-black min-h-[460px] md:min-h-[480px] flex">
-            <div aria-hidden className="absolute inset-0">
-              <Image
-                src="/GFMillusmobile.png"
-                alt=""
-                fill
-                quality={85}
-                priority={false}
-                className="object-cover md:hidden"
-                sizes="100vw"
-              />
+            <div aria-hidden className="absolute inset-0 bg-black md:bg-transparent">
               <Image
                 src="/GFM-Illus.png"
                 alt=""
