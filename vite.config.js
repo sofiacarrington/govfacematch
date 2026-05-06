@@ -1,10 +1,10 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   root: './',
   publicDir: 'public',
-  base: 'https://incode-videos.s3.us-east-2.amazonaws.com/govfacematch-v5/',
+  base: command === 'build' ? 'https://incode-videos.s3.us-east-2.amazonaws.com/govfacematch-v5/' : '/',
   
   build: {
     outDir: 'dist',
@@ -53,4 +53,4 @@ export default defineConfig({
   preview: {
     port: 3000
   }
-});
+}));
