@@ -17,7 +17,7 @@ export default defineConfig(({ command }) => ({
         manualChunks: {
           'animations': ['./src/components/reveal.js', './src/components/counter.js'],
           'modal': ['./src/components/video-modal.js'],
-          'interactions': ['./src/components/tabs.js', './src/components/accordion.js']
+          'interactions': ['./src/components/unified-flow.js']
         },
         // Naming pattern for chunks
         chunkFileNames: 'assets/[name]-[hash].js',

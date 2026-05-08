@@ -1,57 +1,40 @@
 /**
- * Main entry point for GovFaceMatch landing page
- * Pure vanilla JavaScript - no frameworks
- * Body content only - no header/footer
+ * GovFaceMatch — Progressive Enhancement
+ * HTML is pre-rendered in Webflow Embed elements (SEO-friendly).
+ * This script adds animations, counters, video modal, and interactivity.
  */
 
 // Import styles
 import './styles.css';
 
-// Import components
+// Import enhancement modules
 import { initRevealAnimations } from './components/reveal.js';
 import { initCounters } from './components/counter.js';
 import { initVideoModal } from './components/video-modal.js';
-import { initMarquee } from './components/marquee.js';
-import { initTabs } from './components/tabs.js';
-import { initAccordion } from './components/accordion.js';
 import { initUnifiedFlow } from './components/unified-flow.js';
 
-// Import page content
-import { renderPageContent } from './pages/home.js';
-
 /**
- * Initialize the application
+ * Enhance the static HTML with interactivity
  */
-function init() {
-  // Render page content
-  renderPageContent();
-  
-  // Initialize interactive components
+function enhance() {
   initRevealAnimations();
   initCounters();
   initVideoModal();
-  initMarquee();
-  initTabs();
-  initAccordion();
   initUnifiedFlow();
-  
-  console.log('🚀 GovFaceMatch loaded');
 }
 
 // Wait for DOM to be ready
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', init);
+  document.addEventListener('DOMContentLoaded', enhance);
 } else {
-  init();
+  enhance();
 }
 
 // Handle page visibility for performance
 document.addEventListener('visibilitychange', () => {
   if (document.hidden) {
-    // Pause animations when tab is hidden
     document.body.classList.add('page-hidden');
   } else {
-    // Resume animations when tab is visible
     document.body.classList.remove('page-hidden');
   }
 });
