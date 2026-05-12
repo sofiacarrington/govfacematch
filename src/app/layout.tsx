@@ -19,9 +19,12 @@ const rethinkSans = Rethink_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "GovFaceMatch — A new standard in identity verification",
+  title: {
+    default: "Incode — Power a world of trust",
+    template: "%s — Incode",
+  },
   description:
-    "The only identity platform that partners directly with state DMVs for real-time biometric verification. Higher conversion. Stronger assurance.",
+    "Adapt faster than fraud with state-of-the-art, frontier AI and the scale of a global data network.",
 };
 
 export default function RootLayout({

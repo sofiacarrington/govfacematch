@@ -83,7 +83,7 @@ export function SiteFooter() {
   return (
     <footer className="relative bg-rich-black text-white overflow-hidden">
       <div className="absolute inset-x-0 -bottom-40 h-80 glow-blue opacity-60 pointer-events-none" />
-      <div className="relative mx-auto max-w-[1280px] px-6 lg:px-12 py-16">
+      <div className="relative mx-auto max-w-[1280px] px-5 lg:px-8 py-16">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.3fr_repeat(6,1fr)]">
           <div>
             <Logo className="text-white" />

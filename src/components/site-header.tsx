@@ -175,14 +175,18 @@ export function SiteHeader() {
     >
       <div
         className={cn(
-          "border-b transition-[background-color,border-color,box-shadow] duration-300 ease-out",
+          "border-b transition-[background-color,border-color,box-shadow,backdrop-filter] duration-300 ease-out",
           bright
-            ? "border-border-light/60 bg-background shadow-[0_8px_24px_-12px_rgba(0,0,0,0.08)]"
+            ? "border-border-light/70 bg-background/85 backdrop-blur-xl shadow-[0_10px_30px_-18px_rgba(15,23,42,0.18)]"
             : "border-transparent",
         )}
       >
-        <div className="mx-auto flex max-w-[1280px] items-center justify-between gap-4 px-4 py-3 lg:px-8 lg:py-4">
-          <Link href="/" aria-label="Home" className="shrink-0">
+        <div className="mx-auto flex max-w-[1280px] items-center justify-between gap-6 px-5 py-3.5 lg:px-8 lg:py-4">
+          <Link
+            href="/"
+            aria-label="Home"
+            className="shrink-0 transition-opacity duration-200 hover:opacity-80"
+          >
             <Logo
               className={cn(
                 "transition-[filter] duration-300 ease-out",
@@ -191,7 +195,7 @@ export function SiteHeader() {
             />
           </Link>
 
-          <nav className="hidden lg:flex items-center rounded-2xl px-2 py-2">
+          <nav className="hidden lg:flex items-center gap-0.5">
             {NAV.map((item) => {
               const hasMega = item.label in MEGA_MENUS;
               const isOpen = openMenu === item.label;
@@ -202,21 +206,21 @@ export function SiteHeader() {
                   onMouseEnter={() => hasMega && openMenuFor(item.label)}
                   onMouseLeave={() => hasMega && scheduleClose()}
                   className={cn(
-                    "inline-flex items-center gap-1 rounded-lg px-3.5 py-1.5 text-[13px] transition-colors",
+                    "group/nav relative inline-flex items-center gap-1.5 rounded-lg px-3.5 py-1.5 text-[13.5px] font-medium transition-colors duration-200",
                     bright
-                      ? "text-foreground hover:bg-foreground/5"
-                      : "text-white hover:bg-white/10",
-                    isOpen && "bg-foreground/5",
+                      ? "text-foreground/80 hover:text-foreground hover:bg-foreground/[0.04]"
+                      : "text-white/85 hover:text-white hover:bg-white/[0.08]",
+                    isOpen && (bright ? "text-foreground bg-foreground/[0.04]" : "text-white bg-white/[0.08]"),
                   )}
                 >
                   {item.label}
                   {item.hasMenu && (
                     <ChevronDown
-                      size={12}
-                      strokeWidth={2.25}
+                      size={11}
+                      strokeWidth={2.5}
                       className={cn(
-                        "transition-transform duration-200",
-                        bright ? "text-foreground/40" : "text-white/60",
+                        "transition-transform duration-200 ease-out",
+                        bright ? "text-foreground/40" : "text-white/50",
                         isOpen && "rotate-180",
                       )}
                     />
@@ -228,21 +232,27 @@ export function SiteHeader() {
 
           <Link
             href="/contact"
-            className={cn(
-              "hidden lg:inline-flex items-center gap-2 rounded-lg px-4 py-2 text-[13px] font-medium text-white transition-colors duration-300 ease-out",
-              bright ? "bg-blue hover:bg-[#0058d9]" : "hover:bg-white/10",
-            )}
+            className="group/cta hidden lg:inline-flex items-center gap-1.5 rounded-md bg-blue px-4 py-2 text-[13.5px] font-medium text-white shadow-[0_8px_20px_-10px_rgba(0,106,255,0.55)] transition-all duration-300 ease-out hover:bg-[#0058d9] hover:shadow-[0_10px_24px_-10px_rgba(0,106,255,0.65)]"
           >
             Request a demo
-            <ArrowUpRight size={14} strokeWidth={2.25} />
+            <ArrowUpRight
+              size={14}
+              strokeWidth={2.5}
+              className="transition-transform duration-200 group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5"
+            />
           </Link>
 
           <button
             aria-label="Toggle menu"
-            className="lg:hidden text-foreground"
+            className={cn(
+              "lg:hidden inline-flex h-9 w-9 items-center justify-center rounded-md border transition-colors",
+              bright
+                ? "border-border-light/70 text-foreground hover:bg-foreground/[0.04]"
+                : "border-white/15 text-white hover:bg-white/10",
+            )}
             onClick={() => setMobileOpen((v) => !v)}
           >
-            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+            {mobileOpen ? <X size={18} /> : <Menu size={18} />}
           </button>
         </div>
 
@@ -259,7 +269,7 @@ export function SiteHeader() {
               }}
               onMouseEnter={() => openMenuFor(openMenu)}
               onMouseLeave={scheduleClose}
-              className="hidden lg:block border-t border-border-light/60 bg-background/95 backdrop-blur-xl shadow-[0_24px_48px_-24px_rgba(0,0,0,0.18)]"
+              className="hidden lg:block border-t border-border-light/70 bg-background/95 backdrop-blur-xl shadow-[0_28px_56px_-32px_rgba(15,23,42,0.22)]"
             >
               <motion.div
                 key={openMenu}
@@ -278,24 +288,24 @@ export function SiteHeader() {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="lg:hidden overflow-hidden border-t border-border-light/60 px-4 pb-4"
+            className="lg:hidden overflow-hidden border-t border-border-light/70 bg-background/95 backdrop-blur-xl px-4 pb-5"
           >
-            <div className="flex flex-col gap-1 pt-2">
+            <div className="flex flex-col gap-1 pt-3">
               {NAV.map((item) => (
                 <a
                   key={item.label}
                   href={item.href}
                   onClick={() => setMobileOpen(false)}
-                  className="flex items-center justify-between px-3 py-2.5 rounded-md text-sm text-foreground hover:bg-off-white"
+                  className="flex items-center justify-between px-3 py-3 rounded-lg text-[15px] font-medium text-foreground/85 hover:bg-foreground/[0.04] hover:text-foreground transition-colors"
                 >
                   {item.label}
-                  {item.hasMenu && <ChevronDown size={14} className="text-foreground/60" />}
+                  {item.hasMenu && <ChevronDown size={14} className="text-foreground/40" />}
                 </a>
               ))}
               <ButtonLink
                 href="/contact"
                 onClick={() => setMobileOpen(false)}
-                className="mt-2 rounded-full"
+                className="mt-3"
               >
                 Request a demo
                 <ArrowUpRight size={16} strokeWidth={2.25} />
@@ -310,21 +320,23 @@ export function SiteHeader() {
 
 function MegaPanel({ menu }: { menu: MenuColumn[] }) {
   return (
-    <div className="mx-auto grid max-w-[1280px] px-4 py-8 lg:px-8 lg:grid-cols-[1.7fr_1fr_1.05fr]">
+    <div className="mx-auto grid max-w-[1280px] px-5 py-10 lg:px-8 lg:grid-cols-[1.7fr_1fr_1.05fr]">
       {menu.map((col, idx) => (
         <div
           key={col.heading}
           className={cn(
-            idx > 0 && "lg:border-l lg:border-border-light/70 lg:pl-8",
-            idx < menu.length - 1 && "lg:pr-8",
+            idx > 0 && "lg:border-l lg:border-border-light/50 lg:pl-9",
+            idx < menu.length - 1 && "lg:pr-9",
             menu.length === 2 && idx === 1 && "lg:col-span-2",
           )}
         >
-          <div className="text-xs font-medium text-grey-on-white">{col.heading}</div>
+          <div className="text-xs font-medium text-grey-on-white/80">
+            {col.heading}
+          </div>
           <div
             className={cn(
-              "mt-4 grid gap-x-6",
-              col.links.some((l) => l.sub) ? "gap-y-5" : "gap-y-3",
+              "mt-5 grid gap-x-6",
+              col.links.some((l) => l.sub) ? "gap-y-4" : "gap-y-2.5",
               col.columns === 2 ? "grid-cols-1 sm:grid-cols-2" : "grid-cols-1",
             )}
           >
@@ -335,15 +347,15 @@ function MegaPanel({ menu }: { menu: MenuColumn[] }) {
                   key={link.title}
                   href={link.href}
                   className={cn(
-                    "group/link flex gap-3",
+                    "group/link flex gap-3 rounded-lg p-2 -m-2 transition-colors hover:bg-foreground/[0.025]",
                     link.sub ? "items-start" : "items-center",
                   )}
                 >
-                  <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-border-light/80 bg-off-white text-foreground/70 transition-colors group-hover/link:border-blue/30 group-hover/link:bg-blue/8 group-hover/link:text-blue">
+                  <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-border-light/70 bg-off-white/70 text-foreground/70 transition-all duration-200 group-hover/link:border-blue/30 group-hover/link:bg-blue/[0.08] group-hover/link:text-blue group-hover/link:shadow-[0_6px_14px_-8px_rgba(0,106,255,0.4)]">
                     <Icon size={16} strokeWidth={1.75} />
                   </span>
                   <span className="flex min-w-0 flex-col">
-                    <span className="text-sm font-medium leading-tight text-foreground transition-colors group-hover/link:text-blue">
+                    <span className="text-[13.5px] font-medium leading-tight text-foreground transition-colors group-hover/link:text-blue">
                       {link.title}
                     </span>
                     {link.sub && (

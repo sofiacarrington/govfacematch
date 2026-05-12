@@ -23,7 +23,7 @@ export function Section({
         className,
       )}
     >
-      <div className="mx-auto max-w-[1280px] px-6 lg:px-12 py-20 md:py-28">
+      <div className="mx-auto max-w-[1280px] px-5 lg:px-8 py-16 md:py-20">
         {children}
       </div>
     </section>
@@ -42,7 +42,7 @@ export function Eyebrow({
   return (
     <div
       className={cn(
-        "inline-flex items-center rounded-md border px-3 py-1 text-sm font-medium",
+        "inline-flex items-center rounded-full border px-3.5 py-1 text-sm font-medium",
         tone === "dark"
           ? "border-blue/25 bg-blue/10 text-blue-eyebrow"
           : "border-blue/20 bg-blue/10 text-blue",

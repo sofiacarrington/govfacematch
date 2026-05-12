@@ -10,7 +10,7 @@ type Workflow = {
   tab: string;
   title: string;
   body: string[];
-  coverage: string;
+  coverage?: string;
   diagram: string;
   diagramWidth: number;
   diagramHeight: number;
@@ -26,8 +26,7 @@ const WORKFLOWS: Workflow[] = [
       "Combines GovFaceMatch and GovDataMatch to route verifications based on the issuing state.",
       "Coverage expands automatically as new states go live, with no additional integration required.",
     ],
-    coverage: "95%+ combined population coverage",
-    diagram: "/GovMatch.png",
+    diagram: "/GovMatch-v2.png",
     diagramWidth: 2568,
     diagramHeight: 992,
     emphasized: true,
@@ -37,24 +36,24 @@ const WORKFLOWS: Workflow[] = [
     tab: "GovFaceMatch",
     title: "GovFaceMatch",
     body: [
-      "Matches a live biometric directly against the government portrait at the issuing DMV.",
+      "Matches identity data and a live biometric against the government record and portrait at the issuing DMV.",
       "Confirms the person, not just the identity.",
     ],
-    coverage: "~20% U.S. population coverage",
-    diagram: "/GovFaceMatch.png",
-    diagramWidth: 1832,
-    diagramHeight: 808,
+    coverage: "~20% biometric coverage across U.S. population",
+    diagram: "/GovFaceMatch-v2.png",
+    diagramWidth: 1987,
+    diagramHeight: 874,
   },
   {
     id: "govdatamatch",
     tab: "GovDataMatch",
     title: "GovDataMatch",
     body: [
-      "Matches identity data attributes against DMV issuing records across 46 states.",
+      "Matches identity data attributes against the government record at the issuing DMV.",
       "Confirms the identity exists in the government record.",
     ],
-    coverage: "~85% U.S. population coverage",
-    diagram: "/GovDataMatch.png",
+    coverage: "~95% data coverage across U.S. population",
+    diagram: "/GovDataMatch-v2.png",
     diagramWidth: 1944,
     diagramHeight: 616,
   },
@@ -150,14 +149,16 @@ export function UnifiedFlow() {
                 <p key={i}>{line}</p>
               ))}
             </div>
-            <p
-              className={cn(
-                "mt-2 text-xs",
-                w.emphasized ? "text-blue-eyebrow" : "text-grey-on-black",
-              )}
-            >
-              {w.coverage}
-            </p>
+            {w.coverage && (
+              <p
+                className={cn(
+                  "mt-2 text-xs",
+                  w.emphasized ? "text-blue-eyebrow" : "text-grey-on-black",
+                )}
+              >
+                {w.coverage}
+              </p>
+            )}
             <button
               type="button"
               onClick={() => setZoomed(w)}
