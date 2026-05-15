@@ -120,7 +120,7 @@ function PlatformOutcomes() {
           return (
             <Reveal key={p.title} delay={0.05 * i}>
               <div className="h-full rounded-xl border border-border-light bg-background p-5 sm:p-6">
-                <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-[#CCE1FF] sm:h-12 sm:w-12">
+                <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-blue-100 sm:h-12 sm:w-12">
                   <Icon size={20} strokeWidth={1.75} className="text-blue" />
                 </div>
                 <h3 className="mt-5 font-display text-base text-black sm:mt-6">{p.title}</h3>
