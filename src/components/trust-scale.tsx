@@ -1,256 +1,207 @@
 "use client";
 
-import { useEffect, useRef, useState, type MouseEvent } from "react";
+import { useEffect, useRef, type ComponentType, type SVGProps } from "react";
+import Link from "next/link";
 import {
-  Building,
+  ArrowUpRight,
+  Building2,
+  ChevronLeft,
+  ChevronRight,
+  Film,
   Landmark,
   Plane,
+  Radio,
   ShoppingBag,
-  Smartphone,
-  Tv,
-  type LucideIcon,
 } from "lucide-react";
-import Image from "next/image";
-import { AnimatePresence, motion } from "motion/react";
-import { Section } from "@/components/ui/section";
-import { Reveal } from "@/components/ui/reveal";
-import { Counter } from "@/components/ui/counter";
-import { cn } from "@/lib/utils";
+import { Eyebrow } from "@/components/ui/section";
 
-type Org = {
-  icon: LucideIcon;
-  title: string;
-  lines: string[];
-  image?: string;
-  imageAlt?: string;
+type IconType = ComponentType<SVGProps<SVGSVGElement> & { size?: number }>;
+
+type Industry = {
+  name: string;
+  stat: string;
+  body: string;
+  icon: IconType;
+  bgImage?: string;
 };
 
-const ORGANIZATIONS: Org[] = [
+const INDUSTRIES: Industry[] = [
   {
-    icon: Building,
-    title: "Global banks",
-    lines: [
-      "8 of the top 10 U.S. banks",
-      "2 of the top 3 European neobanks",
-      "8 of the top 10 Mexican banks",
-    ],
-    image: "/industries/global-banks.png",
-    imageAlt: "Global banks illustration",
-  },
-  {
-    icon: Tv,
-    title: "Entertainment",
-    lines: ["Top video and gaming companies"],
-    image: "/industries/entertainment.png",
-    imageAlt: "Entertainment illustration",
-  },
-  {
-    icon: Smartphone,
-    title: "Telcos",
-    lines: ["7 of the top 8 U.S. telcos", "2 of the top Mexican telcos"],
-    image: "/industries/telcos.png",
-    imageAlt: "Telcos illustration",
-  },
-  {
-    icon: ShoppingBag,
-    title: "Retail",
-    lines: [
-      "2 of the largest global retailers",
-      "6 of the 8 top retailers in SS LATAM",
-    ],
-    image: "/industries/retail.png",
-    imageAlt: "Retail illustration",
-  },
-  {
-    icon: Plane,
-    title: "Travel",
-    lines: ["2 of the top global travel companies"],
-    image: "/industries/travel.png",
-    imageAlt: "Travel illustration",
-  },
-  {
+    name: "Global banks",
+    stat: "8 of top 10",
+    body: "U.S. banks trust Incode for identity at scale.",
     icon: Landmark,
-    title: "Government",
-    lines: ["Federal and state"],
-    image: "/industries/government.png",
-    imageAlt: "Government illustration",
+    bgImage: "/industries/financial-services.png",
+  },
+  {
+    name: "Entertainment",
+    stat: "Top 5",
+    body: "Video and gaming platforms protect creators and players.",
+    icon: Film,
+    bgImage: "/industries/gaming.png",
+  },
+  {
+    name: "Telcos",
+    stat: "7 of top 8",
+    body: "U.S. carriers secured against SIM swap and ATO.",
+    icon: Radio,
+    bgImage: "/industries/telco.png",
+  },
+  {
+    name: "Retail",
+    stat: "6 of 8",
+    body: "LATAM retailers verified across marketplace journeys.",
+    icon: ShoppingBag,
+    bgImage: "/industries/marketplaces.png",
+  },
+  {
+    name: "Travel",
+    stat: "Top 2",
+    body: "Global travel brands verify travelers in seconds.",
+    icon: Plane,
+    bgImage: "/industries/travel.png",
+  },
+  {
+    name: "Government",
+    stat: "Federal",
+    body: "Trusted by federal and state government programs.",
+    icon: Building2,
+    bgImage: "/industries/gov.png",
   },
 ];
 
-const ROTATE_MS = 3500;
+const COPIES = 4;
+const LOOPED = Array.from({ length: COPIES }).flatMap(() => INDUSTRIES);
 
 export function TrustScale() {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const [hovered, setHovered] = useState<number | null>(null);
-  const [pinned, setPinned] = useState<number | null>(null);
-  const [auto, setAuto] = useState(0);
+  const scrollerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (pinned !== null || hovered !== null) return;
-    const id = window.setInterval(() => {
-      setAuto((a) => (a + 1) % ORGANIZATIONS.length);
-    }, ROTATE_MS);
-    return () => window.clearInterval(id);
-  }, [pinned, hovered]);
-
-  const displayIndex = hovered ?? pinned ?? auto;
-  const displayed = ORGANIZATIONS[displayIndex];
-
-  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
-    const el = cardRef.current;
+    const el = scrollerRef.current;
     if (!el) return;
-    const rect = el.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-    el.style.setProperty("--mx", `${x}%`);
-    el.style.setProperty("--my", `${y}%`);
-  };
 
-  const handleMouseLeaveCard = () => {
-    const el = cardRef.current;
+    const getStep = () => {
+      const card = el.querySelector("[data-card]") as HTMLElement | null;
+      if (!card) return 0;
+      return card.getBoundingClientRect().width + 16; // gap-4
+    };
+
+    const reposition = () => {
+      const step = getStep();
+      if (step === 0) return;
+      const loopLen = step * INDUSTRIES.length;
+      el.scrollLeft = loopLen;
+    };
+
+    reposition();
+
+    const onScroll = () => {
+      const step = getStep();
+      if (step === 0) return;
+      const loopLen = step * INDUSTRIES.length;
+      if (el.scrollLeft >= loopLen * 3) {
+        el.scrollLeft -= loopLen;
+      } else if (el.scrollLeft < loopLen) {
+        el.scrollLeft += loopLen;
+      }
+    };
+
+    el.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", reposition);
+
+    return () => {
+      el.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", reposition);
+    };
+  }, []);
+
+  const scrollByOne = (dir: 1 | -1) => {
+    const el = scrollerRef.current;
     if (!el) return;
-    el.style.setProperty("--mx", "50%");
-    el.style.setProperty("--my", "30%");
-  };
-
-  const togglePin = (i: number) => {
-    setPinned((p) => (p === i ? null : i));
+    const card = el.querySelector("[data-card]") as HTMLElement | null;
+    if (!card) return;
+    const step = card.getBoundingClientRect().width + 16;
+    el.scrollBy({ left: dir * step, behavior: "smooth" });
   };
 
   return (
-    <Section tone="rich">
-      <div className="grid gap-8 lg:grid-cols-[1fr_1.2fr] lg:gap-12 items-stretch">
-        <Reveal>
-          <div
-            ref={cardRef}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeaveCard}
-            style={
-              {
-                "--mx": "50%",
-                "--my": "30%",
-                backgroundImage:
-                  "radial-gradient(620px circle at var(--mx) var(--my), rgba(0,106,255,0.22), transparent 45%)",
-              } as React.CSSProperties
-            }
-            className="relative h-full min-h-[420px] overflow-hidden rounded-2xl bg-off-black border border-white/[0.08] flex flex-col items-center justify-center text-center transition-[background-position] duration-200"
-          >
-            <div
-              aria-hidden
-              className="absolute -top-32 right-0 h-80 w-80 rounded-full bg-blue/30 blur-[100px]"
-            />
-            <div
-              aria-hidden
-              className="absolute -bottom-24 -left-16 h-72 w-72 rounded-full bg-blue/15 blur-[100px]"
-            />
-
-            <AnimatePresence mode="sync">
-              <motion.div
-                key={`img-${displayIndex}`}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-                className="absolute inset-0"
-              >
-                {displayed.image && (
-                  <Image
-                    src={displayed.image}
-                    alt=""
-                    fill
-                    sizes="(min-width: 1024px) 45vw, 100vw"
-                    className="object-cover"
-                    aria-hidden
-                  />
-                )}
-                <div aria-hidden className="absolute inset-0 bg-black/45" />
-              </motion.div>
-            </AnimatePresence>
-
-            <div className="relative z-10 flex flex-col items-center justify-center px-10 py-14 md:px-14">
-              <div className="font-display text-6xl md:text-7xl lg:text-8xl text-white leading-none tracking-tight drop-shadow-[0_2px_20px_rgba(0,0,0,0.4)]">
-                <Counter to={7.1} suffix="B+" decimals={1} duration={1.8} />
-              </div>
-              <p className="mt-6 text-base md:text-lg text-grey-on-black drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)]">
-                trust checks in 2025
-              </p>
-            </div>
-          </div>
-        </Reveal>
-
-        <div>
-          <Reveal>
-            <h2 className="font-display text-3xl md:text-4xl leading-[1.15] text-balance text-white">
-              Securing the largest organizations in the world
+    <section className="relative w-full overflow-hidden bg-background">
+      <div className="mx-auto w-full max-w-[1280px] px-5 pt-12 pb-6 sm:pt-16 sm:pb-8 md:pt-20 md:pb-10 lg:px-8">
+        <div className="mb-8 flex flex-wrap items-end justify-between gap-4 sm:mb-10 sm:gap-6">
+          <div className="min-w-0">
+            <Eyebrow tone="light">Industries</Eyebrow>
+            <h2 className="mt-3 font-display text-[26px] leading-tight text-foreground sm:mt-4 sm:text-3xl md:text-4xl">
+              7.1B+ trust checks in 2025
             </h2>
-          </Reveal>
-          <div className="mt-10 grid gap-3 sm:grid-cols-2">
-            {ORGANIZATIONS.map((org, i) => {
-              const Icon = org.icon;
-              const isDisplayed = displayIndex === i;
-              const isPinned = pinned === i;
-              const isAutoRotating =
-                isDisplayed && pinned === null && hovered === null;
-              return (
-                <Reveal key={org.title} delay={0.05 + i * 0.05} className="h-full">
-                  <button
-                    type="button"
-                    onClick={() => togglePin(i)}
-                    onMouseEnter={() => setHovered(i)}
-                    onMouseLeave={() => setHovered(null)}
-                    onFocus={() => setHovered(i)}
-                    onBlur={() => setHovered(null)}
-                    aria-pressed={isPinned}
-                    className={cn(
-                      "group/card relative h-full w-full overflow-hidden text-left rounded-xl border p-5 transition-all duration-300 outline-none focus-visible:border-blue/60 cursor-pointer",
-                      isPinned
-                        ? "border-blue/55 bg-white/[0.06] -translate-y-0.5 shadow-[0_18px_40px_-22px_rgba(0,106,255,0.6)]"
-                        : isDisplayed
-                          ? "border-blue/30 bg-white/[0.035]"
-                          : "border-white/[0.06] hover:border-white/15 hover:bg-white/[0.025]",
-                    )}
-                  >
-                    <div className="flex items-start justify-between gap-3">
-                      <Icon
-                        size={20}
-                        strokeWidth={1.75}
-                        className={cn(
-                          "transition-colors duration-300",
-                          isPinned || isDisplayed
-                            ? "text-blue-eyebrow"
-                            : "text-white",
-                        )}
-                      />
-                      {isPinned && (
-                        <span className="inline-flex h-2 w-2 rounded-full bg-blue shadow-[0_0_8px_rgba(0,106,255,0.8)]" />
-                      )}
-                    </div>
-                    <h3 className="mt-3 font-display text-base font-medium text-white">
-                      {org.title}
-                    </h3>
-                    <ul className="mt-1.5 text-sm text-grey-on-black leading-snug">
-                      {org.lines.map((line) => (
-                        <li key={line}>{line}</li>
-                      ))}
-                    </ul>
-
-                    {isAutoRotating && (
-                      <motion.span
-                        key={`rot-${i}-${auto}`}
-                        aria-hidden
-                        initial={{ scaleX: 0 }}
-                        animate={{ scaleX: 1 }}
-                        transition={{ duration: ROTATE_MS / 1000, ease: "linear" }}
-                        className="pointer-events-none absolute bottom-0 left-0 right-0 h-px origin-left bg-blue/70"
-                      />
-                    )}
-                  </button>
-                </Reveal>
-              );
-            })}
+          </div>
+          <div className="flex shrink-0 items-center gap-2">
+            <button
+              type="button"
+              onClick={() => scrollByOne(-1)}
+              aria-label="Previous industries"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border-light bg-background text-foreground transition-colors hover:border-foreground/40 active:bg-foreground/[0.04] sm:h-10 sm:w-10"
+            >
+              <ChevronLeft size={18} strokeWidth={2} />
+            </button>
+            <button
+              type="button"
+              onClick={() => scrollByOne(1)}
+              aria-label="Next industries"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border-light bg-background text-foreground transition-colors hover:border-foreground/40 active:bg-foreground/[0.04] sm:h-10 sm:w-10"
+            >
+              <ChevronRight size={18} strokeWidth={2} />
+            </button>
           </div>
         </div>
+
+        <div
+          ref={scrollerRef}
+          className="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto pb-12 pt-2"
+        >
+          {LOOPED.map((ind, i) => {
+            const Icon = ind.icon;
+            const slug = ind.name.toLowerCase().replace(/\s+/g, "-");
+            return (
+              <Link
+                data-card
+                key={`${ind.name}-${i}`}
+                href={`/industries/${slug}`}
+                className="group relative flex aspect-[5/4] w-full shrink-0 snap-start flex-col overflow-hidden rounded-3xl bg-rich-black p-6 text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_30px_60px_-30px_rgba(0,0,0,0.5)] sm:w-[calc((100%-1rem)/2)] lg:w-[calc((100%-2rem)/3)]"
+                style={
+                  ind.bgImage
+                    ? {
+                        backgroundImage: `linear-gradient(rgba(8,12,30,0.55), rgba(8,12,30,0.85)), url(${ind.bgImage})`,
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                      }
+                    : undefined
+                }
+              >
+                <div className="relative flex items-center gap-2.5">
+                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-white/15 bg-white/10 backdrop-blur">
+                    <Icon size={15} strokeWidth={1.75} />
+                  </span>
+                  <span className="text-[13.5px] font-medium">{ind.name}</span>
+                </div>
+
+                <div className="relative mt-auto">
+                  <div className="flex items-start gap-1.5 font-display text-3xl leading-[1.05] tracking-tight md:text-4xl">
+                    <span>{ind.stat}</span>
+                    <ArrowUpRight
+                      size={18}
+                      strokeWidth={2.25}
+                      className="mt-1 text-blue-eyebrow transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    />
+                  </div>
+                  <p className="mt-3 max-w-[22ch] text-sm leading-relaxed text-white/75">
+                    {ind.body}
+                  </p>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
       </div>
-    </Section>
+    </section>
   );
 }

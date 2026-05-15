@@ -135,6 +135,7 @@ export function SiteHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const idleTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const prevScroll = useRef(0);
   const { scrollY } = useScroll();
 
@@ -149,6 +150,9 @@ export function SiteHeader() {
       setHidden(false);
     }
     prevScroll.current = y;
+
+    if (idleTimer.current) clearTimeout(idleTimer.current);
+    idleTimer.current = setTimeout(() => setHidden(false), 180);
   });
 
   const openMenuFor = (label: string) => {

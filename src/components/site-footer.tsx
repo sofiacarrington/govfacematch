@@ -83,8 +83,8 @@ export function SiteFooter() {
   return (
     <footer className="relative bg-rich-black text-white overflow-hidden">
       <div className="absolute inset-x-0 -bottom-40 h-80 glow-blue opacity-60 pointer-events-none" />
-      <div className="relative mx-auto max-w-[1280px] px-5 lg:px-8 py-16">
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.3fr_repeat(6,1fr)]">
+      <div className="relative mx-auto max-w-[1280px] px-5 py-12 sm:py-14 md:py-16 lg:px-8">
+        <div className="grid gap-8 sm:gap-10 sm:grid-cols-2 lg:grid-cols-[1.3fr_repeat(6,1fr)]">
           <div>
             <Logo className="text-white" />
             <address className="not-italic mt-6 text-sm text-grey-on-black leading-relaxed">
@@ -118,7 +118,7 @@ export function SiteFooter() {
           ))}
         </div>
 
-        <div className="mt-12 pt-8 border-t border-border-dark">
+        <div className="mt-10 border-t border-border-dark pt-6 sm:mt-12 sm:pt-8">
           <ul className="flex flex-wrap gap-x-6 gap-y-2 text-xs text-grey-on-black">
             {LEGAL.map((l) => (
               <li key={l}>

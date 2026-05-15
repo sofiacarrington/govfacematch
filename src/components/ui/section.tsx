@@ -23,7 +23,7 @@ export function Section({
         className,
       )}
     >
-      <div className="mx-auto max-w-[1280px] px-5 lg:px-8 py-16 md:py-20">
+      <div className="mx-auto max-w-[1280px] px-5 py-12 sm:py-16 md:py-20 lg:px-8">
         {children}
       </div>
     </section>

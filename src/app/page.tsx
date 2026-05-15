@@ -1,44 +1,35 @@
 import {
   ArrowUpRight,
-  Award,
-  BadgeCheck,
-  Database,
-  Layers,
-  Sparkles,
+  Brain,
+  ShieldCheck,
+  TrendingUp,
 } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import { Section, Eyebrow } from "@/components/ui/section";
 import { ButtonLink } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/reveal";
 import { LoadingIntro } from "@/components/loading-intro";
 import { HeroSection } from "@/components/hero-section";
 import { LogoMarquee } from "@/components/logo-marquee";
-import { UseCaseTabs } from "@/components/use-case-tabs";
+import { UseCasesSection } from "@/components/use-cases-section";
 import { TrustScale } from "@/components/trust-scale";
 import { ProductShowcase } from "@/components/product-showcase";
-import { BenefitsShowcase } from "@/components/benefits-showcase";
 
-const PILLARS = [
+const PLATFORM_OUTCOMES = [
   {
-    icon: Database,
-    title: "A data advantage",
-    body: "With 4.1B+ identity checks annually and 400M identity profiles worldwide, Incode has a massive data set to train models that fight fraud.",
+    icon: ShieldCheck,
+    title: "Eliminate fraud",
+    body: "Keep bad actors out with advanced AI-powered prevention. Safeguard every step of the verification journey with end-to-end fraud signal monitoring.",
   },
   {
-    icon: Sparkles,
-    title: "Superior AI",
-    body: "Our proprietary, frontier AI models deliver consistent performance at the top of industry benchmarks and the adaptability to stay ahead of fraud.",
+    icon: Brain,
+    title: "Stay ahead of new threats",
+    body: "Anticipate and defeat deepfakes, synthetic identities, and other AI-driven fraud attacks with continuously evolving machine learning models.",
   },
   {
-    icon: Layers,
-    title: "Enterprise focus",
-    body: "End-to-end identity solutions with a modular core platform, easily orchestrated and integrated tools, deep partnerships, and 99.99% reliability.",
-  },
-  {
-    icon: BadgeCheck,
-    title: "High-trust decisions",
-    body: "We help you secure trust in the AI era. The ultimate outcome we deliver is the protection of every surface area against AI-driven fraud threats.",
+    icon: TrendingUp,
+    title: "Optimize conversion",
+    body: "Provide users with effortless, seamless and secure identity verification. Customize your experience to blend seamlessly with your brand.",
   },
 ];
 
@@ -72,32 +63,25 @@ const TESTIMONIALS = [
   },
 ];
 
-const COMPLIANCE_BADGES = [
-  "SOC 2 Type II",
-  "ISO 27001",
-  "FedRAMP",
-  "iBeta Level 3",
-  "Kantara",
-  "GDPR",
-  "CCPA",
-  "HIPAA",
-  "BIPA",
-];
-
 export default function HomePage() {
   return (
     <>
       <LoadingIntro />
-      <HeroSection />
-      <TrustedBy />
-      <TrustScale />
-      <ProductShowcase />
-      <Benefits />
-      <WhyIncode />
-      <UseCases />
-      <Testimonials />
-      <Compliance />
-      <ClosingCta />
+      <div className="relative">
+        <div className="sticky top-0 z-0 h-screen overflow-hidden">
+          <HeroSection />
+        </div>
+        <div className="relative z-10">
+          <PlatformOutcomes />
+          <TrustedBy />
+          <TrustScale />
+          <ProductShowcase />
+          <UseCasesSection />
+          <Testimonials />
+          <Compliance />
+          <ClosingCta />
+        </div>
+      </div>
     </>
   );
 }
@@ -105,8 +89,8 @@ export default function HomePage() {
 function TrustedBy() {
   return (
     <section className="bg-background border-y border-border-light">
-      <div className="mx-auto max-w-[1280px] px-5 lg:px-8 py-16">
-        <p className="text-center text-sm text-grey-on-white mb-10">
+      <div className="mx-auto max-w-[1280px] px-5 py-10 sm:py-14 md:py-16 lg:px-8">
+        <p className="text-center text-sm text-grey-on-white mb-6 sm:mb-10">
           Securing the largest organizations in the world
         </p>
         <LogoMarquee />
@@ -115,66 +99,34 @@ function TrustedBy() {
   );
 }
 
-function Benefits() {
+function PlatformOutcomes() {
   return (
-    <Section id="platform" tone="rich">
-      <div className="max-w-3xl">
+    <Section
+      tone="light"
+      className="rounded-t-[40px] shadow-[0_-20px_40px_-30px_rgba(0,0,0,0.25)] md:rounded-t-[56px]"
+    >
+      <div className="mx-auto max-w-3xl text-center">
         <Reveal>
-          <Eyebrow>Platform</Eyebrow>
-        </Reveal>
-        <Reveal delay={0.1}>
-          <h2 className="mt-5 font-display text-3xl md:text-4xl text-balance">
-            Your AI-driven security challenges, solved
+          <h2 className="font-display text-[26px] leading-tight text-balance sm:text-3xl md:text-4xl">
+            Our AI-powered identity platform enables organizations to grow
+            without increasing fraud risk
           </h2>
         </Reveal>
-        <Reveal delay={0.2}>
-          <p className="mt-4 text-grey-on-black">
-            Safeguard trust by leveraging our in-house AI technology that secures every transaction.
-          </p>
-        </Reveal>
       </div>
 
-      <div className="mt-14">
-        <BenefitsShowcase />
-      </div>
-    </Section>
-  );
-}
-
-function WhyIncode() {
-  return (
-    <Section id="why-incode" tone="light">
-      <div className="max-w-3xl">
-        <Reveal>
-          <Eyebrow tone="light">Why Incode</Eyebrow>
-        </Reveal>
-        <Reveal delay={0.1}>
-          <h2 className="mt-5 font-display text-3xl md:text-4xl text-balance">
-            Why leading enterprises choose Incode
-          </h2>
-        </Reveal>
-        <Reveal delay={0.2}>
-          <p className="mt-4 text-grey-on-white">
-            Incode delivers the accuracy, speed, and scale to stop AI-driven fraud without
-            compromising user experience.
-          </p>
-        </Reveal>
-      </div>
-
-      <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {PILLARS.map((p, i) => {
+      <div className="mt-10 grid gap-4 sm:mt-14 sm:grid-cols-2 lg:grid-cols-3">
+        {PLATFORM_OUTCOMES.map((p, i) => {
           const Icon = p.icon;
           return (
             <Reveal key={p.title} delay={0.05 * i}>
-              <div className="h-full rounded-xl border border-border-light bg-background p-6">
-                <div className="flex items-center justify-between">
-                  <Icon size={20} strokeWidth={2} className="text-blue" />
-                  <span className="font-display text-sm text-grey-on-white tabular-nums">
-                    0{i + 1}
-                  </span>
+              <div className="h-full rounded-xl border border-border-light bg-background p-5 sm:p-6">
+                <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-blue/10 sm:h-12 sm:w-12">
+                  <Icon size={20} strokeWidth={1.75} className="text-blue" />
                 </div>
-                <h3 className="mt-6 font-display text-base">{p.title}</h3>
-                <p className="mt-3 text-sm text-grey-on-white leading-relaxed">{p.body}</p>
+                <h3 className="mt-5 font-display text-base sm:mt-6">{p.title}</h3>
+                <p className="mt-2 text-sm text-grey-on-white leading-relaxed sm:mt-3">
+                  {p.body}
+                </p>
               </div>
             </Reveal>
           );
@@ -184,68 +136,24 @@ function WhyIncode() {
   );
 }
 
-function UseCases() {
-  return (
-    <Section id="use-cases" tone="light" className="border-t border-border-light">
-      <div className="max-w-3xl">
-        <Reveal>
-          <Eyebrow tone="light">Use cases</Eyebrow>
-        </Reveal>
-        <Reveal delay={0.1}>
-          <h2 className="mt-5 font-display text-3xl md:text-4xl text-balance">
-            One platform, limitless applications
-          </h2>
-        </Reveal>
-        <Reveal delay={0.2}>
-          <p className="mt-4 text-grey-on-white">
-            Incode powers every identity moment with zero friction and total trust.
-          </p>
-        </Reveal>
-      </div>
-      <Reveal delay={0.3}>
-        <div className="mt-12">
-          <UseCaseTabs />
-        </div>
-      </Reveal>
-    </Section>
-  );
-}
-
 function Testimonials() {
   return (
     <Section tone="rich">
-      <div className="max-w-3xl">
-        <Reveal>
-          <Eyebrow>Customer stories</Eyebrow>
-        </Reveal>
-        <Reveal delay={0.1}>
-          <h2 className="mt-5 font-display text-3xl md:text-4xl text-balance">
-            Maximum growth without compromise
-          </h2>
-        </Reveal>
-        <Reveal delay={0.2}>
-          <p className="mt-4 text-grey-on-black max-w-2xl">
-            Power your business with AI-driven identity verification that stops fraud and ensures
-            compliance.
-          </p>
-        </Reveal>
-      </div>
-
-      <div className="mt-14 grid gap-4 md:grid-cols-3">
+      <div className="grid gap-8 sm:gap-10 md:grid-cols-3 md:gap-12">
         {TESTIMONIALS.map((t, i) => (
           <Reveal key={t.name} delay={0.1 + i * 0.08}>
-            <figure className="flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.04] p-7 backdrop-blur">
+            <figure className="flex h-full flex-col">
               <Image
                 src={t.logo}
                 alt={t.logoAlt}
                 width={t.logoWidth}
                 height={28}
-                className="h-7 w-auto object-contain object-left [filter:brightness(0)_invert(1)] opacity-90"
+                className="h-6 w-auto object-contain object-left opacity-90 [filter:brightness(0)_invert(1)] sm:h-7"
               />
-              <blockquote className="mt-6 flex-1 font-display-regular text-lg leading-snug text-white">
+              <blockquote className="mt-5 flex-1 font-display-regular text-[15px] leading-snug text-white sm:mt-6 sm:text-lg">
                 &ldquo;{t.quote}&rdquo;
               </blockquote>
-              <figcaption className="mt-6 pt-5 border-t border-white/10">
+              <figcaption className="mt-5 border-t border-white/10 pt-4 sm:mt-6 sm:pt-5">
                 <div className="text-sm font-medium text-white">{t.name}</div>
                 <div className="mt-0.5 text-xs text-grey-on-black">{t.role}</div>
               </figcaption>
@@ -259,35 +167,32 @@ function Testimonials() {
 
 function Compliance() {
   return (
-    <Section tone="light">
-      <div className="max-w-3xl">
-        <Reveal>
-          <Eyebrow tone="light">Trust & standards</Eyebrow>
-        </Reveal>
-        <Reveal delay={0.1}>
-          <h2 className="mt-5 font-display text-3xl md:text-4xl text-balance">
-            Customers and industry leaders trust Incode
-          </h2>
-        </Reveal>
-        <Reveal delay={0.2}>
-          <p className="mt-4 text-grey-on-white">
-            Verified reviews, certifications, and customer stories show the impact of Incode&rsquo;s
-            technology.
-          </p>
-        </Reveal>
-      </div>
+    <Section tone="rich">
+      <Reveal>
+        <p className="text-center text-sm text-grey-on-black">
+          Verified reviews and certifications
+        </p>
+      </Reveal>
 
-      <div className="mt-12 grid grid-cols-3 gap-3 sm:grid-cols-3 lg:grid-cols-9">
-        {COMPLIANCE_BADGES.map((badge, i) => (
-          <Reveal key={badge} delay={0.02 * i}>
-            <div className="flex h-20 items-center justify-center rounded-xl border border-border-light bg-background px-3 text-center transition-colors hover:border-blue/30">
-              <div className="flex flex-col items-center gap-1.5">
-                <Award size={16} strokeWidth={1.75} className="text-blue" />
-                <span className="text-xs font-medium text-foreground leading-tight">{badge}</span>
-              </div>
-            </div>
-          </Reveal>
-        ))}
+      <div className="mt-8 relative overflow-hidden compliance-mask-fade sm:mt-10">
+        <div className="flex items-center gap-6 animate-[marquee_40s_linear_infinite] will-change-transform sm:gap-10 md:gap-14">
+          {[0, 1, 2].map((i) => (
+            <Image
+              key={i}
+              src="/Globalrecognition.svg"
+              alt="Verified compliance and certifications"
+              width={1131}
+              height={82}
+              className="h-10 w-auto shrink-0 opacity-80 [filter:brightness(0)_invert(1)] sm:h-14 md:h-20"
+            />
+          ))}
+        </div>
+        <style>{`
+          .compliance-mask-fade {
+            mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+          }
+        `}</style>
       </div>
     </Section>
   );
@@ -297,31 +202,24 @@ function ClosingCta() {
   return (
     <section className="relative bg-rich-black text-white overflow-hidden">
       <div className="absolute inset-x-0 -top-32 h-80 glow-blue blur-2xl opacity-70 pointer-events-none" />
-      <div className="relative mx-auto max-w-[1280px] px-5 lg:px-8 py-20 text-center">
+      <div className="relative mx-auto max-w-[1280px] px-5 py-14 text-center sm:py-16 md:py-20 lg:px-8">
         <Reveal>
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl mx-auto max-w-3xl text-balance">
+          <h2 className="mx-auto max-w-3xl font-display text-3xl text-balance sm:text-4xl md:text-5xl">
             Ready to power trust at scale?
           </h2>
         </Reveal>
         <Reveal delay={0.1}>
-          <p className="mt-6 text-grey-on-black max-w-xl mx-auto">
+          <p className="mx-auto mt-5 max-w-xl text-[15px] text-grey-on-black sm:mt-6 sm:text-base">
             See how Incode helps the world&rsquo;s leading enterprises stay ahead of fraud without
             adding friction.
           </p>
         </Reveal>
         <Reveal delay={0.2}>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
+          <div className="mt-7 flex flex-wrap justify-center gap-3 sm:mt-8">
             <ButtonLink href="/contact">
               Request a demo
               <ArrowUpRight size={16} strokeWidth={2.25} />
             </ButtonLink>
-            <Link
-              href="/products/govfacematch"
-              className="inline-flex items-center gap-2 rounded-md border border-white/15 bg-white/5 px-5 py-2.5 text-[15px] font-medium text-white transition-colors hover:bg-white/10"
-            >
-              Explore GovFaceMatch
-              <ArrowUpRight size={16} strokeWidth={2.25} />
-            </Link>
           </div>
         </Reveal>
       </div>

@@ -4,8 +4,8 @@
   --color-background: #ffffff;
   --color-foreground: #111111;
 
-  --color-blue: #006aff;
-  --color-blue-eyebrow: #579dff;
+  --color-blue: #054AFF;
+  --color-blue-eyebrow: #CCE1FF;
   --color-green: #1ec677;
 
   --color-black: #111111;
@@ -97,6 +97,7 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
 }
 
 ::selection {
@@ -126,6 +127,16 @@ body {
   background-image:
     radial-gradient(1200px 600px at 50% -10%, rgba(0, 106, 255, 0.22), transparent 60%),
     radial-gradient(800px 400px at 50% 110%, rgba(0, 106, 255, 0.18), transparent 60%);
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
 }
 
 .bg-problem-glow {

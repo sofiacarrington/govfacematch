@@ -109,7 +109,7 @@ export function UnifiedFlow() {
                     className={cn(
                       "block rounded-lg border px-4 py-2.5 text-sm font-medium transition-colors",
                       isActive
-                        ? "border-white/25 bg-[linear-gradient(120deg,#006aff_0%,#000_100%)] text-white"
+                        ? "border-white/25 bg-[linear-gradient(120deg,#054AFF_0%,#000_100%)] text-white"
                         : w.emphasized
                           ? "border-blue/40 bg-blue/5 text-white hover:bg-blue/10"
                           : "border-border-dark bg-rich-black text-grey-on-black hover:text-white",

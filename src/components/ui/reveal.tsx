@@ -9,12 +9,14 @@ const INTRO_EVENT = "incode:intro-dismissed";
 export function Reveal({
   children,
   delay = 0,
+  duration = 0.6,
   y = 16,
   className,
   waitForIntro = false,
 }: {
   children: ReactNode;
   delay?: number;
+  duration?: number;
   y?: number;
   className?: string;
   waitForIntro?: boolean;
@@ -41,7 +43,7 @@ export function Reveal({
       ref={ref}
       initial={{ opacity: 0, y }}
       animate={animate ? { opacity: 1, y: 0 } : { opacity: 0, y }}
-      transition={{ duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration, delay, ease: [0.16, 1, 0.3, 1] }}
       className={className}
     >
       {children}

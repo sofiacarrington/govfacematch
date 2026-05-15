@@ -41,7 +41,7 @@ export function ConversionAccuracyTabs() {
     <div className="grid h-full grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 content-end">
       {STATS.map((s) => (
         <div key={s.title} className="border-t border-border-light pt-6">
-          <div className="font-display text-4xl md:text-5xl leading-none bg-[linear-gradient(120deg,#006aff_0%,#000_55%)] bg-clip-text text-transparent">
+          <div className="font-display text-4xl md:text-5xl leading-none bg-[linear-gradient(120deg,#054AFF_0%,#000_55%)] bg-clip-text text-transparent">
             <Counter to={s.value} prefix={s.prefix} suffix={s.suffix} />
           </div>
           <div className="mt-3 font-display text-base text-foreground">{s.title}</div>

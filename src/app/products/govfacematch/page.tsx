@@ -273,7 +273,7 @@ function Reality() {
         {REALITY_STATS.map((s, i) => (
           <Reveal key={s.label} delay={0.1 + i * 0.1}>
             <div className="border-t border-border-light pt-6">
-              <div className="font-display text-4xl md:text-5xl bg-[linear-gradient(120deg,#006aff_0%,#000_55%)] bg-clip-text text-transparent">
+              <div className="font-display text-4xl md:text-5xl bg-[linear-gradient(120deg,#054AFF_0%,#000_55%)] bg-clip-text text-transparent">
                 <Counter to={s.value} prefix={s.prefix} suffix={s.suffix} />
               </div>
               <p className="mt-3 text-sm text-grey-on-white max-w-xs whitespace-pre-line">{s.label}</p>
