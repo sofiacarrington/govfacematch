@@ -179,7 +179,7 @@ export function TrustScale() {
               >
                 <div
                   aria-hidden
-                  className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(38,40,49,0.55),rgba(38,40,49,0.85))] transition-opacity duration-300 group-hover:opacity-30"
+                  className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.85))] transition-opacity duration-300 group-hover:opacity-30"
                 />
                 <div className="relative flex items-center gap-2.5">
                   <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-white/15 bg-white/10 backdrop-blur">
