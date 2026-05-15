@@ -125,7 +125,7 @@ export function TrustScale() {
   };
 
   return (
-    <section className="relative w-full overflow-hidden bg-background">
+    <section className="relative w-full overflow-hidden bg-[#F9F9F9]">
       <div className="mx-auto w-full max-w-[1280px] px-5 pt-12 pb-6 sm:pt-16 sm:pb-8 md:pt-20 md:pb-10 lg:px-8">
         <div className="mb-8 flex flex-wrap items-end justify-between gap-4 sm:mb-10 sm:gap-6">
           <div className="min-w-0">
