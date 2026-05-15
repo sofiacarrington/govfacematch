@@ -166,17 +166,21 @@ export function TrustScale() {
                 data-card
                 key={`${ind.name}-${i}`}
                 href={`/industries/${slug}`}
-                className="group relative flex aspect-[5/4] w-full shrink-0 snap-start flex-col overflow-hidden rounded-3xl bg-rich-black p-6 text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_30px_60px_-30px_rgba(0,0,0,0.5)] sm:w-[calc((100%-1rem)/2)] lg:w-[calc((100%-2rem)/3)]"
+                className="group relative flex aspect-[5/4] w-full shrink-0 snap-start flex-col overflow-hidden rounded-3xl bg-rich-black p-6 text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_30px_60px_-30px_rgba(38,40,49,0.5)] sm:w-[calc((100%-1rem)/2)] lg:w-[calc((100%-2rem)/3)]"
                 style={
                   ind.bgImage
                     ? {
-                        backgroundImage: `linear-gradient(rgba(8,12,30,0.55), rgba(8,12,30,0.85)), url(${ind.bgImage})`,
+                        backgroundImage: `url(${ind.bgImage})`,
                         backgroundSize: "cover",
                         backgroundPosition: "center",
                       }
                     : undefined
                 }
               >
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(38,40,49,0.55),rgba(38,40,49,0.85))] transition-opacity duration-300 group-hover:opacity-30"
+                />
                 <div className="relative flex items-center gap-2.5">
                   <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-white/15 bg-white/10 backdrop-blur">
                     <Icon size={15} strokeWidth={1.75} />

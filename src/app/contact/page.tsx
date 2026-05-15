@@ -38,7 +38,7 @@ export default function ContactPage() {
             <ul className="mt-8 space-y-3">
               {POINTS.map((p) => (
                 <li key={p} className="flex items-start gap-3 text-sm text-off-white">
-                  <span className="mt-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-green/15 text-green border border-green/30 shrink-0">
+                  <span className="mt-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-blue-100 text-blue border border-blue-200 shrink-0">
                     <Check size={12} />
                   </span>
                   {p}

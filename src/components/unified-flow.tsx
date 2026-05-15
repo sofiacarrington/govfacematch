@@ -109,7 +109,7 @@ export function UnifiedFlow() {
                     className={cn(
                       "block rounded-lg border px-4 py-2.5 text-sm font-medium transition-colors",
                       isActive
-                        ? "border-white/25 bg-[linear-gradient(120deg,#054AFF_0%,#000_100%)] text-white"
+                        ? "border-white/25 bg-[linear-gradient(120deg,#0054FF_0%,#262831_100%)] text-white"
                         : w.emphasized
                           ? "border-blue/40 bg-blue/5 text-white hover:bg-blue/10"
                           : "border-border-dark bg-rich-black text-grey-on-black hover:text-white",
@@ -193,7 +193,7 @@ export function UnifiedFlow() {
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-[1500px] rounded-2xl border border-border-dark bg-off-black p-6 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)] md:p-10"
+            className="relative w-full max-w-[1500px] rounded-2xl border border-border-dark bg-off-black p-6 shadow-[0_30px_80px_-20px_rgba(38,40,49,0.8)] md:p-10"
           >
             <div className="flex items-center justify-between gap-4">
               <h3 className="font-display text-lg text-white md:text-xl">{zoomed.title}</h3>

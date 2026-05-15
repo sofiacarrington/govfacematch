@@ -39,7 +39,7 @@ export function HeroVideo({
         <div className="pointer-events-none absolute inset-0 bg-rich-black/30 transition-colors group-hover:bg-rich-black/40" />
 
         <span className="pointer-events-none absolute inset-0 flex items-center justify-center">
-          <span className="relative inline-flex items-center gap-2.5 rounded-full border border-white/25 bg-white/15 px-5 py-2.5 text-sm font-medium text-white shadow-[0_8px_32px_-8px_rgba(0,0,0,0.4)] backdrop-blur-md transition-transform duration-300 group-hover:scale-[1.04]">
+          <span className="relative inline-flex items-center gap-2.5 rounded-full border border-white/25 bg-white/15 px-5 py-2.5 text-sm font-medium text-white shadow-[0_8px_32px_-8px_rgba(38,40,49,0.4)] backdrop-blur-md transition-transform duration-300 group-hover:scale-[1.04]">
             <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-white text-rich-black">
               <Play size={11} className="ml-0.5" fill="currentColor" strokeWidth={0} />
             </span>

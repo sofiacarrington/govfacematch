@@ -181,7 +181,7 @@ export function SiteHeader() {
         className={cn(
           "border-b transition-[background-color,border-color,box-shadow,backdrop-filter] duration-300 ease-out",
           bright
-            ? "border-border-light/70 bg-background/85 backdrop-blur-xl shadow-[0_10px_30px_-18px_rgba(15,23,42,0.18)]"
+            ? "border-border-light/70 bg-background/85 backdrop-blur-xl shadow-[0_10px_30px_-18px_rgba(38,40,49,0.18)]"
             : "border-transparent",
         )}
       >
@@ -236,7 +236,7 @@ export function SiteHeader() {
 
           <Link
             href="/contact"
-            className="group/cta hidden lg:inline-flex items-center gap-1.5 rounded-md bg-blue px-4 py-2 text-[13.5px] font-medium text-white shadow-[0_8px_20px_-10px_rgba(0,106,255,0.55)] transition-all duration-300 ease-out hover:bg-[#0058d9] hover:shadow-[0_10px_24px_-10px_rgba(0,106,255,0.65)]"
+            className="group/cta hidden lg:inline-flex items-center gap-1.5 rounded-md bg-blue px-4 py-2 text-[13.5px] font-medium text-white shadow-[0_8px_20px_-10px_rgba(0,84,255,0.55)] transition-all duration-300 ease-out hover:bg-blue-600 hover:shadow-[0_10px_24px_-10px_rgba(0,84,255,0.65)]"
           >
             Request a demo
             <ArrowUpRight
@@ -273,7 +273,7 @@ export function SiteHeader() {
               }}
               onMouseEnter={() => openMenuFor(openMenu)}
               onMouseLeave={scheduleClose}
-              className="hidden lg:block border-t border-border-light/70 bg-background/95 backdrop-blur-xl shadow-[0_28px_56px_-32px_rgba(15,23,42,0.22)]"
+              className="hidden lg:block border-t border-border-light/70 bg-background/95 backdrop-blur-xl shadow-[0_28px_56px_-32px_rgba(38,40,49,0.22)]"
             >
               <motion.div
                 key={openMenu}
@@ -355,7 +355,7 @@ function MegaPanel({ menu }: { menu: MenuColumn[] }) {
                     link.sub ? "items-start" : "items-center",
                   )}
                 >
-                  <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-border-light/70 bg-off-white/70 text-foreground/70 transition-all duration-200 group-hover/link:border-blue/30 group-hover/link:bg-blue/[0.08] group-hover/link:text-blue group-hover/link:shadow-[0_6px_14px_-8px_rgba(0,106,255,0.4)]">
+                  <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-border-light/70 bg-off-white/70 text-foreground/70 transition-all duration-200 group-hover/link:border-blue/30 group-hover/link:bg-blue/[0.08] group-hover/link:text-blue group-hover/link:shadow-[0_6px_14px_-8px_rgba(0,84,255,0.4)]">
                     <Icon size={16} strokeWidth={1.75} />
                   </span>
                   <span className="flex min-w-0 flex-col">

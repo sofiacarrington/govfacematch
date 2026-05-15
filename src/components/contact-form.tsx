@@ -31,7 +31,7 @@ export function ContactForm() {
             exit={{ opacity: 0, y: -12 }}
             className="py-12 text-center"
           >
-            <div className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-full bg-green/15 text-green border border-green/30">
+            <div className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-full bg-blue-100 text-blue border border-blue-200">
               <Check size={20} />
             </div>
             <h3 className="mt-5 font-display text-2xl text-white">Request received.</h3>

@@ -79,7 +79,7 @@ export function IntroDemo() {
               className={cn("py-5", i > 0 && "border-t border-border-light")}
             >
               <div className="flex items-start gap-4">
-                <span className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-blue/25 bg-blue/10 text-blue shrink-0">
+                <span className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-blue/25 bg-[#CCE1FF] text-blue shrink-0">
                   <Icon size={16} />
                 </span>
                 <div className="flex-1 min-w-0">

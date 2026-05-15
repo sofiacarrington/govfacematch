@@ -1,27 +1,45 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-background: #ffffff;
-  --color-foreground: #111111;
+  /* Permitted palette */
+  --color-grey-50: #F9F9F9;
+  --color-grey-100: #EBECEF;
+  --color-grey-200: #C6C8D2;
+  --color-grey-300: #A3A8B8;
+  --color-grey-400: #6E758C;
+  --color-grey-500: #3A3E4B;
+  --color-grey-600: #262831;
 
-  --color-blue: #054AFF;
+  --color-blue-100: #E5F0FF;
+  --color-blue-200: #CCE1FF;
+  --color-blue-500: #0054FF;
+  --color-blue-600: #0048E6;
+
+  /* Override Tailwind defaults so bg-white / text-black map to the palette */
+  --color-white: #F9F9F9;
+  --color-black: #262831;
+
+  /* Semantic aliases mapping legacy tokens to palette */
+  --color-background: #F9F9F9;
+  --color-foreground: #3A3E4B;
+
+  --color-blue: #0054FF;
   --color-blue-eyebrow: #CCE1FF;
-  --color-green: #1ec677;
+  --color-green: #0054FF;
 
-  --color-black: #111111;
-  --color-rich-black: #010101;
-  --color-off-black: #0d0d0d;
-  --color-off-white: #eeeeee;
+  --color-rich-black: #262831;
+  --color-off-black: #262831;
+  --color-off-white: #EBECEF;
 
-  --color-grey-on-black: #a9a9a9;
-  --color-grey-on-white: #6e6e6e;
+  --color-grey-on-black: #C6C8D2;
+  --color-grey-on-white: #6E758C;
 
-  --color-border-light: #e6e6e6;
-  --color-border-dark: #232323;
+  --color-border-light: #EBECEF;
+  --color-border-dark: #262831;
 
-  --color-tint-white-05: #ffffff0d;
-  --color-tint-white-10: #ffffff1a;
-  --color-illustration-grey: #7f7f7f1a;
+  --color-tint-white-05: rgba(249, 249, 249, 0.05);
+  --color-tint-white-10: rgba(249, 249, 249, 0.10);
+  --color-illustration-grey: rgba(163, 168, 184, 0.10);
 
   --radius-sm: 6px;
   --radius-md: 8px;
@@ -102,7 +120,7 @@ body {
 
 ::selection {
   background: var(--color-blue);
-  color: white;
+  color: #F9F9F9;
 }
 
 .font-display {
@@ -120,13 +138,13 @@ body {
 .text-balance { text-wrap: balance; }
 
 .glow-blue {
-  background: radial-gradient(closest-side, rgba(0, 106, 255, 0.45), rgba(0, 106, 255, 0));
+  background: radial-gradient(closest-side, rgba(0, 84, 255, 0.45), rgba(0, 84, 255, 0));
 }
 
 .bg-hero-glow {
   background-image:
-    radial-gradient(1200px 600px at 50% -10%, rgba(0, 106, 255, 0.22), transparent 60%),
-    radial-gradient(800px 400px at 50% 110%, rgba(0, 106, 255, 0.18), transparent 60%);
+    radial-gradient(1200px 600px at 50% -10%, rgba(0, 84, 255, 0.22), transparent 60%),
+    radial-gradient(800px 400px at 50% 110%, rgba(0, 84, 255, 0.18), transparent 60%);
 }
 
 .no-scrollbar {
@@ -141,6 +159,6 @@ body {
 
 .bg-problem-glow {
   background-image:
-    radial-gradient(900px 500px at 0% 50%, rgba(220, 38, 38, 0.18), transparent 65%),
-    radial-gradient(900px 500px at 100% 50%, rgba(220, 38, 38, 0.18), transparent 65%);
+    radial-gradient(900px 500px at 0% 50%, rgba(0, 84, 255, 0.18), transparent 65%),
+    radial-gradient(900px 500px at 100% 50%, rgba(0, 84, 255, 0.18), transparent 65%);
 }

@@ -103,7 +103,7 @@ function PlatformOutcomes() {
   return (
     <Section
       tone="light"
-      className="rounded-t-[40px] shadow-[0_-20px_40px_-30px_rgba(0,0,0,0.25)] md:rounded-t-[56px]"
+      className="rounded-t-[40px] shadow-[0_-20px_40px_-30px_rgba(38,40,49,0.25)] md:rounded-t-[56px]"
     >
       <div className="mx-auto max-w-3xl text-center">
         <Reveal>
@@ -120,7 +120,7 @@ function PlatformOutcomes() {
           return (
             <Reveal key={p.title} delay={0.05 * i}>
               <div className="h-full rounded-xl border border-border-light bg-background p-5 sm:p-6">
-                <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-blue/10 sm:h-12 sm:w-12">
+                <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-[#CCE1FF] sm:h-12 sm:w-12">
                   <Icon size={20} strokeWidth={1.75} className="text-blue" />
                 </div>
                 <h3 className="mt-5 font-display text-base sm:mt-6">{p.title}</h3>
@@ -200,8 +200,7 @@ function Compliance() {
 
 function ClosingCta() {
   return (
-    <section className="relative bg-rich-black text-white overflow-hidden">
-      <div className="absolute inset-x-0 -top-32 h-80 glow-blue blur-2xl opacity-70 pointer-events-none" />
+    <section className="relative bg-[#F9F9F9] text-foreground overflow-hidden">
       <div className="relative mx-auto max-w-[1280px] px-5 py-14 text-center sm:py-16 md:py-20 lg:px-8">
         <Reveal>
           <h2 className="mx-auto max-w-3xl font-display text-3xl text-balance sm:text-4xl md:text-5xl">
@@ -209,7 +208,7 @@ function ClosingCta() {
           </h2>
         </Reveal>
         <Reveal delay={0.1}>
-          <p className="mx-auto mt-5 max-w-xl text-[15px] text-grey-on-black sm:mt-6 sm:text-base">
+          <p className="mx-auto mt-5 max-w-xl text-[15px] text-grey-on-white sm:mt-6 sm:text-base">
             See how Incode helps the world&rsquo;s leading enterprises stay ahead of fraud without
             adding friction.
           </p>

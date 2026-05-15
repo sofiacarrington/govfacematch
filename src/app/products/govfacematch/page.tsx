@@ -156,7 +156,7 @@ function Testimonial() {
             </div>
 
             <div className="relative w-full p-6 md:p-10 lg:p-14 flex items-center">
-              <div className="w-full max-w-xl rounded-2xl bg-white/10 border border-white/15 backdrop-blur-xl p-7 md:p-9 shadow-[0_24px_48px_-24px_rgba(0,0,0,0.45)]">
+              <div className="w-full max-w-xl rounded-2xl bg-white/10 border border-white/15 backdrop-blur-xl p-7 md:p-9 shadow-[0_24px_48px_-24px_rgba(38,40,49,0.45)]">
                 <Image
                   src="/virginiadmv.png"
                   alt="Virginia Department of Motor Vehicles"
@@ -273,7 +273,7 @@ function Reality() {
         {REALITY_STATS.map((s, i) => (
           <Reveal key={s.label} delay={0.1 + i * 0.1}>
             <div className="border-t border-border-light pt-6">
-              <div className="font-display text-4xl md:text-5xl bg-[linear-gradient(120deg,#054AFF_0%,#000_55%)] bg-clip-text text-transparent">
+              <div className="font-display text-4xl md:text-5xl bg-[linear-gradient(120deg,#0054FF_0%,#262831_55%)] bg-clip-text text-transparent">
                 <Counter to={s.value} prefix={s.prefix} suffix={s.suffix} />
               </div>
               <p className="mt-3 text-sm text-grey-on-white max-w-xs whitespace-pre-line">{s.label}</p>
